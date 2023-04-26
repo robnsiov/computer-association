@@ -1,0 +1,40 @@
+"use client";
+
+import MenuItem from "./menu-item/menu-item";
+import { Home, Gallery, Profile2User } from "iconsax-react";
+
+const routes = [
+  {
+    href: "/",
+    icon: <Home size="24" className="text-gray-300" />,
+    activeIcon: <Home size="24" className="text-zinc-900" />,
+  },
+  {
+    href: "/gallery",
+    icon: <Gallery size="24" className="text-gray-300" />,
+    activeIcon: <Gallery size="24" className="text-zinc-900" />,
+  },
+  {
+    href: "/user",
+    icon: <Profile2User size="24" className="text-gray-300" />,
+    activeIcon: <Profile2User size="24" className="text-zinc-900" />,
+  },
+];
+
+const Menu = () => {
+  return (
+    <>
+      <div
+        className="absolute top-0 right-0 bottom-0 flex justify-center items-center
+       flex-col w-16 space-y-6"
+      >
+        {routes.map(({ href, activeIcon, icon }) => (
+          <MenuItem key={href} href={href} activeIcon={activeIcon}>
+            {icon}
+          </MenuItem>
+        ))}
+      </div>
+    </>
+  );
+};
+export default Menu;

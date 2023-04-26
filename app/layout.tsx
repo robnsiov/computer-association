@@ -1,5 +1,6 @@
 import "./globals.css";
 import localFont from "next/font/local";
+import Container from "@/components/share/container/container";
 
 const yekanBakh = localFont({
   src: [
@@ -57,7 +58,9 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body className={yekanBakh.className}>{children}</body>
+      <body dir="rtl" className={yekanBakh.className}>
+        <Container>{children}</Container>
+      </body>
     </html>
   );
 }
