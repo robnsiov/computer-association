@@ -1,9 +1,11 @@
 "use client";
+import Modal from "@/components/share/modal/modal";
 import { Profile2User, Eye } from "iconsax-react";
 
 const User = () => {
   return (
     <>
+      {/* <Modal /> */}
       <div className="w-full h-full flex justify-center items-center flex-col">
         <div
           className="max-w-sm w-full flex justify-center items-center flex-col p-6 

@@ -7,17 +7,17 @@ const routes = [
   {
     href: "/",
     icon: <Home size="24" className="text-gray-300" />,
-    activeIcon: <Home size="24" className="text-zinc-900" />,
+    activeIcon: <Home size="24" className="text-slate-600" />,
   },
   {
     href: "/gallery",
     icon: <Gallery size="24" className="text-gray-300" />,
-    activeIcon: <Gallery size="24" className="text-zinc-900" />,
+    activeIcon: <Gallery size="24" className="text-slate-600" />,
   },
   {
     href: "/user",
     icon: <Profile2User size="24" className="text-gray-300" />,
-    activeIcon: <Profile2User size="24" className="text-zinc-900" />,
+    activeIcon: <Profile2User size="24" className="text-slate-600" />,
   },
 ];
 

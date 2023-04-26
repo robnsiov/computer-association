@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import MenuItemImpl from "./types";
 import cx from "classnames";
+import Link from "../../link/link";
 
 const MenuItem = ({ activeIcon, children, href }: MenuItemImpl) => {
   const pathname = usePathname();
@@ -29,7 +29,7 @@ const MenuItem = ({ activeIcon, children, href }: MenuItemImpl) => {
         <span
           className={cx(
             `absolute top-1/2 -translate-y-1/2 w-10 h-7 rounded-md
-            rounded-r-none bg-zinc-900 peer-hover:-right-9 transition-all duration-500`,
+            rounded-r-none bg-slate-700 peer-hover:-right-9 transition-all duration-500`,
             { "-right-9": active, "-right-10": !active }
           )}
         ></span>

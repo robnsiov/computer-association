@@ -1,7 +1,12 @@
+"use client";
+
 import ContainerImpl from "./types";
 import Menu from "../menu/menu";
+import useContainer from "./use-container";
+import PageLoader from "../page-loader/page-loader";
 
 const Container = ({ children }: ContainerImpl) => {
+  useContainer();
   return (
     <>
       <div
@@ -9,6 +14,7 @@ const Container = ({ children }: ContainerImpl) => {
       p-16 pl-0 relative overflow-hidden text-slate-700"
       >
         <Menu />
+        <PageLoader />
         <div className="w-full h-full bg-[#f6f6f9] rounded-3xl rounded-l-none">
           {children}
         </div>
