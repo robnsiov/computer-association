@@ -10,7 +10,7 @@ const PageLoader = () => {
       <FadeAnimation inProp={loading}>
         <div className="absolute left-3 top-5">
           <svg
-            className="animate-spin h-5 w-5 text-slate-300"
+            className="animate-spin h-5 w-5 text-slate-500"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"

@@ -7,7 +7,7 @@ import FadeAnimation from "../fade-animation/fade-animation";
 import ModalImpl from "./types";
 
 const Modal = ({ inProp, children }: ModalImpl) => {
-  const { setFalse, value } = useModal({ inProp: true });
+  const { setFalse, value } = useModal({ inProp: inProp });
 
   const ref = useRef(null);
   useOnClickOutside(ref, setFalse);
