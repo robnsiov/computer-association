@@ -20,6 +20,15 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 0.2s;
   }
+  .box-error-shadow {
+    box-shadow: 0 0 0 2px #ef4444 !important;
+  }
+  .top-3-5-important {
+    top: -14px !important;
+  }
+  .red-500-important {
+    color: #ef4444 !important;
+  }
 }
 @layer components {
   body {

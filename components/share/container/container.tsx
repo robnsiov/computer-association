@@ -15,7 +15,7 @@ const Container = ({ children }: ContainerImpl) => {
       >
         <Menu />
         <PageLoader />
-        <div className="w-full h-full bg-[#f6f6f9] rounded-3xl rounded-l-none">
+        <div className="w-full h-full bg-[#f6f6f9] rounded-3xl rounded-l-none p-5">
           {children}
         </div>
       </div>
