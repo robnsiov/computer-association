@@ -27,7 +27,15 @@ const LoginRegister = () => {
 
   return (
     <>
-      <Modal inProp={true}></Modal>
+      <Modal inProp={!true}>
+        <div className="w-full mr-4">
+          <ul className="list-disc space-y-2">
+            <li>شراط اول</li>
+            <li>شراط دوم</li>
+            <li>شراط سوم</li>
+          </ul>
+        </div>
+      </Modal>
       <div className="w-full h-full flex justify-center items-center flex-col">
         <form
           onSubmit={handleSubmit(onSubmit)}
