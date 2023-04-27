@@ -4,9 +4,10 @@ import { useRef } from "react";
 import useModal from "./use-modal";
 import { useOnClickOutside } from "usehooks-ts";
 import FadeAnimation from "../fade-animation/fade-animation";
+import ModalImpl from "./types";
 
-const Modal = () => {
-  const { setFalse, setTrue, value } = useModal({ inProp: true });
+const Modal = ({ inProp, children }: ModalImpl) => {
+  const { setFalse, value } = useModal({ inProp: true });
 
   const ref = useRef(null);
   useOnClickOutside(ref, setFalse);
@@ -18,8 +19,10 @@ const Modal = () => {
           <div
             ref={ref}
             className="bg-white rounded-2xl max-w-2xl md:max-w-md w-full min-h-[400px] md:min-h-[200px]
-        transition-all duration-200"
-          ></div>
+        transition-all duration-200 p-5"
+          >
+            {children}
+          </div>
         </div>
       </FadeAnimation>
     </>

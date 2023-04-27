@@ -6,6 +6,7 @@ import { FormValues } from "./types";
 import useAuthForm from "./use-auth-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
+import Modal from "@/components/share/modal/modal";
 
 const LoginRegister = () => {
   const { auth, setAuth, validation, onSubmit } = useAuthForm();
@@ -26,6 +27,7 @@ const LoginRegister = () => {
 
   return (
     <>
+      <Modal inProp={true}></Modal>
       <div className="w-full h-full flex justify-center items-center flex-col">
         <form
           onSubmit={handleSubmit(onSubmit)}
