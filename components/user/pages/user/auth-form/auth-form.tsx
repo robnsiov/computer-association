@@ -28,7 +28,6 @@ const LoginRegister = () => {
     clearErrors(["email", "password", "rules"]);
   }, [auth]);
 
-  console.log(modal);
   return (
     <>
       <Modal inProp={modal} setProp={setHide}>
@@ -52,24 +51,22 @@ const LoginRegister = () => {
           >
             <Profile2User size="34" className="text-primary" />
           </div>
-          <div className="w-full mb-4">
-            <Input<FormValues>
-              register={register}
-              label="ایمیل"
-              name="email"
-              type="text"
-              error={errors.email?.message}
-            />
-          </div>
-          <div className="w-full mb-4">
-            <Input<FormValues>
-              register={register}
-              label="رمزعبور"
-              name="password"
-              type="password"
-              error={errors.password?.message}
-            />
-          </div>
+          <Input<FormValues>
+            register={register}
+            label="ایمیل"
+            name="email"
+            type="text"
+            wrapperClassName="mb-4"
+            error={errors.email?.message}
+          />
+          <Input<FormValues>
+            register={register}
+            label="رمزعبور"
+            name="password"
+            type="password"
+            wrapperClassName="mb-4"
+            error={errors.password?.message}
+          />
           {auth === "signup" && (
             <div className="w-full flex justify-start items-center mb-4  text-sm">
               <CheckBox
@@ -87,9 +84,7 @@ const LoginRegister = () => {
             </div>
           )}
 
-          <div className="w-full">
-            <Button title={auth === "signin" ? "ورود" : "ثبت نام"} />
-          </div>
+          <Button title={auth === "signin" ? "ورود" : "ثبت نام"} />
         </form>
 
         <UnderlineTag
