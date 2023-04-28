@@ -4,4 +4,5 @@ export default interface ModalImpl extends UseModalImpl {
 
 export interface UseModalImpl {
   inProp: boolean;
+  setProp(): void;
 }

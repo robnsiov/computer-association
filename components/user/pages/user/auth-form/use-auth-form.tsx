@@ -3,9 +3,16 @@ import { Auth, FormValues } from "./types";
 import { z } from "zod";
 import { SubmitHandler } from "react-hook-form";
 import zod from "@/constants/zod-messages";
+import { useBoolean } from "usehooks-ts";
 
 const useAuthForm = () => {
   const [auth, setAuth] = useState<Auth>("signin");
+  // modal-state
+  const {
+    value: modal,
+    setTrue: setOpen,
+    setFalse: setHide,
+  } = useBoolean(false);
   const validation = useMemo(() => {
     return zod.object({
       email: z.string().email(),
@@ -16,6 +23,6 @@ const useAuthForm = () => {
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     alert(JSON.stringify(data));
   };
-  return { auth, setAuth, validation, onSubmit };
+  return { auth, setAuth, validation, onSubmit, modal, setOpen, setHide };
 };
 export default useAuthForm;

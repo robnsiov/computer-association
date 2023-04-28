@@ -6,20 +6,19 @@ import { useOnClickOutside } from "usehooks-ts";
 import FadeAnimation from "../fade-animation/fade-animation";
 import ModalImpl from "./types";
 
-const Modal = ({ inProp, children }: ModalImpl) => {
-  const { setFalse, value } = useModal({ inProp: inProp });
+const Modal = ({ inProp, children, setProp }: ModalImpl) => {
+  console.log(inProp);
 
   const ref = useRef(null);
-  useOnClickOutside(ref, setFalse);
+  useOnClickOutside(ref, setProp);
 
   return (
     <>
-      <FadeAnimation inProp={value}>
-        <div className="fixed inset-0 z-[999] bg-black/40 flex justify-center items-center p-4">
+      <FadeAnimation inProp={inProp}>
+        <div className="fixed inset-0 z-[999] bg-black/40 p-4">
           <div
             ref={ref}
-            className="bg-white rounded-2xl max-w-2xl md:max-w-md w-full min-h-[400px] md:min-h-[200px]
-        transition-all duration-200 p-5"
+            className="fixed z-[999] bg-white rounded-2xl max-w-2xl md:max-w-md w-full min-h-[400px] md:min-h-[200px] p-5"
           >
             {children}
           </div>

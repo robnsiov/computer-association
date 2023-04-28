@@ -8,9 +8,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import Modal from "@/components/share/modal/modal";
 import CheckBox from "@/components/share/check-box/check-box";
+import UnderlineTag from "@/components/share/underline-tag/underline-tag";
 
 const LoginRegister = () => {
-  const { auth, setAuth, validation, onSubmit } = useAuthForm();
+  const { auth, setAuth, validation, onSubmit, modal, setOpen, setHide } =
+    useAuthForm();
 
   const {
     register,
@@ -26,9 +28,10 @@ const LoginRegister = () => {
     clearErrors(["email", "password"]);
   }, [auth]);
 
+  console.log(modal);
   return (
     <>
-      <Modal inProp={!true}>
+      <Modal inProp={modal} setProp={setHide}>
         <div className="w-full mr-4">
           <ul className="list-disc space-y-2">
             <li>شراط اول</li>
@@ -49,7 +52,6 @@ const LoginRegister = () => {
           >
             <Profile2User size="34" className="text-primary" />
           </div>
-          {/* <span className="font-semibold text-2xl mt-2 mb-4">ثبت نام</span> */}
           <div className="w-full mb-4">
             <Input<FormValues>
               register={register}
@@ -68,30 +70,35 @@ const LoginRegister = () => {
               error={errors.password?.message}
             />
           </div>
-          <div className="w-full justify-start items-start">
+          <div className="w-full flex justify-start items-center mb-4  text-sm">
             <CheckBox
               name={"rules"}
               error={errors.rules?.message}
               id="rules"
               register={register}
             />
+            <UnderlineTag className="ml-1 mr-2" onClick={setOpen}>
+              قوانین و مقررات
+            </UnderlineTag>
+            <label htmlFor="rules" className="cursor-pointer">
+              را قبول دارم{" "}
+            </label>
           </div>
           <div className="w-full">
             <Button title={auth === "signin" ? "ورود" : "ثبت نام"} />
           </div>
         </form>
 
-        <span
+        <UnderlineTag
           onClick={() => {
             setAuth((prev) => (prev === "signin" ? "signup" : "signin"));
           }}
-          className="cursor-pointer mt-1 text-primary text-[17px] 
-            hover:underline underline-offset-8  decoration-dashed decoration-1	  border-transparent"
+          className="mt-1"
         >
           {auth === "signin"
             ? "هنوز ثبت نام نکرده اید؟"
             : "قبلا ثبت نام کرده اید؟"}
-        </span>
+        </UnderlineTag>
       </div>
     </>
   );

@@ -3,7 +3,11 @@ import { CSSTransition } from "react-transition-group";
 
 import FadeAnimationImpl from "./types";
 
-const FadeAnimation = ({ inProp, children }: FadeAnimationImpl) => {
+const FadeAnimation = ({
+  inProp,
+  children,
+  className = "",
+}: FadeAnimationImpl) => {
   const nodeRef = useRef(null);
   return (
     <>
@@ -19,7 +23,9 @@ const FadeAnimation = ({ inProp, children }: FadeAnimationImpl) => {
         }}
         unmountOnExit
       >
-        <div ref={nodeRef}>{children}</div>
+        <div className={className} ref={nodeRef}>
+          {children}
+        </div>
       </CSSTransition>
     </>
   );
