@@ -14,14 +14,16 @@ const Modal = ({ inProp, children, setProp }: ModalImpl) => {
 
   return (
     <>
-      <FadeAnimation inProp={inProp}>
-        <div className="fixed inset-0 z-[999] bg-black/40 p-4">
-          <div
-            ref={ref}
-            className="fixed z-[999] bg-white rounded-2xl max-w-2xl md:max-w-md w-full min-h-[400px] md:min-h-[200px] p-5"
-          >
-            {children}
-          </div>
+      <FadeAnimation
+        inProp={inProp}
+        className="fixed inset-0 z-[999] bg-black/40 p-4 flex justify-center items-center"
+      >
+        <div
+          ref={ref}
+          className="bg-white rounded-2xl max-w-2xl md:max-w-md w-full min-h-[400px] md:min-h-[200px] 
+          p-5 duration-200 transition-all"
+        >
+          {children}
         </div>
       </FadeAnimation>
     </>
