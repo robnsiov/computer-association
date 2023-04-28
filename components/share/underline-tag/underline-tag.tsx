@@ -1,4 +1,4 @@
-"use cliemn";
+"use client";
 import cx from "classnames";
 import UnderlineTagImpl from "./types";
 
