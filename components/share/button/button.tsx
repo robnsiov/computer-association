@@ -1,13 +1,17 @@
 import ButtonImpl from "./types";
+import cx from "classnames";
 
-const Button = ({ loading = false, title }: ButtonImpl) => {
+const Button = ({ loading = false, title, className = "" }: ButtonImpl) => {
   return (
     <>
       <button
         type={loading ? "button" : "submit"}
-        className="group relative w-full rounded border-none outline-none text-white bg-primary
+        className={cx(
+          `group relative w-full rounded border-none outline-none text-white bg-primary
              hover:bg-slate-100 hover:text-primary h-[44px] text-lg
-            transition-all duration-200 flex justify-center items-center"
+            transition-all duration-200 flex justify-center items-center`,
+          { [className]: className }
+        )}
       >
         <span className="transition-all duration-200 opacity-0 group-hover:opacity-100 absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary"></span>
         <span className="transition-all duration-200 opacity-0 group-hover:opacity-100 absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-primary"></span>
