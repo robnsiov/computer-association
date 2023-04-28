@@ -13,6 +13,8 @@ function Input<T>({
   register,
   name,
   error,
+  wrapperClassName = "",
+  className = "",
 }: InoutImpl<T>) {
   const { toPassword, toText, inputType, eye, setFocus, focus } = useInput({
     type,
@@ -21,7 +23,11 @@ function Input<T>({
   const mergedRef = useMergedRef(ref, register(name).ref);
   return (
     <>
-      <div className="relative w-full flex justify-end items-end flex-col">
+      <div
+        className={cx("relative w-full flex justify-end items-end flex-col", {
+          [wrapperClassName]: wrapperClassName,
+        })}
+      >
         <input
           autoComplete={`new-${name}`}
           type={inputType}
@@ -38,7 +44,10 @@ function Input<T>({
           className={cx(
             `caret-primary text-slate-700 w-full rounded p-2 py-2.5 pl-9 border-[1px] border-slate-200 bg-transparent
                 transition-all duration-200 peer outline-none  focus:ring-2 focus:ring-primary`,
-            { "ring-2 ring-red-500 box-error-shadow": error }
+            {
+              "ring-2 ring-red-500 box-error-shadow": error,
+              [className]: className,
+            }
           )}
         />
         <span
