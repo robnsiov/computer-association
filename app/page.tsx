@@ -1,7 +1,9 @@
+import Blog from "@/components/user/share/cards/blog/blog";
+
 const Page = () => {
   return (
     <>
-      <p className="text-red-400"></p>
+      <Blog />
     </>
   );
 };
