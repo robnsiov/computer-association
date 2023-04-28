@@ -25,7 +25,7 @@ const LoginRegister = () => {
   });
 
   useEffect(() => {
-    clearErrors(["email", "password"]);
+    clearErrors(["email", "password", "rules"]);
   }, [auth]);
 
   console.log(modal);
@@ -70,20 +70,23 @@ const LoginRegister = () => {
               error={errors.password?.message}
             />
           </div>
-          <div className="w-full flex justify-start items-center mb-4  text-sm">
-            <CheckBox
-              name={"rules"}
-              error={errors.rules?.message}
-              id="rules"
-              register={register}
-            />
-            <UnderlineTag className="ml-1 mr-2" onClick={setOpen}>
-              قوانین و مقررات
-            </UnderlineTag>
-            <label htmlFor="rules" className="cursor-pointer">
-              را قبول دارم{" "}
-            </label>
-          </div>
+          {auth === "signup" && (
+            <div className="w-full flex justify-start items-center mb-4  text-sm">
+              <CheckBox
+                name={"rules"}
+                error={errors.rules?.message}
+                id="rules"
+                register={register}
+              />
+              <UnderlineTag className="ml-1 mr-2" onClick={setOpen}>
+                قوانین و مقررات
+              </UnderlineTag>
+              <label htmlFor="rules" className="cursor-pointer">
+                را قبول دارم{" "}
+              </label>
+            </div>
+          )}
+
           <div className="w-full">
             <Button title={auth === "signin" ? "ورود" : "ثبت نام"} />
           </div>
