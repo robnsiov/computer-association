@@ -7,6 +7,7 @@ import useAuthForm from "./use-auth-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import Modal from "@/components/share/modal/modal";
+import CheckBox from "@/components/share/check-box/check-box";
 
 const LoginRegister = () => {
   const { auth, setAuth, validation, onSubmit } = useAuthForm();
@@ -17,7 +18,7 @@ const LoginRegister = () => {
     formState: { errors },
     clearErrors,
   } = useForm<FormValues>({
-    values: { email: "", password: "" },
+    values: { email: "", password: "", rules: false },
     resolver: zodResolver(validation),
   });
 
@@ -67,6 +68,12 @@ const LoginRegister = () => {
               error={errors.password?.message}
             />
           </div>
+          <CheckBox
+            name={"rules"}
+            error={errors.rules?.message}
+            id="rules"
+            register={register}
+          />
           <div className="w-full">
             <Button title={auth === "signin" ? "ورود" : "ثبت نام"} />
           </div>

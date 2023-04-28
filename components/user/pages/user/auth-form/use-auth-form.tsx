@@ -10,6 +10,7 @@ const useAuthForm = () => {
     return zod.object({
       email: z.string().email(),
       password: z.string().min(8).max(16),
+      rules: z.literal(true),
     });
   }, []);
   const onSubmit: SubmitHandler<FormValues> = (data) => {
