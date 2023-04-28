@@ -68,12 +68,14 @@ const LoginRegister = () => {
               error={errors.password?.message}
             />
           </div>
-          <CheckBox
-            name={"rules"}
-            error={errors.rules?.message}
-            id="rules"
-            register={register}
-          />
+          <div className="w-full justify-start items-start">
+            <CheckBox
+              name={"rules"}
+              error={errors.rules?.message}
+              id="rules"
+              register={register}
+            />
+          </div>
           <div className="w-full">
             <Button title={auth === "signin" ? "ورود" : "ثبت نام"} />
           </div>

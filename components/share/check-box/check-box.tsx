@@ -25,7 +25,6 @@ function CheckBox<T>({ error, id, name, register }: CheckBoxImpl<T>) {
           <span className="w-[5px] h-2 border-b-2 border-r-2 border-white rotate-45"></span>
         </div>
       </label>
-      <label htmlFor="r">ok</label>
     </>
   );
 }
