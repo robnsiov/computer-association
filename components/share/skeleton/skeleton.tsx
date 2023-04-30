@@ -1,9 +1,10 @@
 import SkeletonProvider, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Skeleton = () => {
   return (
     <>
-      <SkeletonTheme baseColor="#475569" highlightColor="#64748b">
+      <SkeletonTheme baseColor="#e9ecf6" highlightColor="#fbfdff">
         <SkeletonProvider
           className="w-full h-full"
           style={{ borderRadius: "0px" }}

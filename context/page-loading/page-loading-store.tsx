@@ -1,10 +1,5 @@
 import { create } from "zustand";
-
-interface PageLoadingStore {
-  loading: boolean;
-  pathname?: string;
-  set: (loading: boolean, pathname?: string) => void;
-}
+import PageLoadingStore from "./types";
 
 const usePageLoadingStore = create<PageLoadingStore>()((setState) => ({
   loading: false,

@@ -29,7 +29,7 @@ function Input<T>({
         })}
       >
         <input
-          autoComplete={`new-${name}`}
+          autoComplete={`${name === "password" ? `new-${name}` : "off"}`}
           type={inputType}
           {...register(name)}
           onBlur={(e) => {
