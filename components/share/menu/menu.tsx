@@ -1,7 +1,7 @@
 "use client";
 
 import MenuItem from "./menu-item/menu-item";
-import { Home, Gallery, Profile2User } from "iconsax-react";
+import { Home, Gallery, Profile2User, Grid3 } from "iconsax-react";
 
 const routes = [
   {
@@ -18,6 +18,11 @@ const routes = [
     href: "/user",
     icon: <Profile2User size="24" className="text-gray-300" />,
     activeIcon: <Profile2User size="24" className="text-slate-600" />,
+  },
+  {
+    href: "/blogs",
+    icon: <Grid3 size="24" className="text-gray-300" />,
+    activeIcon: <Grid3 size="24" className="text-slate-600" />,
   },
 ];
 

@@ -15,7 +15,7 @@ const Blog = ({
   return (
     <>
       <div
-        className="w-[270px] bg-slate-100 rounded-3xl flex justify-center items-center
+        className=" bg-slate-100 rounded-3xl flex justify-center items-center
       ring-4 ring-white p-2 flex-col transition-all duration-200 hover:bg-white
       hover:ring-slate-100"
       >
