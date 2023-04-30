@@ -36,9 +36,9 @@ const Blog = ({
               </div>
               <div className="w-7 aspect-square rounded-full overflow-hidden">
                 <Image
-                  width={50}
-                  height={50}
-                  className="object-cover object-center"
+                  width={80}
+                  height={80}
+                  className="w-full h-full object-cover object-center"
                   src={authorImage}
                   alt="ok"
                 />
@@ -50,7 +50,7 @@ const Blog = ({
               <Image
                 width={300}
                 height={200}
-                className="object-cover object-center"
+                className="w-full h-full object-cover object-center"
                 src={image}
                 alt="ok"
               />
