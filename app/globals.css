@@ -12,6 +12,24 @@
   .break-word {
     word-break: break-word;
   }
+  .scrollbar::-webkit-scrollbar {
+    width: 9px;
+    height: 3px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #fff;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #e2e8f0;
+    border-radius: 100vh;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #cbd5e1;
+  }
   .bg-growing-underline {
     background-size: 100% 8%;
     background-position: 0 100%;
@@ -50,10 +68,4 @@
   .fade-exit-active {
     @apply opacity-0 transition-all duration-300;
   }
-}
-
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
