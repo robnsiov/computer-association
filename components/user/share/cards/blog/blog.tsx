@@ -29,12 +29,14 @@ const Blog = ({
             <span className="w-0.5 h-5 border-r-2 border-slate-400"></span>
             <div className="flex justify-end items-center w-1/2 mr-4">
               <div className="flex justify-end items-end flex-col ml-2">
-                <span className="text-slate-400 text-[11px]">پست شده توسط</span>
+                <span className="text-slate-400 text-[11px] max-w-[64px] truncate">
+                  پست شده توسط
+                </span>
                 <span className="text-slate-700 font-semibold text-[14px] max-w-[80px] truncate">
                   {author}
                 </span>
               </div>
-              <div className="w-7 aspect-square rounded-full overflow-hidden">
+              <div className="min-w-[28px] max-w-[28px] aspect-square rounded-full overflow-hidden">
                 <Image
                   width={80}
                   height={80}
