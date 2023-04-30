@@ -1,3 +1,4 @@
+import Image from "@/components/share/image";
 import Link from "@/components/share/link/link";
 import { Eye } from "iconsax-react";
 
@@ -19,8 +20,16 @@ const Blog = () => {
             </div>
             <div className="w-7 aspect-square bg-slate-500 rounded-full"></div>
           </div>
-          <div className="bg-slate-400 w-full h-[150px] rounded-xl"></div>
-          <span className="absolute -bottom-2.5 blur-xl left-0 right-0 h-6 bg-[#CDD8DB]"></span>
+          <div className="bg-slate-400 w-full h-[150px] rounded-xl overflow-hidden">
+            <Image
+              width={300}
+              height={200}
+              className="object-cover object-center"
+              src="/images/el.jpg"
+              alt="ok"
+            />
+          </div>
+          <span className="absolute -bottom-2.5 blur-xl left-0 right-0 h-6 bg-slate-200"></span>
         </div>
         <div className="mt-2 px-2 w-full text-right text-slate-500">
           لورم ایپسوم متن ساختگی
