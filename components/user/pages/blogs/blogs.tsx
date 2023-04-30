@@ -7,8 +7,98 @@ const Blogs = () => {
     <>
       <div
         className="pl-4 py-2 overflow-y-scroll scrollbar h-full grid grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 
-      md:grid-cols-2 580px:grid-cols-1  gap-5"
+      md:grid-cols-2 580px:grid-cols-1  gap-5 auto-rows-min	"
       >
+        <Blog
+          author="محمدرضا"
+          authorImage="/images/el.jpg"
+          image="/images/el.jpg"
+          category="شبکه"
+          href="/"
+          title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
+          view={50}
+          categoryLink="/"
+        />
+        <Blog
+          author="محمدرضا"
+          authorImage="/images/el.jpg"
+          image="/images/el.jpg"
+          category="شبکه"
+          href="/"
+          title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
+          view={50}
+          categoryLink="/"
+        />
+        <Blog
+          author="محمدرضا"
+          authorImage="/images/el.jpg"
+          image="/images/el.jpg"
+          category="شبکه"
+          href="/"
+          title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
+          view={50}
+          categoryLink="/"
+        />
+        <Blog
+          author="محمدرضا"
+          authorImage="/images/el.jpg"
+          image="/images/el.jpg"
+          category="شبکه"
+          href="/"
+          title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
+          view={50}
+          categoryLink="/"
+        />
+        <Blog
+          author="محمدرضا"
+          authorImage="/images/el.jpg"
+          image="/images/el.jpg"
+          category="شبکه"
+          href="/"
+          title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
+          view={50}
+          categoryLink="/"
+        />
+        <Blog
+          author="محمدرضا"
+          authorImage="/images/el.jpg"
+          image="/images/el.jpg"
+          category="شبکه"
+          href="/"
+          title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
+          view={50}
+          categoryLink="/"
+        />
+        <Blog
+          author="محمدرضا"
+          authorImage="/images/el.jpg"
+          image="/images/el.jpg"
+          category="شبکه"
+          href="/"
+          title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
+          view={50}
+          categoryLink="/"
+        />
+        <Blog
+          author="محمدرضا"
+          authorImage="/images/el.jpg"
+          image="/images/el.jpg"
+          category="شبکه"
+          href="/"
+          title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
+          view={50}
+          categoryLink="/"
+        />
+        <Blog
+          author="محمدرضا"
+          authorImage="/images/el.jpg"
+          image="/images/el.jpg"
+          category="شبکه"
+          href="/"
+          title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
+          view={50}
+          categoryLink="/"
+        />
         <Blog
           author="محمدرضا"
           authorImage="/images/el.jpg"
