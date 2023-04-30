@@ -14,10 +14,8 @@ const Image = ({ className, height, src, width, alt }: ImageImpl) => {
   return (
     <>
       <div className="w-full h-full flex justify-center items-center relative">
-        {/* <ImageLoader size="md" /> */}
-        {/* <ImageLoader inProp={loading} /> */}
         <FadeAnimation
-          className="absolute inset-0 z-30 w-full h-full"
+          className="absolute inset-0 z-10 w-full h-full"
           inProp={loading}
         >
           <Skeleton />
