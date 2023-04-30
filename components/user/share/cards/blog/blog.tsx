@@ -7,6 +7,7 @@ const Blog = ({
   author,
   authorImage,
   category,
+  categoryLink,
   href,
   image,
   title,
@@ -22,9 +23,12 @@ const Blog = ({
         <div className="relative w-full bg-white rounded-2xl flex justify-center items-center flex-col p-2">
           <div className="w-full flex justify-between items-center mb-2">
             <div className="w-1/2 flex justify-start items-center">
-              <span className="text-slate-600 font-black text-sm max-w-[80px] truncate">
+              <Link
+                href={categoryLink}
+                className="text-slate-600 font-black text-sm max-w-[80px] truncate"
+              >
                 {category}
-              </span>
+              </Link>
             </div>
             <span className="w-0.5 h-5 border-r-2 border-slate-400"></span>
             <div className="flex justify-end items-center w-1/2 mr-4">
@@ -75,7 +79,7 @@ const Blog = ({
             مطالعه
           </Link>
           <div className="flex justify-start items-center">
-            <span className="ml-2">22</span>
+            <span className="ml-2">{view}</span>
             <Eye size="18" />
           </div>
         </div>

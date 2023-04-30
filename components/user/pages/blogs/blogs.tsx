@@ -17,69 +17,7 @@ const Blogs = () => {
           href="/"
           title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
           view={50}
-        />
-        <Blog
-          author="محمدرضا"
-          authorImage="/images/el.jpg"
-          image="/images/el.jpg"
-          category="شبکه"
-          href="/"
-          title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
-          view={50}
-        />
-        <Blog
-          author="محمدرضا"
-          authorImage="/images/el.jpg"
-          image="/images/el.jpg"
-          category="شبکه"
-          href="/"
-          title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
-          view={50}
-        />
-        <Blog
-          author="محمدرضا"
-          authorImage="/images/el.jpg"
-          image="/images/el.jpg"
-          category="شبکه"
-          href="/"
-          title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
-          view={50}
-        />
-        <Blog
-          author="محمدرضا"
-          authorImage="/images/el.jpg"
-          image="/images/el.jpg"
-          category="شبکه"
-          href="/"
-          title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
-          view={50}
-        />
-        <Blog
-          author="محمدرضا"
-          authorImage="/images/el.jpg"
-          image="/images/el.jpg"
-          category="شبکه"
-          href="/"
-          title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
-          view={50}
-        />
-        <Blog
-          author="محمدرضا"
-          authorImage="/images/el.jpg"
-          image="/images/el.jpg"
-          category="شبکه"
-          href="/"
-          title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
-          view={50}
-        />
-        <Blog
-          author="محمدرضا"
-          authorImage="/images/el.jpg"
-          image="/images/el.jpg"
-          category="شبکه"
-          href="/"
-          title="نحوه کارکرد روتر ها در لایه نتورک و بررسی ساختار آنها"
-          view={50}
+          categoryLink="/"
         />
       </div>
     </>
