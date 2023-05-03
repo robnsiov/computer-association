@@ -47,6 +47,10 @@ const useCategories = () => {
     router.push(`${pathname}?category=${path}`);
   };
 
+  useEffect(() => {
+    if (categoryParam) setActiveCat(categoryParam);
+  }, []);
+
   return { categoryParam, onClick, cats };
 };
 export default useCategories;

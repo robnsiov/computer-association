@@ -7,4 +7,5 @@ export default interface BlogCardImpl {
   title: string;
   href: string;
   view: number;
+  id?: number;
 }
