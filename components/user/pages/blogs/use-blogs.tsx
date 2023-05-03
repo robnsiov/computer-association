@@ -30,13 +30,14 @@ const useBlogs = () => {
       setInitBlogs(false);
       setPageLoading(true);
     },
-    onSuccess({ data }) {
+    onSettled() {
       setPageLoading(false);
+    },
+    onSuccess({ data }) {
       setBlogs(data);
     },
 
     onError() {
-      setPageLoading(false);
       setBlogs([]);
     },
   });
