@@ -25,8 +25,11 @@ const useCategories = () => {
       setCats(data);
     },
     onError() {
-      // setCats([{ title: "ورزش" }, { title: "شبکه" }]);
-      setCats([]);
+      setCats([
+        { title: "ورزش", englishTitle: "sport" },
+        { title: "شبکه", englishTitle: "network" },
+      ]);
+      // setCats([]);
     },
   });
 

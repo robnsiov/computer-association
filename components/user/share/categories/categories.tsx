@@ -24,14 +24,14 @@ const Categories = ({}: CategoriesImpl) => {
               autoplay: true,
             }}
           >
-            {cats.map(({ title }) => (
+            {cats.map(({ title, englishTitle }) => (
               <SplideSlide
                 key={title}
                 className="h-12 flex justify-center items-center"
               >
                 <span
                   onClick={() => {
-                    catOnclick(title);
+                    catOnclick(englishTitle);
                   }}
                   className={cx(
                     `bg-slate-100 py-1.5 px-6 cursor-pointer rounded-3xl
@@ -39,7 +39,7 @@ const Categories = ({}: CategoriesImpl) => {
         hover:border-slate-700 hover:bg-slate-700 hover:text-white ml-3`,
                     {
                       "border-slate-700 bg-slate-700 text-white":
-                        categoryParam === title,
+                        categoryParam === englishTitle,
                     }
                   )}
                 >
