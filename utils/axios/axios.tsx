@@ -1,7 +1,7 @@
 import Axios, { AxiosRequestConfig } from "axios";
 
-const request = (config: AxiosRequestConfig) => {
-  const axs = Axios(config);
+function request<T>(config: AxiosRequestConfig) {
+  const axs = Axios<T>(config);
   return axs;
-};
+}
 export default request;
