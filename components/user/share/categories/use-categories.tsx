@@ -16,17 +16,17 @@ const useCategories = () => {
   const [cats, setCats] = useState<CatsImpl>([]);
 
   const mutationFn = (url: string) => {
-    return request({ method: "GET", url });
+    return request<CatsImpl>({ method: "GET", url });
   };
 
   const mutation = useMutation({
     mutationFn: (url: string) => mutationFn(url),
-    onSuccess(data) {
+    onSuccess({ data }) {
       setCats(data);
     },
     onError() {
-      setCats([{ title: "ورزش" }, { title: "شبکه" }]);
-      //   setCats([]);
+      // setCats([{ title: "ورزش" }, { title: "شبکه" }]);
+      setCats([]);
     },
   });
 
