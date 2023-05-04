@@ -48,7 +48,7 @@ const Signin = () => {
         </div>
         <form
           onSubmit={onSubmit}
-          className="w-full flex justify-center items-center flex-col mb-4  p-6 
+          className="w-full flex justify-center items-center flex-col mb-4  p-6 md:p-3
         shadow bg-white rounded"
         >
           <div
