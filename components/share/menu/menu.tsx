@@ -1,7 +1,14 @@
 "use client";
 
 import MenuItem from "./menu-item/menu-item";
-import { Home, Gallery, Profile2User, Grid3, Setting3 } from "iconsax-react";
+import {
+  Home,
+  Gallery,
+  Profile2User,
+  Grid3,
+  Setting3,
+  Calendar2,
+} from "iconsax-react";
 
 const routes = [
   {
@@ -28,6 +35,11 @@ const routes = [
     href: "/contact-us",
     icon: <Setting3 size="24" className="text-gray-300" />,
     activeIcon: <Setting3 size="24" className="text-slate-600" />,
+  },
+  {
+    href: "/events",
+    icon: <Calendar2 size="24" className="text-gray-300" />,
+    activeIcon: <Calendar2 size="24" className="text-slate-600" />,
   },
 ];
 
