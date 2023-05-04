@@ -2,7 +2,7 @@
 
 import { Eye, EyeSlash } from "iconsax-react";
 import { useRef } from "react";
-import InoutImpl from "./types";
+import InputImpl from "./types";
 import useInput from "./use-input";
 import { useMergedRef } from "@mantine/hooks";
 import cx from "classnames";
@@ -15,7 +15,8 @@ function Input<T>({
   error,
   wrapperClassName = "",
   className = "",
-}: InoutImpl<T>) {
+  textarea = false,
+}: InputImpl<T>) {
   const { toPassword, toText, inputType, eye, setFocus, focus } = useInput({
     type,
   });
@@ -28,28 +29,54 @@ function Input<T>({
           [wrapperClassName]: wrapperClassName,
         })}
       >
-        <input
-          autoComplete={`${name === "password" ? `new-${name}` : "off"}`}
-          type={inputType}
-          {...register(name)}
-          onBlur={(e) => {
-            register(name).onBlur(e);
-            setFocus(false);
-          }}
-          onFocus={() => {
-            setFocus(true);
-          }}
-          ref={mergedRef}
-          spellCheck={false}
-          className={cx(
-            `caret-primary text-slate-700 w-full rounded p-2 py-2.5 pl-9 border-[1px] border-slate-200 bg-transparent
+        {textarea ? (
+          <textarea
+            autoComplete={`${name === "password" ? `new-${name}` : "off"}`}
+            type={inputType}
+            {...register(name)}
+            onBlur={(e) => {
+              register(name).onBlur(e);
+              setFocus(false);
+            }}
+            onFocus={() => {
+              setFocus(true);
+            }}
+            ref={mergedRef}
+            spellCheck={false}
+            className={cx(
+              `caret-primary text-slate-700 w-full rounded p-2 py-2.5 pl-9 border-[1px] border-slate-200 bg-transparent
                 transition-all duration-200 peer outline-none  focus:ring-2 focus:ring-primary`,
-            {
-              "ring-2 ring-red-500 box-error-shadow": error,
-              [className]: className,
-            }
-          )}
-        />
+              {
+                "ring-2 ring-red-500 box-error-shadow": error,
+                [className]: className,
+              }
+            )}
+          />
+        ) : (
+          <input
+            autoComplete={`${name === "password" ? `new-${name}` : "off"}`}
+            type={inputType}
+            {...register(name)}
+            onBlur={(e) => {
+              register(name).onBlur(e);
+              setFocus(false);
+            }}
+            onFocus={() => {
+              setFocus(true);
+            }}
+            ref={mergedRef}
+            spellCheck={false}
+            className={cx(
+              `caret-primary text-slate-700 w-full rounded p-2 py-2.5 pl-9 border-[1px] border-slate-200 bg-transparent
+                transition-all duration-200 peer outline-none  focus:ring-2 focus:ring-primary`,
+              {
+                "ring-2 ring-red-500 box-error-shadow": error,
+                [className]: className,
+              }
+            )}
+          />
+        )}
+
         <span
           onClick={() => ref.current?.focus()}
           className={cx(

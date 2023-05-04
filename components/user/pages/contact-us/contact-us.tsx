@@ -13,7 +13,7 @@ const ContactUs = () => {
       <div className="relative w-full h-full flex justify-center items-center flex-col">
         <form
           onSubmit={onSubmit}
-          className="w-full max-w-sm flex justify-center items-center flex-col  p-6 
+          className="w-full max-w-sm flex justify-center items-center flex-col  p-6 md:p-3
         shadow bg-white rounded"
         >
           <div
@@ -43,7 +43,9 @@ const ContactUs = () => {
             label="پیام"
             name="message"
             type="text"
+            textarea={true}
             wrapperClassName="mb-4"
+            className="min-h-[140px]"
             error={errors.message?.message}
           />
 

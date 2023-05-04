@@ -1,12 +1,13 @@
 import { UseFormRegister, Path } from "react-hook-form";
 
-export default interface InoutImpl<T> {
+export default interface InputImpl<T> {
   type?: string;
   label: string;
   error: string | undefined;
   wrapperClassName?: string;
   className?: string;
   name: Path<T>;
+  textarea?: boolean;
   register: UseFormRegister<T>;
 }
 
