@@ -1,9 +1,5 @@
 import Image from "@/components/share/image";
-
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import "./markdown-styles.css";
-import { Eye } from "iconsax-react";
+import Markdown from "@/components/user/share/markdown/markdown";
 
 const markdown = `# عنوان برنامه`;
 
@@ -29,9 +25,7 @@ const SingleBlog = () => {
           </div>
           <div className="w-full mt-8">
             <div className="w-full markdown-body">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {markdown}
-              </ReactMarkdown>
+              <Markdown markdown={markdown} />
             </div>
           </div>
         </article>

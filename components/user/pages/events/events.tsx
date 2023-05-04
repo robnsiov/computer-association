@@ -1,7 +1,6 @@
 "use client";
 
 import Skeleton from "@/components/share/skeleton/skeleton";
-import Blog from "../../share/cards/blog/blog";
 import { AnimatePresence, motion } from "framer-motion";
 import useEvents from "./use-events";
 import Image from "@/components/share/image";
