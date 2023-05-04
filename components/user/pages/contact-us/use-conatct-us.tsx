@@ -1,6 +1,6 @@
 import zod from "@/constants/zod-messages";
 import { useMemo } from "react";
-import { SigninFormValues } from "./types";
+import { ContactUsFormValues } from "./types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useBoolean } from "usehooks-ts";
 import request from "@/utils/axios/axios";
@@ -43,12 +43,12 @@ const useContactUs = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<SigninFormValues>({
+  } = useForm<ContactUsFormValues>({
     values: { email: "", message: "", title: "" },
     resolver: zodResolver(validation),
   });
 
-  const onSubmit: SubmitHandler<SigninFormValues> = (data) => {
+  const onSubmit: SubmitHandler<ContactUsFormValues> = (data) => {
     mutation.mutate(data);
   };
   return {

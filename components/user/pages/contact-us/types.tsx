@@ -1,4 +1,4 @@
-export interface SigninFormValues {
+export interface ContactUsFormValues {
   email: string;
   title: string;
   message: string;

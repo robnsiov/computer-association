@@ -2,7 +2,7 @@
 
 import Button from "@/components/share/button/button";
 import Input from "@/components/share/input/input";
-import { SigninFormValues } from "./types";
+import { ContactUsFormValues } from "./types";
 import { CpuSetting, Profile2User, Setting3 } from "iconsax-react";
 import useContactUs from "./use-conatct-us";
 
@@ -22,7 +22,7 @@ const ContactUs = () => {
           >
             <CpuSetting size="34" className="text-primary" />
           </div>
-          <Input<SigninFormValues>
+          <Input<ContactUsFormValues>
             register={register}
             label="عنوان"
             name="title"
@@ -30,7 +30,7 @@ const ContactUs = () => {
             wrapperClassName="mb-4"
             error={errors.title?.message}
           />
-          <Input<SigninFormValues>
+          <Input<ContactUsFormValues>
             register={register}
             label="ایمیل"
             name="email"
@@ -38,7 +38,7 @@ const ContactUs = () => {
             wrapperClassName="mb-4"
             error={errors.email?.message}
           />
-          <Input<SigninFormValues>
+          <Input<ContactUsFormValues>
             register={register}
             label="پیام"
             name="message"
