@@ -47,6 +47,13 @@
   .red-500-important {
     color: #ef4444 !important;
   }
+  .three-line-truncate {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
 }
 @layer components {
   body {

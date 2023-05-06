@@ -19,7 +19,7 @@ const Container = ({ children }: ContainerImpl) => {
           <Categories />
           <Menu />
           <PageLoader />
-          <div className="w-full h-full bg-[#f6f6f9] rounded-3xl rounded-l-none p-5">
+          <div className="w-full h-full bg-[#f6f6f9] rounded-3xl rounded-l-none p-5 relative overflow-hidden">
             {children}
           </div>
         </div>

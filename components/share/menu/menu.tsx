@@ -8,6 +8,7 @@ import {
   Grid3,
   Setting3,
   Calendar2,
+  Sound,
 } from "iconsax-react";
 
 const routes = [
@@ -40,6 +41,11 @@ const routes = [
     href: "/events",
     icon: <Calendar2 size="24" className="text-gray-300" />,
     activeIcon: <Calendar2 size="24" className="text-slate-600" />,
+  },
+  {
+    href: "/podcasts",
+    icon: <Sound size="24" className="text-gray-300" />,
+    activeIcon: <Sound size="24" className="text-slate-600" />,
   },
 ];
 

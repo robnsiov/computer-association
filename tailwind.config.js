@@ -25,6 +25,12 @@ module.exports = {
       colors: {
         primary: "#4945ff",
       },
+      keyframes: {
+        wave: {
+          "0%, 100%": { transform: "scaleY(0.2)" },
+          "50%": { transform: "scaleY(1)" },
+        },
+      },
     },
   },
   plugins: [],
