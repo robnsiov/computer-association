@@ -1,5 +1,7 @@
+import { Url } from "next/dist/shared/lib/router/router";
+
 export default interface LinkImpl {
-  href: string;
+  href: Url;
   children: React.ReactNode;
   className?: string;
 }

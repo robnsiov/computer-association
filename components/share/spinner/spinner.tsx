@@ -1,9 +1,15 @@
-const Spinner = () => {
+import SpinnerImpl from "./types";
+import cx from "classnames";
+
+const Spinner = ({ color = "text-white" }: SpinnerImpl) => {
   return (
     <>
       <div>
         <svg
-          className="animate-spin h-[18px] w-[18px] text-white group-hover:text-primary"
+          className={cx(
+            `animate-spin h-[18px] w-[18px]  group-hover:text-primary`,
+            { [color]: color }
+          )}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
