@@ -1,4 +1,5 @@
 import Image from "@/components/share/image";
+import Comments from "@/components/user/share/comments/commnets";
 import Markdown from "@/components/user/share/markdown/markdown";
 
 const markdown = `# عنوان برنامه`;
@@ -7,7 +8,7 @@ const SingleBlog = () => {
   return (
     <>
       <div className="w-full  h-full scrollbar overflow-y-auto">
-        <article className="w-full max-w-xl mx-auto flex justify-start items-center flex-col mt-3">
+        <div className="w-full max-w-xl mx-auto flex justify-start items-center flex-col mt-3">
           <h1 className="font-black text-5xl md:text-4xl text-center md:leading-[1.3] leading-[1.2] ">
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
           </h1>
@@ -28,7 +29,10 @@ const SingleBlog = () => {
               <Markdown markdown={markdown} />
             </div>
           </div>
-        </article>
+          <div className="mt-5 w-full">
+            <Comments />
+          </div>
+        </div>
       </div>
     </>
   );
