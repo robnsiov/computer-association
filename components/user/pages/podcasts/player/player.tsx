@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "@/components/share/image";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
@@ -7,22 +9,25 @@ import PlayerImpl from "./types";
 import { isEmpty } from "lodash";
 import FadeAnimation from "@/components/share/fade-animation/fade-animation";
 
-const Player = ({ podcasts, selectedPod }: PlayerImpl) => {
+const Player = ({ podcasts, selectedPod, setPlayed, played }: PlayerImpl) => {
   return (
     <>
       <FadeAnimation className="w-full" inProp={!isEmpty(selectedPod)}>
         <div
           className="w-full flex justify-between items-center bg-[#111727] 
-      h-full shadow-md border-t-slate-900 border-t-2 py-4 px-6"
+      h-full shadow-md border-t-slate-900 border-t-2 py-1 px-6"
         >
           <div className="w-[202px] flex justify-center items-center">
-            <div className="flex justify-center items-start">
-              <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_1.25s_ease-in-out_infinite]"></span>
-              <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_0.5s_ease-in-out_infinite]"></span>
-              <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_0.25s_ease-in-out_infinite]"></span>
-              <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_1.25s_ease-in-out_infinite]"></span>
-              <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_0s_ease-in-out_infinite]"></span>
-            </div>
+            {played && (
+              <div className="flex justify-center items-start">
+                <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_1.25s_ease-in-out_infinite]"></span>
+                <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_0.5s_ease-in-out_infinite]"></span>
+                <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_0.25s_ease-in-out_infinite]"></span>
+                <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_1.25s_ease-in-out_infinite]"></span>
+                <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_0s_ease-in-out_infinite]"></span>
+              </div>
+            )}
+
             <div className="flex justify-center items-center">
               <div className="min-w-[30px] aspect-square mx-3 rounded overflow-hidden">
                 <Image
@@ -46,6 +51,8 @@ const Player = ({ podcasts, selectedPod }: PlayerImpl) => {
           <div className="w-full" dir="ltr">
             <AudioPlayer
               autoPlay
+              onPlay={() => setPlayed(true)}
+              onPause={() => setPlayed(false)}
               className="w-full"
               src={selectedPod.src}
               showFilledVolume={true}

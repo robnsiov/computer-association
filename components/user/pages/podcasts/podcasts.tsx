@@ -15,12 +15,12 @@ import {
   FolderOpen,
   Gallery,
   Microphone2,
+  Play,
   Sound,
 } from "iconsax-react";
 import { useRef } from "react";
 import Player from "./player/player";
 import usePodcasts from "./use-podcasts";
-import { isEmpty } from "lodash";
 import FadeAnimation from "@/components/share/fade-animation/fade-animation";
 import { Podcast } from "@/context/selected-podcats/types";
 import Spinner from "@/components/share/spinner/spinner";
@@ -34,7 +34,8 @@ const Podcasts = () => {
     ref.current.go(">");
   };
 
-  const { data, isSuccess, podcast, isError, isLoading } = usePodcasts();
+  const { data, isSuccess, podcast, isError, isLoading, played, setPlayed } =
+    usePodcasts();
 
   return (
     <>
@@ -173,6 +174,7 @@ const Podcasts = () => {
                   <SplideSlide
                     key={id}
                     className="p-3 max-w-[140px] md:max-w-[120px]"
+                    onClick={() => setPlayed(true)}
                   >
                     <Link
                       href={{ pathname: "/podcasts", query: { id } }}
@@ -188,18 +190,20 @@ const Podcasts = () => {
                             alt={title}
                           />
                         </div>
-                        <FadeAnimation inProp={id === podcast.id}>
+                        <FadeAnimation inProp={id === podcast.id && played}>
                           <div
                             className="absolute top-0 left-0 w-full aspect-square
                    bg-slate-900/60 rounded-full ring-2 ring-slate-600 
                    flex justify-center items-center"
                           >
-                            <div className="flex justify-center items-center scale-x-125">
-                              <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_1.25s_ease-in-out_infinite]"></span>
-                              <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_0.5s_ease-in-out_infinite]"></span>
-                              <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_0.25s_ease-in-out_infinite]"></span>
-                              <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_1.25s_ease-in-out_infinite]"></span>
-                              <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_0s_ease-in-out_infinite]"></span>
+                            <div className="flex justify-center items-center">
+                              <div className="scale-x-125 flex justify-center items-center">
+                                <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_1.25s_ease-in-out_infinite]"></span>
+                                <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_0.5s_ease-in-out_infinite]"></span>
+                                <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_0.25s_ease-in-out_infinite]"></span>
+                                <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_1.25s_ease-in-out_infinite]"></span>
+                                <span className="w-0.5 h-7 border-r-2 border-slate-600  mx-[1px] animate-[wave_1s_0s_ease-in-out_infinite]"></span>
+                              </div>
                             </div>
                           </div>
                         </FadeAnimation>
@@ -215,8 +219,10 @@ const Podcasts = () => {
                 ))}
               </Splide>
             </div>
-            <div className="w-full mt-12 lg:mt-5 min-h-[70px] flex justify-center items-center">
+            <div className="w-full mt-8 lg:mt-5  flex justify-center items-center">
               <Player
+                played={played}
+                setPlayed={setPlayed}
                 selectedPod={podcast}
                 podcasts={data?.data as Array<Podcast>}
               />
