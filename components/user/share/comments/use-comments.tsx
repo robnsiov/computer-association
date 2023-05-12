@@ -15,6 +15,7 @@ const useComments = () => {
   const { value: formLoading, setValue: setFormLoading } = useBoolean(false);
   const validation = useMemo(() => {
     return zod.object({
+      name: zod.string().min(3).max(80),
       body: zod.string().min(4).max(740),
     });
   }, []);
@@ -24,7 +25,7 @@ const useComments = () => {
     formState: { errors },
     reset,
   } = useForm<CommentsFormValues>({
-    values: { body: "" },
+    values: { body: "", name: "" },
     resolver: zodResolver(validation),
   });
 

@@ -31,6 +31,14 @@ const Comments = () => {
             onSubmit={onSubmit}
             className="p-5 bg-white rounded-xl w-full mb-5"
           >
+            <div className="max-w-xs mb-4">
+              <Input
+                label="نام و نام خانوادگی"
+                error={errors.name?.message}
+                name={"name"}
+                register={register}
+              />
+            </div>
             <Input
               label="متن"
               error={errors.body?.message}
