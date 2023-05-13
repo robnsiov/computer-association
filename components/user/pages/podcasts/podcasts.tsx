@@ -24,6 +24,8 @@ import usePodcasts from "./use-podcasts";
 import FadeAnimation from "@/components/share/fade-animation/fade-animation";
 import { Podcast } from "@/context/selected-podcats/types";
 import Spinner from "@/components/share/spinner/spinner";
+import Modal from "@/components/share/modal/modal";
+import Comments from "../../share/comments/commnets";
 
 const Podcasts = () => {
   const ref = useRef({ go(dir: string) {} });
@@ -34,11 +36,23 @@ const Podcasts = () => {
     ref.current.go(">");
   };
 
-  const { data, isSuccess, podcast, isError, isLoading, played, setPlayed } =
-    usePodcasts();
+  const {
+    data,
+    isSuccess,
+    podcast,
+    isError,
+    isLoading,
+    played,
+    setPlayed,
+    showModal,
+    toggleShowModal,
+  } = usePodcasts();
 
   return (
     <>
+      <Modal inProp={showModal} setProp={toggleShowModal}>
+        <Comments />
+      </Modal>
       <FadeAnimation inProp={isError || isLoading || data?.data.length === 0}>
         <div className="absolute inset-0 flex justify-center items-center flex-col text-center z-30">
           <FadeAnimation
@@ -219,7 +233,18 @@ const Podcasts = () => {
                 ))}
               </Splide>
             </div>
-            <div className="w-full mt-8 lg:mt-5  flex justify-center items-center">
+            <div
+              className="text-slate-100 w-full flex justify-start items-start pr-10 mt-3 
+            text-sm"
+            >
+              <span
+                onClick={toggleShowModal}
+                className=" hover:text-slate-400 cursor-pointer"
+              >
+                مشاهده کامنت ها
+              </span>
+            </div>
+            <div className="w-full mt-4 lg:mt-2  flex justify-center items-center">
               <Player
                 played={played}
                 setPlayed={setPlayed}

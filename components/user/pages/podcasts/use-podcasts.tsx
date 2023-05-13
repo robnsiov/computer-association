@@ -12,6 +12,7 @@ const usePodcasts = () => {
   const idParam = searchParams.get("id");
 
   const { value: played, setValue: setPlayed } = useBoolean(false);
+  const { value: showModal, toggle: toggleShowModal } = useBoolean(false);
   const [setPodcast, podcast] = useSelectedPodcastStore((state) => [
     state.setPodcast,
     state.podcast,
@@ -59,6 +60,8 @@ const usePodcasts = () => {
     isLoading,
     played,
     setPlayed,
+    toggleShowModal,
+    showModal,
   };
 };
 export default usePodcasts;

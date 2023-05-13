@@ -51,3 +51,12 @@
 .rhap_download-progress {
   background: #334155;
 }
+@media (max-width: 767px) {
+  .rhap_main {
+    flex-direction: column;
+    align-items: center;
+  }
+  .rhap_progress-section {
+    margin-left: 0;
+  }
+}
