@@ -4,9 +4,10 @@ import Skeleton from "@/components/share/skeleton/skeleton";
 import Blog from "../../share/cards/blog/blog";
 import useBlogs from "./use-blogs";
 import { AnimatePresence, motion } from "framer-motion";
+import BlogsImpl from "./types";
 
-const Blogs = () => {
-  const { blogs, initBlogs } = useBlogs();
+const Blogs = ({ edit = false }: BlogsImpl) => {
+  const { blogs, initBlogs } = useBlogs({ edit });
   return (
     <>
       <div
@@ -65,6 +66,7 @@ const Blogs = () => {
                   title={title}
                   view={view}
                   categoryLink={categoryLink}
+                  edit={edit}
                 />
               </motion.div>
             )

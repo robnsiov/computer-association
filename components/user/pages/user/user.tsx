@@ -1,6 +1,10 @@
 "use client";
 
 const User = () => {
-  return <></>;
+  return (
+    <>
+      <p>OK</p>
+    </>
+  );
 };
 export default User;

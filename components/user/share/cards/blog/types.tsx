@@ -1,3 +1,7 @@
+export interface ExtraBlogCardImpl {
+  edit?: boolean;
+}
+
 export default interface BlogCardImpl {
   category: string;
   categoryLink: string;
@@ -9,3 +13,5 @@ export default interface BlogCardImpl {
   view: number;
   id?: number;
 }
+
+export interface BlogCard extends BlogCardImpl, ExtraBlogCardImpl {}

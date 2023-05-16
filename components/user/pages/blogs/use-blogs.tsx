@@ -5,8 +5,9 @@ import { useMutation } from "@tanstack/react-query";
 import request from "@/utils/axios/axios";
 import { useSearchParams } from "next/navigation";
 import usePageLoadingStore from "@/context/page-loading/page-loading-store";
+import BlogsImpl from "./types";
 
-const useBlogs = () => {
+const useBlogs = ({ user }: BlogsImpl) => {
   const [blogs, setBlogs] = useState<Array<BlogCardImpl>>([]);
 
   const [cat] = useActiveCategoryStore((state) => [state.cat]);
@@ -20,7 +21,7 @@ const useBlogs = () => {
     return request<Array<BlogCardImpl>>({
       method: "GET",
       // url: `${cat ? `/blogs-api?cat=${cat}` : "/blogs-api"}`,
-      url: `http://localhost:5000/blogs`,
+      url: user ? "http://localhost:5000/blogs" : "http://localhost:5000/blogs",
     });
   };
 

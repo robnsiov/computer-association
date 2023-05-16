@@ -1,7 +1,7 @@
 import Image from "@/components/share/image";
 import Link from "@/components/share/link/link";
 import { Eye } from "iconsax-react";
-import BlogCardImpl from "./types";
+import { BlogCard } from "./types";
 
 const Blog = ({
   author,
@@ -12,7 +12,9 @@ const Blog = ({
   image,
   title,
   view,
-}: BlogCardImpl) => {
+  edit,
+}: BlogCard) => {
+  console.log(href);
   return (
     <>
       <div
@@ -52,7 +54,7 @@ const Blog = ({
             </div>
           </div>
           <div className="w-full h-[150px] rounded-xl overflow-hidden">
-            <Link href={href}>
+            <Link href={`/blogs/${href}`}>
               <Image
                 width={300}
                 height={200}
@@ -74,9 +76,9 @@ const Blog = ({
           <Link
             className="bg-slate-800 text-white w-[60%] p-3 text-sm rounded-lg 
             rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-400 transition-all duration-200"
-            href={href}
+            href={edit ? `/user/blogs/${href}` : href}
           >
-            مطالعه
+            {edit ? "ویرایش" : "مطالعه"}
           </Link>
           <div className="flex justify-start items-center">
             <span className="ml-2">{view}</span>
