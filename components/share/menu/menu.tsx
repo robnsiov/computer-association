@@ -1,6 +1,7 @@
 "use client";
 
 import MenuItem from "./menu-item/menu-item";
+import cx from "classnames";
 import {
   Home,
   Profile2User,
@@ -8,8 +9,10 @@ import {
   Setting3,
   Calendar2,
   Sound,
+  CloseCircle,
 } from "iconsax-react";
 import MenuImpl from "./types";
+import useMenu from "./use-menu";
 
 const routes = [
   {
@@ -44,16 +47,33 @@ const routes = [
   },
 ];
 
-const Menu = ({ links }: MenuImpl) => {
+const Menu = ({ links, inner = false }: MenuImpl) => {
   const items = links ?? routes;
+  const { open, setOpen, windowWidth } = useMenu();
   return (
     <>
       <div
-        className="absolute top-0 right-0 bottom-0 flex justify-center items-center
-       flex-col w-16 space-y-6"
+        className={cx(
+          `absolute top-0 right-0 bottom-0 flex justify-center items-center
+       flex-col w-16 space-y-6`,
+          { hidden: !open && windowWidth < 767 && !inner },
+          { "md:w-full md:bg-black/95 z-50": !inner }
+        )}
       >
+        {!inner && (
+          <CloseCircle
+            className="absolute left-4 top-4 cursor-pointer hidden md:block text-slate-200
+          hover:text-slate-500"
+            onClick={() => setOpen(false)}
+          />
+        )}
         {items.map(({ href, activeIcon, icon }) => (
-          <MenuItem key={href} href={href} activeIcon={activeIcon}>
+          <MenuItem
+            inner={inner}
+            key={href}
+            href={href}
+            activeIcon={activeIcon}
+          >
             {icon}
           </MenuItem>
         ))}

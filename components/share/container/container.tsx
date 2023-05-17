@@ -14,7 +14,7 @@ const Container = ({ children }: ContainerImpl) => {
       <Providers>
         <div
           className="w-full flex justify-start items-start flex-col h-screen
-      p-16 pl-0 relative overflow-hidden text-slate-700"
+      p-16 pl-0 relative overflow-hidden text-slate-700 md:pr-0"
         >
           <Categories />
           <Menu />

@@ -5,12 +5,21 @@ import MenuItemImpl from "./types";
 import cx from "classnames";
 import Link from "../../link/link";
 
-const MenuItem = ({ activeIcon, children, href }: MenuItemImpl) => {
+const MenuItem = ({
+  activeIcon,
+  children,
+  href,
+  inner = false,
+}: MenuItemImpl) => {
   const pathname = usePathname();
   const active = pathname === href;
   return (
     <>
-      <div className="relative w-full flex justify-center items-center">
+      <div
+        className={cx(`relative w-full flex justify-center items-center`, {
+          "md:justify-start md:pr-4": !inner,
+        })}
+      >
         <Link
           href={href}
           className="relative cursor-pointer inline-flex justify-center items-center group peer"

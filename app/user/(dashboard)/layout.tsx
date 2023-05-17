@@ -16,7 +16,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <div className="w-full h-full flex justify-cente items-center">
-        <Menu links={links} />
+        <Menu inner={true} links={links} />
         <div className="w-full h-full mr-10">{children}</div>
       </div>
     </>

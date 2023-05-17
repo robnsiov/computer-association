@@ -5,15 +5,25 @@ import "@splidejs/react-splide/css";
 import CategoriesImpl from "./types";
 import useCategories from "./use-categories";
 import cx from "classnames";
+import { Menu } from "iconsax-react";
 
 const Categories = ({}: CategoriesImpl) => {
-  const { categoryParam, onClick: catOnclick, cats } = useCategories();
+  const {
+    categoryParam,
+    onClick: catOnclick,
+    cats,
+    setOpenMenu,
+  } = useCategories();
   return (
     <>
       <div
         className="absolute left-0 right-16 top-0
-      flex justify-center items-center text-sm h-16"
+      flex justify-center items-center text-sm h-16 md:right-4"
       >
+        <Menu
+          onClick={() => setOpenMenu(true)}
+          className="text-slate-800 ml-4 cursor-pointer hover:text-slate-500 hidden md:block"
+        />
         <div className="w-full max-w-3xl pl-4">
           <Splide
             options={{
