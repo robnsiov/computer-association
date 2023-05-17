@@ -16,12 +16,28 @@ function Input<T>({
   wrapperClassName = "",
   className = "",
   textarea = false,
+  async = false,
 }: InputImpl<T>) {
   const { toPassword, toText, inputType, eye, setFocus, focus } = useInput({
     type,
   });
   const ref = useRef<HTMLInputElement>(null);
   const mergedRef = useMergedRef(ref, register(name).ref);
+  let validate = false;
+  let activeLabel = false;
+
+  if (ref.current && ref.current?.value.length !== 0) {
+    validate = true;
+  } else {
+    validate = false;
+  }
+
+  if (async && validate) {
+    activeLabel = !focus || validate;
+  } else {
+    activeLabel = !focus && validate;
+  }
+
   return (
     <>
       <div
@@ -85,8 +101,7 @@ function Input<T>({
             absolute top-2 right-3
             bg-white duration-200 transition-all`,
             {
-              "top-3-5-important px-2 text-primary":
-                !focus && ref.current?.value.length !== 0,
+              "top-3-5-important px-2 text-primary": activeLabel,
             },
             { "red-500-important": error }
           )}

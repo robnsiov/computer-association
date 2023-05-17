@@ -1,10 +1,4 @@
-import User from "@/components/user/pages/user/user";
-
 const Page = () => {
-  return (
-    <>
-      <User />
-    </>
-  );
+  return <></>;
 };
 export default Page;

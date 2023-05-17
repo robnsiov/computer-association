@@ -1,6 +1,11 @@
 import Menu from "@/components/share/menu/menu";
-import { Grid3 } from "iconsax-react";
+import { Grid3, UserEdit } from "iconsax-react";
 const links = [
+  {
+    href: "/user",
+    icon: <UserEdit size="24" className="text-gray-300" />,
+    activeIcon: <UserEdit size="24" className="text-slate-600" />,
+  },
   {
     href: "/user/blogs",
     icon: <Grid3 size="24" className="text-gray-300" />,
