@@ -47,7 +47,6 @@ const usePodcasts = () => {
       const pod = data?.data.find(({ id }) => id === +idParam);
       if (pod) setPodcast(pod);
     } else if (firstPod) {
-      console.log(firstPod);
       setPodcast(firstPod);
     }
   }, [data]);

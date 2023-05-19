@@ -14,7 +14,6 @@ const Blog = ({
   view,
   edit,
 }: BlogCard) => {
-  console.log(href);
   return (
     <>
       <div
