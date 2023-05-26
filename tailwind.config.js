@@ -25,6 +25,10 @@ module.exports = {
       colors: {
         primary: "#4945ff",
       },
+      animation: {
+        "spin-slow": "spin 2s linear infinite",
+        "spin-slower": "spin 2.5s 0.5s linear infinite",
+      },
       keyframes: {
         wave: {
           "0%, 100%": { transform: "scaleY(0.2)" },

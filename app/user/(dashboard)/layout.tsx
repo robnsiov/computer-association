@@ -1,5 +1,5 @@
 import Menu from "@/components/share/menu/menu";
-import { Edit, Grid3, UserEdit } from "iconsax-react";
+import { CloudPlus, Edit, Grid3, UserEdit } from "iconsax-react";
 const links = [
   {
     href: "/user",
@@ -15,6 +15,11 @@ const links = [
     href: "/user/blogs/write",
     icon: <Edit size="24" className="text-gray-300" />,
     activeIcon: <Edit size="24" className="text-slate-600" />,
+  },
+  {
+    href: "/user/uploader",
+    icon: <CloudPlus size="24" className="text-gray-300" />,
+    activeIcon: <CloudPlus size="24" className="text-slate-600" />,
   },
 ];
 const Layout = ({ children }: { children: React.ReactNode }) => {

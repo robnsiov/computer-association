@@ -30,6 +30,9 @@
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #cbd5e1;
   }
+  .overflow-unset {
+    overflow: unset !important;
+  }
   .bg-growing-underline {
     background-size: 100% 8%;
     background-position: 0 100%;
