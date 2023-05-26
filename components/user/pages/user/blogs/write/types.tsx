@@ -4,4 +4,5 @@ export interface BlogFormValues {
   content?: string;
   image?: string;
   category?: number;
+  catName?: string;
 }

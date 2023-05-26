@@ -7,10 +7,20 @@ import dynamic from "next/dynamic";
 import Input from "@/components/share/input/input";
 import useWriteBlog from "./use-write-blog";
 import Image from "@/components/share/image";
+import SelectInput from "@/components/share/select-input/select-input";
+import Button from "@/components/share/button/button";
 
 const WriteBlog = () => {
-  const { errors, onSubmit, register, changeInputFile, imageSrc } =
-    useWriteBlog();
+  const {
+    errors,
+    onSubmit,
+    register,
+    changeInputFile,
+    imageSrc,
+    setFormCategory,
+    getValues,
+    formLoading,
+  } = useWriteBlog();
 
   const ref = useRef(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -29,9 +39,9 @@ const WriteBlog = () => {
     document.head.appendChild(script);
     document.head.appendChild(link);
     setTimeout(() => {
-      var simplemde = new SimpleMDE({
-        element: document.getElementById("my-text-area"),
-      });
+      // var simplemde = new SimpleMDE({
+      //   element: document.getElementById("my-text-area"),
+      // });
     }, 2000);
   }, []);
 
@@ -41,10 +51,13 @@ const WriteBlog = () => {
 
   return (
     <>
-      <div className="h-full w-full scrollbar flex justify-start items-start flex-col">
+      <div className="h-full w-full flex justify-start items-start flex-col overflow-auto scrollbar">
         <div className="w-full">
-          <form className="w-full p-6 bg-white rounded-xl flex justify-start items-start flex-col">
-            <div className="w-full grid grid-cols-2 gap-4">
+          <form
+            className="w-full p-6 bg-white rounded-xl flex justify-start items-start flex-col"
+            onSubmit={onSubmit}
+          >
+            <div className="w-full grid grid-cols-3 gap-4 md:grid-cols-2 sm:grid-cols-1">
               <div>
                 <Input
                   register={register}
@@ -56,7 +69,7 @@ const WriteBlog = () => {
               <div>
                 <Input
                   register={register}
-                  name={"content"}
+                  name={"shortDesc"}
                   label="توضیحات کوتاه"
                   error={errors.shortDesc?.message}
                 />
@@ -68,7 +81,7 @@ const WriteBlog = () => {
                 <Input
                   register={register}
                   name={"image"}
-                  label="تصویر مقاله"
+                  label="تصویر"
                   error={errors.image?.message}
                   wrapperClassName="cursor-pointer"
                   className="cursor-pointer"
@@ -95,14 +108,35 @@ const WriteBlog = () => {
                   accept="image/png, image/gif, image/jpeg"
                 />
               </div>
+              <div>
+                <SelectInput
+                  name={"catName"}
+                  label="انتخاب دسته بندی"
+                  register={register}
+                  read={true}
+                  async={true}
+                  error={errors.catName?.message}
+                  wrapperClassName="cursor-pointer"
+                  className="cursor-pointer"
+                  categories={[
+                    { id: 1, name: "ریز پردازنده" },
+                    { id: 2, name: "شبکه" },
+                  ]}
+                  activeCat={getValues("category") as number}
+                  setFormCategory={setFormCategory}
+                />
+              </div>
             </div>
-            <div className="w-full z-[100] mt-4">
+            {/* <div className="w-full z-[100] mt-4">
               <textarea
                 value={"**سلام**"}
                 onChange={console.log}
                 ref={ref}
                 id="my-text-area"
               ></textarea>
+            </div> */}
+            <div className="mt-4 w-[180px]">
+              <Button title="ثبت" loading={formLoading} />
             </div>
           </form>
         </div>

@@ -115,7 +115,7 @@ function Input<T>({
           <span
             className="absolute left-1/2 -translate-x-1/2 -bottom-2 border-2 
         border-red-500 rounded-md text-xs font-semibold px-2 bg-white text-red-400 
-        whitespace-nowrap text-center"
+        whitespace-nowrap text-center z-40"
           >
             {error}
           </span>
