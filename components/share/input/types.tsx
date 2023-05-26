@@ -10,6 +10,7 @@ export default interface InputImpl<T> {
   textarea?: boolean;
   register: UseFormRegister<T>;
   async?: boolean;
+  read?: boolean;
 }
 
 export interface UseInputImpl {

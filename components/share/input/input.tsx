@@ -17,6 +17,7 @@ function Input<T>({
   className = "",
   textarea = false,
   async = false,
+  read = false,
 }: InputImpl<T>) {
   const { toPassword, toText, inputType, eye, setFocus, focus } = useInput({
     type,
@@ -47,6 +48,7 @@ function Input<T>({
       >
         {textarea ? (
           <textarea
+            readOnly={read}
             autoComplete={`${name === "password" ? `new-${name}` : "off"}`}
             type={inputType}
             {...register(name)}
@@ -70,6 +72,7 @@ function Input<T>({
           />
         ) : (
           <input
+            readOnly={read}
             autoComplete={`${name === "password" ? `new-${name}` : "off"}`}
             type={inputType}
             {...register(name)}

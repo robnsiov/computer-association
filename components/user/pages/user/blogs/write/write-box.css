@@ -1,0 +1,7 @@
+.editor-toolbar,
+.CodeMirror {
+  width: 100%;
+}
+.editor-statusbar {
+  display: none;
+}
