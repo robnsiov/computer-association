@@ -6,7 +6,9 @@ import request from "@/utils/axios/axios";
 const useUserStore = create<UserStore>()((setState) => ({
   status: "UNKNOWW",
   setStatus: async () => {
-    setState((state) => ({ ...state, status: "ANONYMOUS" }));
+    setTimeout(() => {
+      setState((state) => ({ ...state, status: "ANONYMOUS" }));
+    }, 5000);
     // request({ url: "" });
   },
 }));

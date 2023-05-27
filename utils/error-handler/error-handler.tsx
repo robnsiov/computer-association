@@ -12,6 +12,12 @@ const ErrorHandler = (error: AxiosError | unknown, path: string) => {
         createToast({ title: "اطلاعات ورود نادرست میباشد", icon: "error" });
       }
     }
+    // change-pass
+    if (path === "/change-pass") {
+      if (err === "code is not correct") {
+        createToast({ title: "کد اعتبارسنجی نادرست میباشد", icon: "error" });
+      }
+    }
     // register
     else if (path === "/register") {
       if ("email" in (err as Object)) {

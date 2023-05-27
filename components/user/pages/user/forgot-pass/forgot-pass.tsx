@@ -1,17 +1,16 @@
 "use client";
-
-import { Profile2User } from "iconsax-react";
-import useSignin from "./use-sginin";
-import { SigninFormValues } from "./types";
 import Input from "@/components/share/input/input";
-import Button from "@/components/share/button/button";
-import UnderlineTag from "@/components/share/underline-tag/underline-tag";
 import Link from "@/components/share/link/link";
 import Skeleton from "@/components/share/skeleton/skeleton";
+import UnderlineTag from "@/components/share/underline-tag/underline-tag";
+import { KeySquare } from "iconsax-react";
 import cx from "classnames";
+import useForgotPass from "./use-forgot-pass";
+import Button from "@/components/share/button/button";
+import { ForgotPassFormValues } from "./types";
 
-const Signin = () => {
-  const { onSubmit, errors, register, userStatus, loading } = useSignin();
+const ForgotPass = () => {
+  const { onSubmit, errors, register, userStatus, loading } = useForgotPass();
   return (
     <>
       <div className="relative max-w-sm w-full flex justify-center items-center flex-col">
@@ -35,9 +34,6 @@ const Signin = () => {
             <div className="w-full h-[45.6px] rounded mb-4 overflow-hidden">
               <Skeleton />
             </div>
-            <div className="w-full h-[45.6px] rounded mb-4 overflow-hidden">
-              <Skeleton />
-            </div>
             <div className="w-full h-[44px] rounded overflow-hidden">
               <Skeleton />
             </div>
@@ -55,9 +51,9 @@ const Signin = () => {
             className="w-16 h-16 rounded-full border-[1px] border-slate-200 
           flex justify-center items-center mb-6"
           >
-            <Profile2User size="34" className="text-primary" />
+            <KeySquare size="34" className="text-primary" />
           </div>
-          <Input<SigninFormValues>
+          <Input<ForgotPassFormValues>
             register={register}
             label="ایمیل"
             name="email"
@@ -65,23 +61,15 @@ const Signin = () => {
             wrapperClassName="mb-4"
             error={errors.email?.message}
           />
-          <Input<SigninFormValues>
-            register={register}
-            label="رمزعبور"
-            name="password"
-            type="password"
-            wrapperClassName="mb-4"
-            error={errors.password?.message}
-          />
 
-          <Button loading={loading} title={"ورود"} />
+          <Button loading={loading} title={"ارسال"} />
         </form>
 
         <UnderlineTag className="mt-1">
-          <Link href="/user/signup">هنوز ثبت نام نکرده اید؟</Link>
+          <Link href="/user/signin">قبلا ثبت نام کرده اید؟</Link>
         </UnderlineTag>
       </div>
     </>
   );
 };
-export default Signin;
+export default ForgotPass;
