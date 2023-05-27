@@ -6,6 +6,7 @@ import useContainer from "./use-container";
 import PageLoader from "../page-loader/page-loader";
 import Providers from "./query-client/query-client";
 import Categories from "@/components/user/share/categories/categories";
+import Footer from "./designed-by/footer";
 
 const Container = ({ children }: ContainerImpl) => {
   useContainer();
@@ -22,6 +23,7 @@ const Container = ({ children }: ContainerImpl) => {
           <div className="w-full h-full bg-[#f6f6f9] rounded-3xl rounded-l-none p-5 relative overflow-hidden">
             {children}
           </div>
+          <Footer />
         </div>
       </Providers>
     </>
