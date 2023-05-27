@@ -11,6 +11,7 @@ import createToast from "@/utils/toast/toast";
 import { useRouter } from "next/navigation";
 import useUserStore from "@/context/user/user-store";
 import { useBoolean } from "usehooks-ts";
+import { api } from "@/constants/api";
 
 const useSignin = () => {
   const searchParams = useSearchParams();
@@ -28,7 +29,11 @@ const useSignin = () => {
 
   const mutationFn = (data: Object) => {
     setLoading(true);
-    return request({ method: "POST", data, url: "/login" });
+    return request<{ access: string }>({
+      method: "POST",
+      data,
+      url: api.login,
+    });
   };
 
   const mutation = useMutation({
@@ -36,8 +41,9 @@ const useSignin = () => {
     onSettled() {
       setLoading(false);
     },
-    onSuccess() {
+    onSuccess({ data }) {
       createToast({ title: "ورود موفقیت آمیز بود", icon: "success" });
+      localStorage.setItem("token", data.access);
       rounter.replace(`${returnParam ?? "/user"}`);
     },
     onError(error) {
@@ -48,7 +54,7 @@ const useSignin = () => {
   const validation = useMemo(() => {
     return zod.object({
       email: zod.string().email(),
-      password: zod.string().min(8).max(16),
+      password: zod.string().min(1).max(16),
     });
   }, []);
   const {
