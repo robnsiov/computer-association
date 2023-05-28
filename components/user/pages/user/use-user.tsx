@@ -11,6 +11,7 @@ import createToast from "@/utils/toast/toast";
 import { useRouter } from "next/navigation";
 import useUserStore from "@/context/user/user-store";
 import { useBoolean } from "usehooks-ts";
+import { api } from "@/constants/api";
 
 const useUser = () => {
   const [userStatus] = useUserStore((state) => [state.status]);
@@ -59,7 +60,7 @@ const useUser = () => {
   const queryFn = () => {
     return request<UserDetail>({
       method: "GET",
-      url: "http://localhost:5000/user",
+      url: api.userProfile,
     });
   };
 
@@ -70,9 +71,10 @@ const useUser = () => {
 
   useEffect(() => {
     const apiData = data?.data;
+    console.log(data);
     if (apiData) {
-      setValue("fullname", apiData.fullname, { shouldDirty: true });
-      setValue("studentNumber", apiData.studentNumber, { shouldDirty: true });
+      // setValue("fullname", apiData.fullname, { shouldDirty: true });
+      // setValue("studentNumber", apiData.studentNumber, { shouldDirty: true });
       // force update for solve input problems
       toggle();
     }

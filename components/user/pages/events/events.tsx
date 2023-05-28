@@ -39,9 +39,9 @@ const Events = () => {
           </>
         )}
         <AnimatePresence>
-          {events.map(({ image, slug, title, id, expire }) => (
+          {events.map(({ image, slug, title, is_active, id }) => (
             <motion.div
-              key={id}
+              key={slug}
               layout
               className="w-full relative"
               initial={{ opacity: 0 }}
@@ -76,7 +76,7 @@ const Events = () => {
                 >
                   {}
 
-                  {expire ? (
+                  {is_active ? (
                     <div
                       className="bg-slate-300 text-white w-full p-3 text-sm rounded-lg 
             rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-100 transition-all duration-200

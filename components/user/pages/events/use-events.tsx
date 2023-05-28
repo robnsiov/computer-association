@@ -1,26 +1,29 @@
 import { useEffect, useState } from "react";
-import BlogCardImpl from "../../share/cards/blog/types";
-import useActiveCategoryStore from "@/context/active-category/active-category-store";
 import { useMutation } from "@tanstack/react-query";
 import request from "@/utils/axios/axios";
-import { useSearchParams } from "next/navigation";
 import usePageLoadingStore from "@/context/page-loading/page-loading-store";
-import { EventImpl } from "./types";
+import { EventsImpl } from "./types";
 import createToast from "@/utils/toast/toast";
 import ErrorHandler from "@/utils/error-handler/error-handler";
+import { api } from "@/constants/api";
+import useUserStore from "@/context/user/user-store";
+import { useRouter } from "next/navigation";
 
 const useEvents = () => {
-  const [events, setEvents] = useState<Array<EventImpl>>([]);
+  const router = useRouter();
+
+  const [events, setEvents] = useState<EventsImpl>([]);
   const [participateLoading, setParticipateLoading] = useState(-1);
 
   const [setPageLoading] = usePageLoadingStore((state) => [state.set]);
   const [initEvents, setInitEvents] = useState(true);
 
+  const [userStatus] = useUserStore((state) => [state.status]);
+
   const eventsMutationFn = () => {
-    return request<Array<EventImpl>>({
+    return request<EventsImpl>({
       method: "GET",
-      // url: `${cat ? `/blogs-api?cat=${cat}` : "/blogs-api"}`,
-      url: `http://localhost:5000/events`,
+      url: api.events,
     });
   };
 
@@ -42,15 +45,15 @@ const useEvents = () => {
     },
   });
 
-  const participateMutationFn = () => {
+  const participateMutationFn = (id: number) => {
     return request({
       method: "POST",
-      url: `/events-api`,
+      url: `${api.eventRegister}${id}/`,
     });
   };
 
   const participateMutation = useMutation({
-    mutationFn: participateMutationFn,
+    mutationFn: (id: number) => participateMutationFn(id),
     onMutate(id: number) {
       setParticipateLoading(id);
     },
@@ -67,6 +70,14 @@ const useEvents = () => {
   });
 
   const participateOnEvent = (id: number) => {
+    if (userStatus !== "AUTHENTICATED") {
+      createToast({
+        icon: "warning",
+        text: "برای ثبت نام در رویداد ابتدا وارد حساب کاربری شوید",
+      });
+      router.push(`/user/signin?return=/events`);
+      return;
+    }
     if (participateLoading === -1) participateMutation.mutate(id);
   };
 
