@@ -54,7 +54,7 @@ const Player = ({ podcasts, selectedPod, setPlayed, played }: PlayerImpl) => {
               onPlay={() => setPlayed(true)}
               onPause={() => setPlayed(false)}
               className="w-full"
-              src={selectedPod.src}
+              src={selectedPod.sound}
               showFilledVolume={true}
               customAdditionalControls={[]}
               customIcons={{

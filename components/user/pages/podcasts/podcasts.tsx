@@ -47,7 +47,6 @@ const Podcasts = () => {
     showModal,
     toggleShowModal,
   } = usePodcasts();
-
   return (
     <>
       <Modal inProp={showModal} setProp={toggleShowModal}>
@@ -116,7 +115,7 @@ const Podcasts = () => {
                 {podcast.title}
               </h1>
               <span className="text-slate-200 mt-4 three-line-truncate max-w-[530px]">
-                {podcast.desc}
+                {podcast.description}
               </span>
               <Link
                 href="/"
@@ -146,19 +145,21 @@ const Podcasts = () => {
                 >
                   <FolderOpen className="text-slate-300 ml-2" />
                 </Tooltip>
-                <span className="text-slate-200">{podcast.data}</span>
+                <span className="text-slate-200">{podcast.data_collector}</span>
               </div>
               <div className="flex justify-center items-center">
                 <Tooltip label="ویرایش متن" color="#414856" position="top">
                   <Edit className="text-slate-300 ml-2" />
                 </Tooltip>
-                <span className="text-slate-200">{podcast.editor}</span>
+                <span className="text-slate-200">{podcast.text_editor}</span>
               </div>
               <div className="flex justify-center items-center">
                 <Tooltip label="طراح پوستر" color="#414856" position="top">
                   <Gallery className="text-slate-300 ml-2" />
                 </Tooltip>
-                <span className="text-slate-200">{podcast.designer}</span>
+                <span className="text-slate-200">
+                  {podcast.graphic_designer}
+                </span>
               </div>
             </div>
           </div>

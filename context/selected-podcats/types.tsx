@@ -2,12 +2,13 @@ export interface Podcast {
   image: string;
   title: string;
   id: number;
-  desc: string;
+  description: string;
   speaker: string;
-  data: string;
-  editor: string;
-  designer: string;
-  src: string;
+  data_collector: string;
+  text_editor: string;
+  sound_editor: string;
+  graphic_designer: string;
+  sound: string;
 }
 
 export default interface SelectedPodcastStore {

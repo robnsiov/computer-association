@@ -1,3 +1,4 @@
+import { api } from "@/constants/api";
 import usePageLoadingStore from "@/context/page-loading/page-loading-store";
 import useSelectedPodcastStore from "@/context/selected-podcats/selected-podcast-store";
 import { Podcast } from "@/context/selected-podcats/types";
@@ -24,7 +25,7 @@ const usePodcasts = () => {
   const queryFn = () => {
     return request<Array<Podcast>>({
       method: "GET",
-      url: "http://localhost:5000/pods",
+      url: api.podcasts,
     });
   };
 
