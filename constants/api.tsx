@@ -9,4 +9,6 @@ export const api = {
   podcasts: "/post/podcast/archive/",
   events: "/post/event/archive/",
   eventRegister: "/post/event/attend/",
+  comments: "/post/comment/list/",
+  addComment: "/post/comment/send/",
 };

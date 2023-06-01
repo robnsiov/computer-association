@@ -9,6 +9,7 @@ export interface Podcast {
   sound_editor: string;
   graphic_designer: string;
   sound: string;
+  slug: string;
 }
 
 export default interface SelectedPodcastStore {

@@ -1,12 +1,16 @@
+export default interface CommentsImpl {
+  type: "ARTICLE" | "PODCAST";
+  slug: string;
+  title?: string;
+}
+
 export interface CommentsFormValues {
   body: string;
   name: string;
 }
 export interface CommentsRequest {
-  date: Date;
-  body: string;
-  id: string;
-  user: {
-    name: string;
-  };
+  created_at: string;
+  content: string;
+  name: string;
+  id: number;
 }

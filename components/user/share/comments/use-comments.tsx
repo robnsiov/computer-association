@@ -1,15 +1,16 @@
 import zod from "@/constants/zod-messages";
 import { useMemo } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { CommentsFormValues, CommentsRequest } from "./types";
+import CommentsImpl, { CommentsFormValues, CommentsRequest } from "./types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useBoolean } from "usehooks-ts";
 import request from "@/utils/axios/axios";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import createToast from "@/utils/toast/toast";
 import ErrorHandler from "@/utils/error-handler/error-handler";
+import { api } from "@/constants/api";
 
-const useComments = () => {
+const useComments = ({ type, slug }: CommentsImpl) => {
   const { value: showCommentForm, toggle: toggleShowCommentForm } =
     useBoolean(false);
   const { value: formLoading, setValue: setFormLoading } = useBoolean(false);
@@ -29,10 +30,24 @@ const useComments = () => {
     resolver: zodResolver(validation),
   });
 
+  const getCommnetType = () => {
+    let commentType = "";
+    switch (type) {
+      case "ARTICLE":
+        commentType = "a";
+        break;
+      case "PODCAST":
+        commentType = "p";
+        break;
+    }
+    return commentType;
+  };
+
   const queryFn = () => {
+    const commentType = getCommnetType();
     return request<Array<CommentsRequest>>({
       method: "GET",
-      url: "http://localhost:5000/cms",
+      url: `${api.comments}${commentType}/${slug}`,
     });
   };
 
@@ -42,8 +57,15 @@ const useComments = () => {
   });
 
   const mutationFn = (data: Object) => {
-    return request({ method: "POST", data, url: "/add-comment" });
+    const commentType = getCommnetType();
+    return request({
+      method: "POST",
+      data,
+      url: `${api.addComment}${commentType}/${slug}`,
+    });
   };
+
+  console.log(data);
 
   const mutation = useMutation({
     mutationFn: (data: Object) => mutationFn(data),
@@ -66,9 +88,9 @@ const useComments = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<CommentsFormValues> = (data) => {
+  const onSubmit: SubmitHandler<CommentsFormValues> = ({ body, name }) => {
     if (!formLoading) {
-      mutation.mutate(data);
+      mutation.mutate({ name: name, content: body });
     }
   };
 
