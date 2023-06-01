@@ -10,11 +10,15 @@ const useUserStore = create<UserStore>()((setState) => ({
     setTimeout(() => {
       setState((state) => ({ ...state, status: "ANONYMOUS" }));
     }, 5000);
-    // const { data } = await request({
-    //   url: api.tokenRevalidate,
-    //   method: "POST",
-    // });
-    // console.log(data);
+    try {
+      await request({
+        url: api.tokenValidation,
+        method: "GET",
+      });
+      setState((state) => ({ ...state, status: "AUTHENTICATED" }));
+    } catch {
+      setState((state) => ({ ...state, status: "ANONYMOUS" }));
+    }
   },
 }));
 
