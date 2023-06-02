@@ -1,34 +1,61 @@
 "use client";
 import { Table } from "@mantine/core";
-const elements = [
-  { position: 6, mass: 12.011, symbol: "C", name: "Carbon" },
-  { position: 7, mass: 14.007, symbol: "N", name: "Nitrogen" },
-  { position: 39, mass: 88.906, symbol: "Y", name: "Yttrium" },
-  { position: 56, mass: 137.33, symbol: "Ba", name: "Barium" },
-  { position: 58, mass: 140.12, symbol: "Ce", name: "Cerium" },
-];
-const UserEvents = () => {
-  const rows = elements.map((element) => (
-    <tr key={element.name}>
-      <td>{element.position}</td>
-      <td>{element.name}</td>
-      <td>{element.symbol}</td>
-      <td>{element.mass}</td>
-    </tr>
-  ));
+import useUserEvents from "./use-user-events";
+import Skeleton from "@/components/share/skeleton/skeleton";
+import Link from "@/components/share/link/link";
 
+const UserEvents = () => {
+  const { rows, isFetching, isSuccess } = useUserEvents();
   return (
-    <Table>
-      <thead>
-        <tr>
-          <th>Element position</th>
-          <th>Element name</th>
-          <th>Symbol</th>
-          <th>Atomic mass</th>
-        </tr>
-      </thead>
-      <tbody>{rows}</tbody>
-    </Table>
+    <>
+      <div className="w-full h-full overflow-auto scrollbar flex justify-center items-start">
+        <div className="border-2 border-slate-200 rounded-xl overflow-hidden max-w-xl w-full">
+          {isFetching && (
+            <>
+              <div className="w-full h-[49px] border-b-[1px] border-white">
+                <Skeleton />
+              </div>
+              <div className="w-full h-[49px] border-b-[1px] border-white">
+                <Skeleton />
+              </div>
+              <div className="w-full h-[49px]">
+                <Skeleton />
+              </div>
+            </>
+          )}
+          {isSuccess && (
+            <>
+              {rows.length === 0 ? (
+                <>
+                  <div className="w-full text-center p-4 flex justify-center items-center flex-col">
+                    <span className="text-slate-500 text-sm">
+                      در هیج رویدادی ثبت نام نکردی :({" "}
+                    </span>
+                    <Link
+                      className="mt-2 font-extrabold transition-all duration-200
+                       hover:text-slate-500"
+                      href={"/events"}
+                    >
+                      مشاهده رویداد ها
+                    </Link>
+                  </div>
+                </>
+              ) : (
+                <Table verticalSpacing="sm" striped highlightOnHover>
+                  <thead>
+                    <tr>
+                      <th style={{ textAlign: "right" }}>نام رویداد</th>
+                      <th style={{ textAlign: "right" }}></th>
+                    </tr>
+                  </thead>
+                  <tbody>{rows}</tbody>
+                </Table>
+              )}
+            </>
+          )}
+        </div>
+      </div>
+    </>
   );
 };
 export default UserEvents;

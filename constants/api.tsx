@@ -12,4 +12,6 @@ export const api = {
   eventRegister: "/post/event/attend/",
   comments: "/post/comment/list/",
   addComment: "/post/comment/send/",
+  userEvents: "/account/user/events/",
+  eventCanceling: "/post/event/canceling/",
 };
