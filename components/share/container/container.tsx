@@ -7,14 +7,14 @@ import Providers from "./query-client/query-client";
 import Categories from "@/components/user/share/categories/categories";
 import Footer from "./designed-by/footer";
 import { Profiler, memo } from "react";
+import useContainer from "./use-container";
 
-const Container = () => {
-  // useContainer();
-  console.log(1);
+const Container = ({ children }: ContainerImpl) => {
+  useContainer();
   return (
     <>
-      {/* <Profiler id="app" onRender={console.log}> */}
-      {/* <Providers>
+      <Profiler id="app" onRender={console.log}>
+        <Providers>
           <div
             className="w-full flex justify-start items-start flex-col h-screen
       p-16 pl-0 relative overflow-hidden text-slate-700 md:pr-0"
@@ -27,8 +27,8 @@ const Container = () => {
             </div>
             <Footer />
           </div>
-        </Providers> */}
-      {/* </Profiler> */}
+        </Providers>
+      </Profiler>
     </>
   );
 };
