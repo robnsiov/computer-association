@@ -1,5 +1,11 @@
 import Menu from "@/components/share/menu/menu";
-import { CloudPlus, Edit, Grid3, UserEdit } from "iconsax-react";
+import {
+  CalendarSearch,
+  CloudPlus,
+  Edit,
+  Grid3,
+  UserEdit,
+} from "iconsax-react";
 const links = [
   {
     href: "/user",
@@ -20,6 +26,11 @@ const links = [
     href: "/user/uploader",
     icon: <CloudPlus size="24" className="text-gray-300" />,
     activeIcon: <CloudPlus size="24" className="text-slate-600" />,
+  },
+  {
+    href: "/user/events",
+    icon: <CalendarSearch size="24" className="text-gray-300" />,
+    activeIcon: <CalendarSearch size="24" className="text-slate-600" />,
   },
 ];
 const Layout = ({ children }: { children: React.ReactNode }) => {
