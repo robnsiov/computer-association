@@ -7,16 +7,15 @@ import { api } from "@/constants/api";
 const useUserStore = create<UserStore>()((setState) => ({
   status: "UNKNOWW",
   setStatus: async () => {
-    setState((state) => ({ ...state, status: "AUTHENTICATED" }));
-    // try {
-    //   await request({
-    //     url: api.tokenValidation,
-    //     method: "GET",
-    //   });
-    //   setState((state) => ({ ...state, status: "AUTHENTICATED" }));
-    // } catch {
-    //   setState((state) => ({ ...state, status: "ANONYMOUS" }));
-    // }
+    try {
+      await request({
+        url: api.tokenValidation,
+        method: "GET",
+      });
+      setState((state) => ({ ...state, status: "AUTHENTICATED" }));
+    } catch {
+      setState((state) => ({ ...state, status: "ANONYMOUS" }));
+    }
   },
 }));
 

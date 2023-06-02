@@ -27,7 +27,7 @@ const useUser = () => {
     });
   };
 
-  const { isLoading, data } = useQuery({
+  const { isLoading, data, refetch } = useQuery({
     queryFn,
     queryKey: ["user"],
   });
@@ -46,6 +46,7 @@ const useUser = () => {
     },
     onSuccess() {
       createToast({ title: "ویرایش اطلاعات موفقیت آمیز بود", icon: "success" });
+      refetch();
     },
     onError(error) {
       ErrorHandler(error, "/user-edit");
@@ -63,8 +64,8 @@ const useUser = () => {
 
   const validation = useMemo(() => {
     return zod.object({
-      fullname: zod.string().min(2).max(64),
-      studentNumber: zod.string().min(4).max(18),
+      full_name: zod.string().min(2).max(64),
+      student_number: zod.string().min(4).max(18),
     });
   }, []);
   const {
@@ -73,25 +74,43 @@ const useUser = () => {
     formState: { errors },
     setValue,
   } = useForm<UserEditFormValues>({
-    values: { full_name: "", student_number: "", image: "" },
+    values: { full_name: "", student_number: "" },
     resolver: zodResolver(validation),
   });
 
   const onSubmit: SubmitHandler<UserEditFormValues> = (data) => {
-    console.log("ok");
     if (loading) return;
-    mutation.mutate(data);
+
+    const formData = new FormData();
+    formData.append("full_name", data.full_name);
+    formData.append("student_number", data.student_number);
+    if (imageFile) {
+      formData.append("image", imageFile);
+    }
+
+    mutation.mutate(formData);
   };
   useEffect(() => {
     const apiData = data?.data;
     if (apiData) {
-      setValue("full_name", apiData.full_name, { shouldDirty: true });
-      setValue("student_number", apiData.student_number, { shouldDirty: true });
+      setValue("full_name", apiData.full_name, {
+        shouldDirty: true,
+        shouldValidate: true,
+      });
+      setValue("student_number", apiData.student_number, {
+        shouldDirty: true,
+        shouldValidate: true,
+      });
+      setImageSrc(apiData.image as string);
+      setValue("image", "..." + apiData.image?.slice(0, 20), {
+        shouldDirty: true,
+        shouldValidate: true,
+      });
       // force update for solve input problems
       toggle();
     }
   }, [data]);
-
+  console.log(errors);
   return {
     onSubmit: handleSubmit(onSubmit),
     register,
