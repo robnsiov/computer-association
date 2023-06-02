@@ -6,30 +6,27 @@ import PageLoader from "../page-loader/page-loader";
 import Providers from "./query-client/query-client";
 import Categories from "@/components/user/share/categories/categories";
 import Footer from "./designed-by/footer";
-import { Profiler, memo } from "react";
 import useContainer from "./use-container";
 
 const Container = ({ children }: ContainerImpl) => {
   useContainer();
   return (
     <>
-      <Profiler id="app" onRender={console.log}>
-        <Providers>
-          <div
-            className="w-full flex justify-start items-start flex-col h-screen
+      <Providers>
+        <div
+          className="w-full flex justify-start items-start flex-col h-screen
       p-16 pl-0 relative overflow-hidden text-slate-700 md:pr-0"
-          >
-            <Categories />
-            <Menu />
-            <PageLoader />
-            <div className="w-full h-full bg-[#f6f6f9] rounded-3xl rounded-l-none p-5 relative overflow-hidden">
-              {children}
-            </div>
-            <Footer />
+        >
+          <Categories />
+          <Menu />
+          <PageLoader />
+          <div className="w-full h-full bg-[#f6f6f9] rounded-3xl rounded-l-none p-5 relative overflow-hidden">
+            {children}
           </div>
-        </Providers>
-      </Profiler>
+          <Footer />
+        </div>
+      </Providers>
     </>
   );
 };
-export default memo(Container);
+export default Container;
