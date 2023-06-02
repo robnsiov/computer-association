@@ -18,6 +18,15 @@ const ErrorHandler = (error: AxiosError | unknown, path: string) => {
         createToast({ title: "کد اعتبارسنجی نادرست میباشد", icon: "error" });
       }
     }
+    // events
+    if (path === "/events") {
+      if (err === "You have registered for the event") {
+        createToast({
+          title: "قبلا در این رویداد ثبت نام کرده اید",
+          icon: "error",
+        });
+      }
+    }
     // register
     else if (path === "/register") {
       if ("email" in (err as Object)) {

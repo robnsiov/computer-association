@@ -76,7 +76,7 @@ const Events = () => {
                 >
                   {}
 
-                  {is_active ? (
+                  {!is_active ? (
                     <div
                       className="bg-slate-300 text-white w-full p-3 text-sm rounded-lg 
             rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-100 transition-all duration-200

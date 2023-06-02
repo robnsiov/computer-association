@@ -47,7 +47,7 @@ const useEvents = () => {
 
   const participateMutationFn = (id: number) => {
     return request({
-      method: "POST",
+      method: "GET",
       url: `${api.eventRegister}${id}/`,
     });
   };
