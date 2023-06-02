@@ -6,6 +6,7 @@ export const api = {
   changePass: "/account/change_password/",
   tokenValidation: "/account/token_validation/",
   userProfile: "/account/user/profile/",
+  updateUserProfile: "/account/user/update/",
   podcasts: "/post/podcast/archive/",
   events: "/post/event/archive/",
   eventRegister: "/post/event/attend/",
