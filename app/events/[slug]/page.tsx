@@ -1,9 +1,11 @@
 import SingleEvent from "@/components/user/pages/events/single-event/single-event";
+import PageImpl from "./types";
 
-const Page = () => {
+const Page = ({ params: { slug } }: PageImpl) => {
   return (
     <>
-      <SingleEvent />
+      {/* @ts-expect-error Async Server Component */}
+      <SingleEvent slug={slug} />
     </>
   );
 };

@@ -14,4 +14,5 @@ export const api = {
   addComment: "/post/comment/send/",
   userEvents: "/account/user/events/",
   eventCanceling: "/post/event/canceling/",
+  singleEvent: "/post/event/",
 };
