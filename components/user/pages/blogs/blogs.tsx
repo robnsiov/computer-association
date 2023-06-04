@@ -15,7 +15,7 @@ const Blogs = ({ edit = false, home = false }: BlogsImpl) => {
         className={cx(
           `pl-4 pr-2 py-2 h-full grid gap-5 auto-rows-min`,
           {
-            "grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 580px:grid-cols-1 overflow-y-scroll scrollbar":
+            "grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 580px:grid-cols-1 overflow-y-auto scrollbar":
               !home,
           },
           {
