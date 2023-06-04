@@ -2,15 +2,16 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ChangeEventHandler, useMemo, useState } from "react";
 import zod from "@/constants/zod-messages";
-import { BlogFormValues } from "./types";
+import { BlogFormValues, Category } from "./types";
 import ErrorHandler from "@/utils/error-handler/error-handler";
 import createToast from "@/utils/toast/toast";
 import { useBoolean } from "usehooks-ts";
 import request from "@/utils/axios/axios";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { api } from "@/constants/api";
 
-const useWriteBlog = () => {
+const useWriteBlog = (getTextareaContent: Function) => {
   const router = useRouter();
   const [imageFile, setImageFile] = useState<File>();
   const [imageSrc, setImageSrc] = useState("");
@@ -24,6 +25,19 @@ const useWriteBlog = () => {
       catName: zod.string().min(1, "انتخاب دسته بندی الزامی میباشد").max(80),
     });
   }, []);
+
+  const queryFn = () => {
+    return request<Array<Category>>({
+      method: "GET",
+      url: api.categories,
+    });
+  };
+
+  const { data: categories } = useQuery({
+    queryFn,
+    queryKey: ["categories"],
+  });
+
   const {
     register,
     handleSubmit,
@@ -53,7 +67,7 @@ const useWriteBlog = () => {
       method: "POST",
       data,
 
-      url: `/events-api/test`,
+      url: edit ? "" : api.createBlog,
     });
   };
 
@@ -80,9 +94,21 @@ const useWriteBlog = () => {
   });
 
   const onSubmit: SubmitHandler<BlogFormValues> = (data) => {
-    formMutation.mutate({ data, edit: false });
-  };
+    const formData = new FormData();
+    const catSlug = categories?.data.filter(
+      ({ name }) => name === data.catName
+    );
+    const content = getTextareaContent();
+    if (imageFile) formData.append("image", imageFile);
+    if (data.catName && catSlug && catSlug[0])
+      formData.append("en_title", catSlug[0].slug);
 
+    if (data.title) formData.append("title", data.title);
+    if (data.shortDesc) formData.append("short_desc", data.shortDesc);
+    if (content) formData.append("content", content);
+    formMutation.mutate({ data: formData, edit: false });
+    console.log(data);
+  };
   return {
     onSubmit: handleSubmit(onSubmit),
     register,
@@ -92,6 +118,7 @@ const useWriteBlog = () => {
     setFormCategory,
     getValues,
     formLoading,
+    categories,
   };
 };
 export default useWriteBlog;

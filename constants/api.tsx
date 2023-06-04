@@ -20,4 +20,5 @@ export const api = {
   categories: "/post/categories/",
   blogsByCategory: (slug: string) => `/post/${slug}/articles/`,
   uploader: "/post/image/upload/",
+  createBlog: "/post/article/",
 };

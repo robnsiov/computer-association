@@ -11,6 +11,9 @@ import SelectInput from "@/components/share/select-input/select-input";
 import Button from "@/components/share/button/button";
 
 const WriteBlog = () => {
+  const getTextareaContent = () => {
+    return document.getElementById("text-area")?.innerText;
+  };
   const {
     errors,
     onSubmit,
@@ -20,7 +23,8 @@ const WriteBlog = () => {
     setFormCategory,
     getValues,
     formLoading,
-  } = useWriteBlog();
+    categories,
+  } = useWriteBlog(getTextareaContent);
 
   const ref = useRef(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -39,9 +43,9 @@ const WriteBlog = () => {
     document.head.appendChild(script);
     document.head.appendChild(link);
     setTimeout(() => {
-      // var simplemde = new SimpleMDE({
-      //   element: document.getElementById("my-text-area"),
-      // });
+      new SimpleMDE({
+        element: document.getElementById("text-area"),
+      });
     }, 2000);
   }, []);
 
@@ -118,23 +122,20 @@ const WriteBlog = () => {
                   error={errors.catName?.message}
                   wrapperClassName="cursor-pointer"
                   className="cursor-pointer"
-                  categories={[
-                    { id: 1, name: "ریز پردازنده" },
-                    { id: 2, name: "شبکه" },
-                  ]}
+                  categories={categories?.data ?? []}
                   activeCat={getValues("category") as number}
                   setFormCategory={setFormCategory}
                 />
               </div>
             </div>
-            {/* <div className="w-full z-[100] mt-4">
+            <div className="w-full z-[100] mt-4">
               <textarea
                 value={"**سلام**"}
                 onChange={console.log}
                 ref={ref}
-                id="my-text-area"
+                id="text-area"
               ></textarea>
-            </div> */}
+            </div>
             <div className="mt-4 w-[180px]">
               <Button title="ثبت" loading={formLoading} />
             </div>
