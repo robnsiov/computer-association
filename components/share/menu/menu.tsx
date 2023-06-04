@@ -10,6 +10,7 @@ import {
   Calendar2,
   Sound,
   CloseCircle,
+  UserSquare,
 } from "iconsax-react";
 import MenuImpl from "./types";
 import useMenu from "./use-menu";
@@ -22,8 +23,8 @@ const routes = [
   },
   {
     href: "/user",
-    icon: <Profile2User size="24" className="text-gray-300" />,
-    activeIcon: <Profile2User size="24" className="text-slate-600" />,
+    icon: <UserSquare size="24" className="text-gray-300" />,
+    activeIcon: <UserSquare size="24" className="text-slate-600" />,
   },
   {
     href: "/blogs",
@@ -44,6 +45,11 @@ const routes = [
     href: "/podcasts",
     icon: <Sound size="24" className="text-gray-300" />,
     activeIcon: <Sound size="24" className="text-slate-600" />,
+  },
+  {
+    href: "/about-us",
+    icon: <Profile2User size="24" className="text-gray-300" />,
+    activeIcon: <Profile2User size="24" className="text-slate-600" />,
   },
 ];
 
