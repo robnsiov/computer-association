@@ -1,2 +1,2 @@
 export default interface CategoriesImpl {}
-export type CatsImpl = Array<{ title: string; englishTitle: string }>;
+export type CatsImpl = Array<{ name: string; slug: string; id: number }>;

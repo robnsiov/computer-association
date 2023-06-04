@@ -1,9 +1,11 @@
 import SingleBlog from "@/components/user/pages/blogs/singel-blog/single-blog";
+import PageImpl from "./types";
 
-const Page = () => {
+const Page = ({ params: { slug } }: PageImpl) => {
   return (
     <>
-      <SingleBlog />
+      {/* @ts-expect-error Async Server Component */}
+      <SingleBlog slug={slug} />
     </>
   );
 };

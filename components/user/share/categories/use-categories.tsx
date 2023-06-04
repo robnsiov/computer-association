@@ -5,13 +5,14 @@ import { CatsImpl } from "./types";
 import { useMutation } from "@tanstack/react-query";
 import request from "@/utils/axios/axios";
 import useMenuStatusStore from "@/context/menu-status/menu-status-store";
+import { api } from "@/constants/api";
 
 const useCategories = () => {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const categoryParam = searchParams.get("category");
-  const availabelPathnames = [{ path: "/blogs", query: "/blog" }];
+  const categoryParam = searchParams.get("category") ?? "all";
+  const availabelPathnames = [{ path: "/blogs", query: api.categories }];
 
   const [setOpenMenu] = useMenuStatusStore((state) => [state.set]);
   const [setActiveCat] = useActiveCategoryStore((state) => [state.set]);
@@ -24,14 +25,11 @@ const useCategories = () => {
   const mutation = useMutation({
     mutationFn: (url: string) => mutationFn(url),
     onSuccess({ data }) {
+      console.log(data);
       setCats(data);
     },
     onError() {
-      setCats([
-        { title: "ورزش", englishTitle: "sport" },
-        { title: "شبکه", englishTitle: "network" },
-      ]);
-      // setCats([]);
+      setCats([]);
     },
   });
 

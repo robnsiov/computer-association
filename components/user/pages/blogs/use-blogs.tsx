@@ -6,8 +6,9 @@ import request from "@/utils/axios/axios";
 import { useSearchParams } from "next/navigation";
 import usePageLoadingStore from "@/context/page-loading/page-loading-store";
 import BlogsImpl from "./types";
+import { api } from "@/constants/api";
 
-const useBlogs = ({ user }: BlogsImpl) => {
+const useBlogs = ({ edit }: BlogsImpl) => {
   const [blogs, setBlogs] = useState<Array<BlogCardImpl>>([]);
 
   const [cat] = useActiveCategoryStore((state) => [state.cat]);
@@ -18,10 +19,12 @@ const useBlogs = ({ user }: BlogsImpl) => {
   const categoryPathname = searchParams.get("category");
 
   const mutationFn = (cat: string | null) => {
+    let url = api.blogs;
+    if (cat && cat !== "all") url = api.blogsByCategory(cat);
+    if (edit) url = "";
     return request<Array<BlogCardImpl>>({
       method: "GET",
-      // url: `${cat ? `/blogs-api?cat=${cat}` : "/blogs-api"}`,
-      url: user ? "http://localhost:5000/blogs" : "http://localhost:5000/blogs",
+      url,
     });
   };
 

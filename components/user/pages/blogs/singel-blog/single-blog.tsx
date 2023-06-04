@@ -1,10 +1,26 @@
 import Image from "@/components/share/image";
 import Comments from "@/components/user/share/comments/commnets";
 import Markdown from "@/components/user/share/markdown/markdown";
+import { notFound } from "next/navigation";
+import SingleBlogImpl, { SingleBlogApi } from "./types";
+import { api } from "@/constants/api";
 
 const markdown = `# عنوان برنامه`;
 
-const SingleBlog = () => {
+export const singleBlog = async (slug: string) => {
+  try {
+    const res = await fetch(`${api.baseURL}${api.singleBlog}${slug}/`);
+    if (!res.ok) return notFound();
+    const result: SingleBlogApi = await res.json();
+    console.log(result);
+    return result;
+  } catch {
+    notFound();
+  }
+};
+
+const SingleBlog = async ({ slug }: SingleBlogImpl) => {
+  const blog = await singleBlog(slug);
   return (
     <>
       <div className="w-full  h-full scrollbar overflow-y-auto pl-4">
@@ -29,9 +45,7 @@ const SingleBlog = () => {
               <Markdown markdown={markdown} />
             </div>
           </div>
-          <div className="mt-5 w-full">
-            <Comments />
-          </div>
+          <div className="mt-5 w-full">{/* <Comments  /> */}</div>
         </div>
       </div>
     </>

@@ -38,19 +38,9 @@ const Blogs = ({ edit = false }: BlogsImpl) => {
         )}
         <AnimatePresence>
           {blogs.map(
-            ({
-              id,
-              author,
-              authorImage,
-              category,
-              categoryLink,
-              href,
-              image,
-              title,
-              view,
-            }) => (
+            ({ article_user, category, count, image, slug, title }) => (
               <motion.div
-                key={id}
+                key={slug}
                 layout
                 className="w-full relative"
                 initial={{ opacity: 0 }}
@@ -58,15 +48,13 @@ const Blogs = ({ edit = false }: BlogsImpl) => {
                 exit={{ opacity: 0 }}
               >
                 <Blog
-                  author={author}
-                  authorImage={authorImage}
                   image={image}
                   category={category}
-                  href={href}
                   title={title}
-                  view={view}
-                  categoryLink={categoryLink}
                   edit={edit}
+                  article_user={article_user}
+                  count={count}
+                  slug={slug}
                 />
               </motion.div>
             )

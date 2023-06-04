@@ -15,4 +15,8 @@ export const api = {
   userEvents: "/account/user/events/",
   eventCanceling: "/post/event/canceling/",
   singleEvent: "/post/event/",
+  singleBlog: "/post/article/",
+  blogs: "/post/article/",
+  categories: "/post/categories/",
+  blogsByCategory: (slug: string) => `/post/${slug}/articles/`,
 };

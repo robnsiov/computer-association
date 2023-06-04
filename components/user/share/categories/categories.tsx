@@ -34,14 +34,32 @@ const Categories = ({}: CategoriesImpl) => {
               autoplay: true,
             }}
           >
-            {cats.map(({ title, englishTitle }) => (
+            <SplideSlide className="h-12 flex justify-center items-center">
+              <span
+                onClick={() => {
+                  catOnclick("all");
+                }}
+                className={cx(
+                  `bg-slate-100 py-1.5 px-6 cursor-pointer rounded-3xl
+             border-transparent transition-all duration-200 text-center
+        hover:border-slate-700 hover:bg-slate-700 hover:text-white ml-3`,
+                  {
+                    "border-slate-700 bg-slate-700 text-white":
+                      categoryParam === "all",
+                  }
+                )}
+              >
+                {"همه"}
+              </span>
+            </SplideSlide>
+            {cats.map(({ name, slug }) => (
               <SplideSlide
-                key={title}
+                key={slug}
                 className="h-12 flex justify-center items-center"
               >
                 <span
                   onClick={() => {
-                    catOnclick(englishTitle);
+                    catOnclick(slug);
                   }}
                   className={cx(
                     `bg-slate-100 py-1.5 px-6 cursor-pointer rounded-3xl
@@ -49,11 +67,11 @@ const Categories = ({}: CategoriesImpl) => {
         hover:border-slate-700 hover:bg-slate-700 hover:text-white ml-3`,
                     {
                       "border-slate-700 bg-slate-700 text-white":
-                        categoryParam === englishTitle,
+                        categoryParam === slug,
                     }
                   )}
                 >
-                  {title}
+                  {name}
                 </span>
               </SplideSlide>
             ))}

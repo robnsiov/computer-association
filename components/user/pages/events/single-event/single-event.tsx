@@ -12,7 +12,6 @@ export const singleEvent = async (slug: string) => {
     const res = await fetch(`${api.baseURL}${api.singleEvent}${slug}/`);
     if (!res.ok) return notFound();
     const result: SingleEventApi = await res.json();
-    console.log(result);
     return result;
   } catch {
     notFound();

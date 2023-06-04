@@ -1,17 +1,15 @@
 import Image from "@/components/share/image";
 import Link from "@/components/share/link/link";
-import { Eye } from "iconsax-react";
+import { Eye, User } from "iconsax-react";
 import { BlogCard } from "./types";
 
 const Blog = ({
-  author,
-  authorImage,
+  article_user: { full_name, image: userImage },
   category,
-  categoryLink,
-  href,
+  count,
   image,
+  slug,
   title,
-  view,
   edit,
 }: BlogCard) => {
   return (
@@ -25,8 +23,9 @@ const Blog = ({
           <div className="w-full flex justify-between items-center mb-2">
             <div className="w-1/2 flex justify-start items-center">
               <Link
-                href={categoryLink}
-                className="text-slate-600 font-black text-sm max-w-[80px] truncate"
+                href={`/blogs/${slug}`}
+                className="text-slate-600 font-black text-sm max-w-[80px] truncate
+                hover:text-slate-400"
               >
                 {category}
               </Link>
@@ -37,23 +36,32 @@ const Blog = ({
                 <span className="text-slate-400 text-[11px] max-w-[64px] truncate">
                   پست شده توسط
                 </span>
-                <span className="text-slate-700 font-semibold text-[14px] max-w-[80px] truncate">
-                  {author}
+                <span className="text-slate-700 font-semibold text-[14px] max-w-[60px] truncate">
+                  {full_name}
                 </span>
               </div>
               <div className="min-w-[28px] max-w-[28px] aspect-square rounded-full overflow-hidden">
-                <Image
-                  width={80}
-                  height={80}
-                  className="w-full h-full object-cover object-center"
-                  src={authorImage}
-                  alt="ok"
-                />
+                {userImage ? (
+                  <Image
+                    width={80}
+                    height={80}
+                    className="w-full h-full object-cover object-center"
+                    src={userImage}
+                    alt={full_name}
+                  />
+                ) : (
+                  <div
+                    className="w-full h-full flex justify-center items-center 
+                border-2 border-slate-200 rounded-full"
+                  >
+                    <User size="16" className="text-slate-300" />
+                  </div>
+                )}
               </div>
             </div>
           </div>
           <div className="w-full h-[150px] rounded-xl overflow-hidden">
-            <Link href={`/blogs/${href}`}>
+            <Link href={`/blogs/${slug}`}>
               <Image
                 width={300}
                 height={200}
@@ -75,12 +83,12 @@ const Blog = ({
           <Link
             className="bg-slate-800 text-white w-[60%] p-3 text-sm rounded-lg 
             rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-400 transition-all duration-200"
-            href={edit ? `/user/blogs/${href}` : href}
+            href={edit ? `/user/blogs/${slug}` : `/blogs/${slug}`}
           >
             {edit ? "ویرایش" : "مطالعه"}
           </Link>
           <div className="flex justify-start items-center">
-            <span className="ml-2">{view}</span>
+            <span className="ml-2">{count}</span>
             <Eye size="18" />
           </div>
         </div>
