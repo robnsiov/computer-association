@@ -5,14 +5,23 @@ import Blog from "../../share/cards/blog/blog";
 import useBlogs from "./use-blogs";
 import { AnimatePresence, motion } from "framer-motion";
 import BlogsImpl from "./types";
+import cx from "classnames";
 
-const Blogs = ({ edit = false }: BlogsImpl) => {
-  const { blogs, initBlogs } = useBlogs({ edit });
+const Blogs = ({ edit = false, home = false }: BlogsImpl) => {
+  const { blogs, initBlogs } = useBlogs({ edit, home });
   return (
     <>
       <div
-        className="pl-4 pr-2 py-2 overflow-y-scroll scrollbar h-full grid grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 
-      md:grid-cols-2 580px:grid-cols-1  gap-5 auto-rows-min	"
+        className={cx(
+          `pl-4 pr-2 py-2 h-full grid gap-5 auto-rows-min`,
+          {
+            "grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 580px:grid-cols-1 overflow-y-scroll scrollbar":
+              !home,
+          },
+          {
+            "grid-cols-3 xl:grid-cols-2 sm:grid-cols-1": home,
+          }
+        )}
       >
         {initBlogs && (
           <>

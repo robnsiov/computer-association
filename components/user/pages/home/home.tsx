@@ -2,6 +2,7 @@ import Image from "@/components/share/image";
 import Blog from "../../share/cards/blog/blog";
 import { PlayCircle } from "iconsax-react";
 import Link from "@/components/share/link/link";
+import Blogs from "../blogs/blogs";
 
 const Home = () => {
   return (
@@ -15,70 +16,8 @@ const Home = () => {
         lg:overflow-unset lg:h-[unset] lg:mb-[unset] lg:order-1"
         >
           <h1 className="font-black text-4xl mb-4 lg:hidden">برترین مقالات</h1>
-          <div
-            className="w-full h-full grid grid-cols-3  gap-5 auto-rows-min p-2
-          xl:grid-cols-2 sm:grid-cols-1"
-          >
-            <Blog
-              author={"حسینی"}
-              authorImage={"/images/el.jpg"}
-              image={"/images/el.jpg"}
-              category={"شبکه"}
-              href={"/"}
-              title={"چگونه شبکه را مدیریت کنیم"}
-              view={500}
-              categoryLink={"/"}
-            />
-            <Blog
-              author={"حسینی"}
-              authorImage={"/images/el.jpg"}
-              image={"/images/el.jpg"}
-              category={"شبکه"}
-              href={"/"}
-              title={"چگونه شبکه را مدیریت کنیم"}
-              view={500}
-              categoryLink={"/"}
-            />
-            <Blog
-              author={"حسینی"}
-              authorImage={"/images/el.jpg"}
-              image={"/images/el.jpg"}
-              category={"شبکه"}
-              href={"/"}
-              title={"چگونه شبکه را مدیریت کنیم"}
-              view={500}
-              categoryLink={"/"}
-            />
-            <Blog
-              author={"حسینی"}
-              authorImage={"/images/el.jpg"}
-              image={"/images/el.jpg"}
-              category={"شبکه"}
-              href={"/"}
-              title={"چگونه شبکه را مدیریت کنیم"}
-              view={500}
-              categoryLink={"/"}
-            />
-            <Blog
-              author={"حسینی"}
-              authorImage={"/images/el.jpg"}
-              image={"/images/el.jpg"}
-              category={"شبکه"}
-              href={"/"}
-              title={"چگونه شبکه را مدیریت کنیم"}
-              view={500}
-              categoryLink={"/"}
-            />
-            <Blog
-              author={"حسینی"}
-              authorImage={"/images/el.jpg"}
-              image={"/images/el.jpg"}
-              category={"شبکه"}
-              href={"/"}
-              title={"چگونه شبکه را مدیریت کنیم"}
-              view={500}
-              categoryLink={"/"}
-            />
+          <div className="w-full h-full p-2">
+            <Blogs home={true} />
           </div>
         </div>
         <div

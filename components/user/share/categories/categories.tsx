@@ -13,6 +13,7 @@ const Categories = ({}: CategoriesImpl) => {
     onClick: catOnclick,
     cats,
     setOpenMenu,
+    showCategories,
   } = useCategories();
   return (
     <>
@@ -24,42 +25,21 @@ const Categories = ({}: CategoriesImpl) => {
           onClick={() => setOpenMenu(true)}
           className="text-slate-800 ml-4 cursor-pointer hover:text-slate-500 hidden md:block"
         />
-        <div className="w-full max-w-3xl pl-4">
-          <Splide
-            options={{
-              direction: "rtl",
-              autoWidth: true,
-              arrows: false,
-              pagination: false,
-              autoplay: true,
-            }}
-          >
-            <SplideSlide className="h-12 flex justify-center items-center">
-              <span
-                onClick={() => {
-                  catOnclick("all");
-                }}
-                className={cx(
-                  `bg-slate-100 py-1.5 px-6 cursor-pointer rounded-3xl
-             border-transparent transition-all duration-200 text-center
-        hover:border-slate-700 hover:bg-slate-700 hover:text-white ml-3`,
-                  {
-                    "border-slate-700 bg-slate-700 text-white":
-                      categoryParam === "all",
-                  }
-                )}
-              >
-                {"همه"}
-              </span>
-            </SplideSlide>
-            {cats.map(({ name, slug }) => (
-              <SplideSlide
-                key={slug}
-                className="h-12 flex justify-center items-center"
-              >
+        {showCategories && (
+          <div className="w-full max-w-3xl pl-4">
+            <Splide
+              options={{
+                direction: "rtl",
+                autoWidth: true,
+                arrows: false,
+                pagination: false,
+                autoplay: true,
+              }}
+            >
+              <SplideSlide className="h-12 flex justify-center items-center">
                 <span
                   onClick={() => {
-                    catOnclick(slug);
+                    catOnclick("all");
                   }}
                   className={cx(
                     `bg-slate-100 py-1.5 px-6 cursor-pointer rounded-3xl
@@ -67,16 +47,39 @@ const Categories = ({}: CategoriesImpl) => {
         hover:border-slate-700 hover:bg-slate-700 hover:text-white ml-3`,
                     {
                       "border-slate-700 bg-slate-700 text-white":
-                        categoryParam === slug,
+                        categoryParam === "all",
                     }
                   )}
                 >
-                  {name}
+                  {"همه"}
                 </span>
               </SplideSlide>
-            ))}
-          </Splide>
-        </div>
+              {cats.map(({ name, slug }) => (
+                <SplideSlide
+                  key={slug}
+                  className="h-12 flex justify-center items-center"
+                >
+                  <span
+                    onClick={() => {
+                      catOnclick(slug);
+                    }}
+                    className={cx(
+                      `bg-slate-100 py-1.5 px-6 cursor-pointer rounded-3xl
+             border-transparent transition-all duration-200 text-center
+        hover:border-slate-700 hover:bg-slate-700 hover:text-white ml-3`,
+                      {
+                        "border-slate-700 bg-slate-700 text-white":
+                          categoryParam === slug,
+                      }
+                    )}
+                  >
+                    {name}
+                  </span>
+                </SplideSlide>
+              ))}
+            </Splide>
+          </div>
+        )}
       </div>
     </>
   );

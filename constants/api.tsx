@@ -21,4 +21,6 @@ export const api = {
   blogsByCategory: (slug: string) => `/post/${slug}/articles/`,
   uploader: "/post/image/upload/",
   createBlog: "/post/article/",
+  userBlogs: "/account/articles/",
+  homeBlogs: "/home/list_article_view/",
 };

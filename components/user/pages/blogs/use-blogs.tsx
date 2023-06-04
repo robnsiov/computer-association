@@ -8,7 +8,7 @@ import usePageLoadingStore from "@/context/page-loading/page-loading-store";
 import BlogsImpl from "./types";
 import { api } from "@/constants/api";
 
-const useBlogs = ({ edit }: BlogsImpl) => {
+const useBlogs = ({ edit, home }: BlogsImpl) => {
   const [blogs, setBlogs] = useState<Array<BlogCardImpl>>([]);
 
   const [cat] = useActiveCategoryStore((state) => [state.cat]);
@@ -21,7 +21,9 @@ const useBlogs = ({ edit }: BlogsImpl) => {
   const mutationFn = (cat: string | null) => {
     let url = api.blogs;
     if (cat && cat !== "all") url = api.blogsByCategory(cat);
-    if (edit) url = "";
+    if (home) url = api.homeBlogs;
+    if (edit) url = api.userBlogs;
+
     return request<Array<BlogCardImpl>>({
       method: "GET",
       url,

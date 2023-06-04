@@ -51,6 +51,12 @@ const useCategories = () => {
     if (categoryParam) setActiveCat(categoryParam);
   }, []);
 
-  return { categoryParam, onClick, cats, setOpenMenu };
+  return {
+    categoryParam,
+    onClick,
+    cats,
+    setOpenMenu,
+    showCategories: availabelPathnames.find(({ path }) => path === pathname),
+  };
 };
 export default useCategories;
