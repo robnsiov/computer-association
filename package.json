@@ -37,6 +37,7 @@
     "react-dom": "^18.2.0",
     "react-h5-audio-player": "^3.8.6",
     "react-hook-form": "^7.43.9",
+    "react-icons": "^4.9.0",
     "react-loading-skeleton": "^3.2.1",
     "react-markdown": "^8.0.7",
     "react-transition-group": "^4.4.5",

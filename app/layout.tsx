@@ -51,6 +51,7 @@ const yekanBakh = localFont({
     },
   ],
 });
+
 export default function RootLayout({
   children,
 }: {
