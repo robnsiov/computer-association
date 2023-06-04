@@ -19,4 +19,5 @@ export const api = {
   blogs: "/post/article/",
   categories: "/post/categories/",
   blogsByCategory: (slug: string) => `/post/${slug}/articles/`,
+  uploader: "/post/image/upload/",
 };

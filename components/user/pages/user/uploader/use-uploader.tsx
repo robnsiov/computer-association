@@ -1,3 +1,4 @@
+import { api } from "@/constants/api";
 import axios from "axios";
 import localforage from "localforage";
 import { ChangeEventHandler, useEffect, useState } from "react";
@@ -26,7 +27,7 @@ const useUploader = () => {
           data: { image },
         },
       } = await axios<{ data: { image: string } }>({
-        url: "https://qut-association.iran.liara.run/post/image/upload/",
+        url: api.uploader,
         method: "POST",
         data: formData,
         onUploadProgress(progressEvent) {
