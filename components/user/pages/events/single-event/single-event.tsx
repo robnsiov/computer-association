@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import SingleEventImpl, { SingleEventApi } from "./types";
 import { Suspense } from "react";
 import toJalali from "@/utils/to-jalali/to-jalali";
+import AttendOnEvent from "./attend/attend";
 
 export const singleEvent = async (slug: string) => {
   try {
@@ -36,12 +37,7 @@ const SingleEvent = async ({ slug }: SingleEventImpl) => {
                 height={1500}
                 alt={event.title}
               />
-              <span
-                className="absolute top-7 -left-12 w-[200px]
-             text-center  bg-white p-3 -rotate-45 cursor-pointer"
-              >
-                شرکت در رویداد
-              </span>
+              <AttendOnEvent id={event.id} />
             </div>
             <div className="w-full max-w-[350px] text-center mt-4 flex justify-start items-center flex-col space-y-2 p-4 ">
               <div>

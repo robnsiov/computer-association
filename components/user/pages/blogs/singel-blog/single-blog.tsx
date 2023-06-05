@@ -28,7 +28,7 @@ const SingleBlog = async ({ slug }: SingleBlogImpl) => {
           <h1 className="font-black text-5xl md:text-4xl text-center md:leading-[1.3] leading-[1.2] ">
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
           </h1>
-          <div className="mt-5 mb-3">
+          <div className="mt-8 mb-3">
             <span className="text-xl text-slate-500">12 آبان 1402</span>
           </div>
           <div className="w-full aspect-video">

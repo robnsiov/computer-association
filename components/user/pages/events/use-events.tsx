@@ -65,7 +65,7 @@ const useEvents = () => {
     },
 
     onError(error) {
-      ErrorHandler(error, "/events");
+      ErrorHandler(error, "/attend-events");
     },
   });
 
