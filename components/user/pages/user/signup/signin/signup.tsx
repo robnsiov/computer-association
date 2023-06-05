@@ -26,7 +26,7 @@ const Signup = () => {
         >
           <div
             className="w-full flex justify-center items-center flex-col mb-4 
-         rounded p-6"
+         rounded md:p-3 p-6"
           >
             <div
               className="w-16 h-16 border-[1px] 
@@ -37,14 +37,26 @@ const Signup = () => {
             <div className="w-full h-[45.6px] rounded mb-4 overflow-hidden">
               <Skeleton />
             </div>
+            <div className="w-full h-[45.6px] rounded mb-3 overflow-hidden">
+              <Skeleton />
+            </div>
+            <div className="w-full h-[35px] rounded mb-1 overflow-hidden">
+              <Skeleton />
+            </div>
             <div className="w-full h-[45.6px] rounded mb-4 overflow-hidden">
               <Skeleton />
             </div>
-            <div className="w-full h-[44px] rounded overflow-hidden">
+            <div className="w-full h-[45.6px] rounded mb-4 overflow-hidden">
+              <Skeleton />
+            </div>
+            <div className="w-full h-[45.6px] rounded mb-4 overflow-hidden">
+              <Skeleton />
+            </div>
+            <div className="w-full h-[45.6px] rounded mb-4 overflow-hidden">
               <Skeleton />
             </div>
           </div>
-          <div className="w-[147px] h-[26px] mt-1 rounded overflow-hidden">
+          <div className="w-[147px] h-[26px] -mt-3 rounded overflow-hidden">
             <Skeleton />
           </div>
         </div>
