@@ -12,7 +12,7 @@ const UnderlineTag = ({
       <span
         onClick={onClick}
         className={cx(
-          `cursor-pointer text-primary text-[17px] 
+          `cursor-pointer text-slate-500 text-[17px] 
             hover:underline underline-offset-8  decoration-dashed decoration-1 border-transparent`,
           { [className]: className }
         )}

@@ -14,9 +14,9 @@ function CheckBox<T>({ error, id, name, register }: CheckBoxImpl<T>) {
         <div
           className={cx(
             `transition-all duration-150
-         cursor-pointer w-4 h-4 bg-transparent active:ring-2 active:ring-blue-300
-         border-2 border-primary
-         peer-checked:bg-primary
+         cursor-pointer w-4 h-4 bg-transparent active:ring-2 active:ring-slate-300
+         border-2 border-slate-500
+         peer-checked:bg-slate-500
          peer-checked:border-transparent
        rounded-sm flex justify-center items-center`,
             { "border-red-500 active:ring-red-300": error }

@@ -60,7 +60,7 @@ const ChangePass = () => {
             className="w-16 h-16 rounded-full border-[1px] border-slate-200 
           flex justify-center items-center mb-6"
           >
-            <ShieldTick size="34" className="text-primary" />
+            <ShieldTick size="34" className="text-slate-500" />
           </div>
           <Input<ChangePassFormValues>
             register={register}

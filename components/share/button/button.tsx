@@ -7,20 +7,20 @@ const Button = ({ loading = false, title, className = "" }: ButtonImpl) => {
       <button
         type={loading ? "button" : "submit"}
         className={cx(
-          `group relative w-full rounded border-none outline-none text-white bg-primary
-             hover:bg-slate-100 hover:text-primary h-[44px] text-lg
+          `group relative w-full rounded border-none outline-none text-white bg-slate-500
+             hover:bg-slate-100 hover:text-slate-500 h-[44px] text-lg
             transition-all duration-200 flex justify-center items-center`,
           { [className]: className }
         )}
       >
-        <span className="transition-all duration-200 opacity-0 group-hover:opacity-100 absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary"></span>
-        <span className="transition-all duration-200 opacity-0 group-hover:opacity-100 absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-primary"></span>
-        <span className="transition-all duration-200 opacity-0 group-hover:opacity-100 absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-primary"></span>
-        <span className="transition-all duration-200 opacity-0 group-hover:opacity-100 absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary"></span>
+        <span className="transition-all duration-200 opacity-0 group-hover:opacity-100 absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-slate-500"></span>
+        <span className="transition-all duration-200 opacity-0 group-hover:opacity-100 absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-slate-500"></span>
+        <span className="transition-all duration-200 opacity-0 group-hover:opacity-100 absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-slate-500"></span>
+        <span className="transition-all duration-200 opacity-0 group-hover:opacity-100 absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-slate-500"></span>
         {loading ? (
           <div>
             <svg
-              className="animate-spin h-[18px] w-[18px] text-white group-hover:text-primary"
+              className="animate-spin h-[18px] w-[18px] text-white group-hover:text-slate-500"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"

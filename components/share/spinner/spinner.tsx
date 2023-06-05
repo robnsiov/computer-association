@@ -7,7 +7,7 @@ const Spinner = ({ color = "text-white" }: SpinnerImpl) => {
       <div>
         <svg
           className={cx(
-            `animate-spin h-[18px] w-[18px]  group-hover:text-primary`,
+            `animate-spin h-[18px] w-[18px]  group-hover:text-slate-500`,
             { [color]: color }
           )}
           xmlns="http://www.w3.org/2000/svg"

@@ -57,7 +57,7 @@ const Signup = () => {
             className="w-16 h-16 rounded-full border-[1px] border-slate-200 
           flex justify-center items-center mb-6"
           >
-            <Profile2User size="34" className="text-primary" />
+            <Profile2User size="34" className="text-slate-500" />
           </div>
           <Input<SignupFormValues>
             register={register}

@@ -62,8 +62,8 @@ function Input<T>({
             ref={mergedRef}
             spellCheck={false}
             className={cx(
-              `caret-primary text-slate-700 w-full rounded p-2 py-2.5 pl-9 border-[1px] border-slate-200 bg-transparent
-                transition-all duration-200 peer outline-none  focus:ring-2 focus:ring-primary`,
+              `caret-slate-500 text-slate-700 w-full rounded p-2 py-2.5 pl-9 border-[1px] border-slate-200 bg-transparent
+                transition-all duration-200 peer outline-none  focus:ring-2 focus:ring-slate-500`,
               {
                 "ring-2 ring-red-500 box-error-shadow": error,
                 [className]: className,
@@ -86,8 +86,8 @@ function Input<T>({
             ref={mergedRef}
             spellCheck={false}
             className={cx(
-              `caret-primary text-slate-700 w-full rounded p-2 py-2.5 pl-9 border-[1px] border-slate-200 bg-transparent
-                transition-all duration-200 peer outline-none  focus:ring-2 focus:ring-primary`,
+              `caret-slate-500 text-slate-700 w-full rounded p-2 py-2.5 pl-9 border-[1px] border-slate-200 bg-transparent
+                transition-all duration-200 peer outline-none  focus:ring-2 focus:ring-slate-500`,
               {
                 "ring-2 ring-red-500 box-error-shadow": error,
                 [className]: className,
@@ -100,11 +100,11 @@ function Input<T>({
           onClick={() => ref.current?.focus()}
           className={cx(
             `text-lg 
-              peer-focus:-top-3.5 peer-focus:px-2 peer-focus:text-primary
+              peer-focus:-top-3.5 peer-focus:px-2 peer-focus:text-slate-500
             absolute top-2 right-3
             bg-white duration-200 transition-all`,
             {
-              "top-3-5-important px-2 text-primary": activeLabel,
+              "top-3-5-important px-2 text-slate-500": activeLabel,
             },
             { "red-500-important": error }
           )}

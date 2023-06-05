@@ -8,10 +8,13 @@ const NotFound = () => {
         <div className="text-[400px] md:text-[300px] 460px:text-[200px]">
           ☹️
         </div>
-        <p className="text-primary font-extrabold text-3xl md:-mt-24 460px:-mt-16 460px:text-2xl -mt-36">
+        <p className="text-slate-500 font-extrabold text-3xl md:-mt-24 460px:-mt-16 460px:text-2xl -mt-36">
           صفحه مورد نظر پیدا نشد :(
         </p>
-        <Link className="text-primary border-b-2 border-primary mt-3" href="/">
+        <Link
+          className="text-slate-500 border-b-2 border-slate-500 mt-3"
+          href="/"
+        >
           رفتن به صفحه اصلی
         </Link>
       </div>

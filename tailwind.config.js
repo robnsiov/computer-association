@@ -22,9 +22,6 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
-      colors: {
-        primary: "#4945ff",
-      },
       animation: {
         "spin-slow": "spin 2s linear infinite",
         "spin-slower": "spin 2.5s 0.5s linear infinite",
