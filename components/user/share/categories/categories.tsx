@@ -19,7 +19,7 @@ const Categories = ({}: CategoriesImpl) => {
     <>
       <div
         className="absolute left-0 right-16 top-0
-      flex justify-center items-center text-sm h-16 md:right-4"
+      flex justify-start items-center text-sm h-16 md:right-4"
       >
         <Menu
           onClick={() => setOpenMenu(true)}
