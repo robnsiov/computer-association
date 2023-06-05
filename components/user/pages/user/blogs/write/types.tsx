@@ -1,9 +1,9 @@
 export interface BlogFormValues {
   title?: string;
-  shortDesc?: string;
   image?: string;
   category?: number;
   catName?: string;
+  enTitle?: string;
 }
 
 export interface Category {

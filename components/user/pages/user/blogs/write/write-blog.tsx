@@ -70,14 +70,6 @@ const WriteBlog = () => {
                   error={errors.title?.message}
                 />
               </div>
-              <div>
-                <Input
-                  register={register}
-                  name={"shortDesc"}
-                  label="توضیحات کوتاه"
-                  error={errors.shortDesc?.message}
-                />
-              </div>
               <div
                 onClick={inputClick}
                 className="flex justify-center items-center"
@@ -125,6 +117,14 @@ const WriteBlog = () => {
                   categories={categories?.data ?? []}
                   activeCat={getValues("category") as number}
                   setFormCategory={setFormCategory}
+                />
+              </div>
+              <div>
+                <Input
+                  register={register}
+                  name={"enTitle"}
+                  label="عنوان انگلیسی "
+                  error={errors.enTitle?.message}
                 />
               </div>
             </div>

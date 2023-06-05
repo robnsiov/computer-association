@@ -20,9 +20,9 @@ const useWriteBlog = (getTextareaContent: Function) => {
   const validation = useMemo(() => {
     return zod.object({
       title: zod.string().min(2).max(64),
-      shortDesc: zod.string().min(2).max(64),
       image: zod.string().min(1, "انتخاب تصویر الزامی میباشد").max(999999),
       catName: zod.string().min(1, "انتخاب دسته بندی الزامی میباشد").max(80),
+      enTitle: zod.string().min(4).max(40),
     });
   }, []);
 
@@ -45,7 +45,13 @@ const useWriteBlog = (getTextareaContent: Function) => {
     setValue,
     getValues,
   } = useForm<BlogFormValues>({
-    values: { title: "", shortDesc: "", image: "", catName: "", category: -1 },
+    values: {
+      title: "",
+      image: "",
+      catName: "",
+      category: -1,
+      enTitle: "",
+    },
     resolver: zodResolver(validation),
   });
   const changeInputFile: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -89,7 +95,7 @@ const useWriteBlog = (getTextareaContent: Function) => {
     },
 
     onError(error) {
-      ErrorHandler(error, "/blogs-add");
+      ErrorHandler(error, "/blog-write");
     },
   });
 
@@ -100,11 +106,11 @@ const useWriteBlog = (getTextareaContent: Function) => {
     );
     const content = getTextareaContent();
     if (imageFile) formData.append("image", imageFile);
+    if (data.enTitle) formData.append("en_title", data.enTitle);
     if (data.catName && catSlug && catSlug[0])
-      formData.append("en_title", catSlug[0].slug);
+      formData.append("category", `${catSlug[0].id}`);
 
     if (data.title) formData.append("title", data.title);
-    if (data.shortDesc) formData.append("short_desc", data.shortDesc);
     if (content) formData.append("content", content);
     formMutation.mutate({ data: formData, edit: false });
     console.log(data);

@@ -27,6 +27,15 @@ const ErrorHandler = (error: AxiosError | unknown, path: string) => {
         });
       }
     }
+    // blog-write
+    if (path === "/blog-write") {
+      if ("en_title" in (err as Object)) {
+        createToast({
+          title: "عنوان انگلیسی وارد شده قبلا توسط کاربر دیگری استفاده شده است",
+          icon: "error",
+        });
+      }
+    }
     // register
     else if (path === "/register") {
       if ("email" in (err as Object)) {

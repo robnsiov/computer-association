@@ -45,6 +45,7 @@ const useBlogs = ({ edit, home }: BlogsImpl) => {
       setPageLoading(false);
     },
     onSuccess({ data }) {
+      // console.log(data);
       setBlogs(() => data);
     },
 
