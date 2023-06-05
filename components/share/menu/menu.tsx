@@ -9,8 +9,8 @@ import {
   Setting3,
   Calendar2,
   Sound,
-  CloseCircle,
   UserSquare,
+  Add,
 } from "iconsax-react";
 import MenuImpl from "./types";
 import useMenu from "./use-menu";
@@ -70,12 +70,12 @@ const Menu = ({ links, inner = false }: MenuImpl) => {
           { "md:w-full md:bg-slate-600/60 z-[999]": !inner }
         )}
       >
-        {!inner && (
+        {open && windowWidth < 767 && !inner && (
           <>
             <div className="absolute inset-0 backdrop-blur-md"></div>
-            <CloseCircle
+            <Add
               className="absolute left-4 -top-2 cursor-pointer hidden md:block text-slate-200
-          hover:text-slate-500"
+          hover:text-slate-500 rotate-45"
               onClick={() => setOpen(false)}
             />
             <div className="absolute bottom-10">
