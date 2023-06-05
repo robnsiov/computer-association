@@ -1,6 +1,6 @@
 import Spinner from "@/components/share/spinner/spinner";
 
-const BlogLoader = () => {
+const PageWait = () => {
   return (
     <>
       <div
@@ -19,4 +19,4 @@ const BlogLoader = () => {
     </>
   );
 };
-export default BlogLoader;
+export default PageWait;

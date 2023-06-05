@@ -1,4 +1,5 @@
 import Menu from "@/components/share/menu/menu";
+import Protected from "@/components/user/share/protected/protected";
 import {
   CalendarSearch,
   CloudPlus,
@@ -48,8 +49,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <div className="w-full h-full flex justify-cente items-center">
-        <Menu inner={true} links={links} />
-        <div className="w-full h-full mr-10">{children}</div>
+        <Protected>
+          <Menu inner={true} links={links} />
+          <div className="w-full h-full mr-10">{children}</div>
+        </Protected>
       </div>
     </>
   );

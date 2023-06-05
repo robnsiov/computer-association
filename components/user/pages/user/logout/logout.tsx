@@ -1,13 +1,13 @@
 "use client";
 
-import BlogLoader from "@/components/user/share/blog-loader/blog-loader";
+import PageWait from "@/components/user/share/page-wait/page-wait";
 import useLagout from "./use-logout";
 
 const Lagout = () => {
   useLagout();
   return (
     <>
-      <BlogLoader />
+      <PageWait />
     </>
   );
 };

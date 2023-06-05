@@ -1,5 +1,5 @@
 import Image from "@/components/share/image";
-import BlogLoader from "@/components/user/share/blog-loader/blog-loader";
+import PageWait from "@/components/user/share/page-wait/page-wait";
 import Markdown from "@/components/user/share/markdown/markdown";
 import { api } from "@/constants/api";
 import { notFound } from "next/navigation";
@@ -24,7 +24,7 @@ const SingleEvent = async ({ slug }: SingleEventImpl) => {
   return (
     <>
       <div className="w-full  h-full scrollbar overflow-y-auto pl-3">
-        <Suspense fallback={<BlogLoader />}>
+        <Suspense fallback={<PageWait />}>
           <article className="w-full max-w-xl mx-auto flex justify-start items-center flex-col mt-3">
             <h1 className="font-black text-5xl md:text-4xl text-center md:leading-[1.3] leading-[1.2] mb-6">
               {event.title}

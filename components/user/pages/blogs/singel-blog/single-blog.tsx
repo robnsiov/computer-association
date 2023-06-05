@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import SingleBlogImpl, { SingleBlogApi } from "./types";
 import { api } from "@/constants/api";
 import { Suspense } from "react";
-import BlogLoader from "@/components/user/share/blog-loader/blog-loader";
+import PageWait from "@/components/user/share/page-wait/page-wait";
 import toJalali from "@/utils/to-jalali/to-jalali";
 import Comments from "./comments/comments";
 
@@ -26,7 +26,7 @@ const SingleBlog = async ({ slug }: SingleBlogImpl) => {
   return (
     <>
       <div className="w-full  h-full scrollbar overflow-y-auto pl-4">
-        <Suspense fallback={<BlogLoader />}>
+        <Suspense fallback={<PageWait />}>
           <div className="w-full max-w-xl mx-auto flex justify-start items-center flex-col mt-3">
             <h1 className="font-black text-5xl md:text-4xl text-center md:leading-[1.3] leading-[1.2] ">
               {blog.title}
