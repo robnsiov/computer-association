@@ -50,7 +50,12 @@ const Podcasts = () => {
   return (
     <>
       <Modal inProp={showModal} setProp={toggleShowModal}>
-        <Comments slug={podcast.slug} type="PODCAST" title={podcast.title} />
+        <Comments
+          onConfirm={toggleShowModal}
+          slug={podcast.slug}
+          type="PODCAST"
+          title={podcast.title}
+        />
       </Modal>
       <FadeAnimation inProp={isError || isLoading || data?.data.length === 0}>
         <div className="absolute inset-0 flex justify-center items-center flex-col text-center z-30">

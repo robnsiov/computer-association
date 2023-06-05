@@ -7,7 +7,7 @@ import FadeAnimation from "@/components/share/fade-animation/fade-animation";
 import toJalali from "@/utils/to-jalali/to-jalali";
 import CommentsImpl from "./types";
 
-const Comments = ({ type, slug, title }: CommentsImpl) => {
+const Comments = ({ type, slug, title, onConfirm }: CommentsImpl) => {
   const {
     errors,
     onSubmit,
@@ -17,7 +17,7 @@ const Comments = ({ type, slug, title }: CommentsImpl) => {
     data,
     isLoading,
     formLoading,
-  } = useComments({ type, slug });
+  } = useComments({ type, slug, onConfirm });
   return (
     <>
       <div className="w-full flex justify-start items-start flex-col">

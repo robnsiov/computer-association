@@ -15,6 +15,7 @@ export default interface BlogCardImpl {
     full_name: string;
     image?: string;
   };
+  slug: string;
 }
 
 export interface BlogCard extends BlogCardImpl, ExtraBlogCardImpl {

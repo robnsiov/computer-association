@@ -7,10 +7,11 @@ const Blog = ({
   article_user: { full_name, image: userImage },
   count,
   image,
-  article_category: { slug, name: category },
+  article_category: { slug: userSlug, name: category },
   title,
   edit,
   changeRouteWithCat,
+  slug,
 }: BlogCard) => {
   return (
     <>
@@ -23,7 +24,7 @@ const Blog = ({
           <div className="w-full flex justify-between items-center mb-2">
             <div className="w-1/2 flex justify-start items-center">
               <div
-                onClick={() => changeRouteWithCat(slug)}
+                onClick={() => changeRouteWithCat(userSlug)}
                 className="text-slate-600 font-black text-sm max-w-[80px] truncate
                 hover:text-slate-400 cursor-pointer"
               >

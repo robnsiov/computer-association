@@ -10,7 +10,7 @@ import createToast from "@/utils/toast/toast";
 import ErrorHandler from "@/utils/error-handler/error-handler";
 import { api } from "@/constants/api";
 
-const useComments = ({ type, slug }: CommentsImpl) => {
+const useComments = ({ type, slug, onConfirm }: CommentsImpl) => {
   const { value: showCommentForm, toggle: toggleShowCommentForm } =
     useBoolean(false);
   const { value: formLoading, setValue: setFormLoading } = useBoolean(false);
@@ -34,10 +34,10 @@ const useComments = ({ type, slug }: CommentsImpl) => {
     let commentType = "";
     switch (type) {
       case "ARTICLE":
-        commentType = "a";
+        commentType = "article";
         break;
       case "PODCAST":
-        commentType = "p";
+        commentType = "podcast";
         break;
     }
     return commentType;
@@ -61,7 +61,7 @@ const useComments = ({ type, slug }: CommentsImpl) => {
     return request({
       method: "POST",
       data,
-      url: `${api.addComment}${commentType}/${slug}`,
+      url: `${api.addComment}${commentType}/${slug}/`,
     });
   };
 
@@ -76,6 +76,7 @@ const useComments = ({ type, slug }: CommentsImpl) => {
       setFormLoading(false);
     },
     onSuccess() {
+      onConfirm();
       createToast({
         title: "نظر شما بعد از تایید , نمایش داده خواهد شد",
         icon: "success",

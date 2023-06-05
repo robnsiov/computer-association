@@ -47,7 +47,7 @@ const Blogs = ({ edit = false, home = false }: BlogsImpl) => {
         )}
         <AnimatePresence>
           {blogs.map(
-            ({ article_user, count, image, title, article_category }) => (
+            ({ article_user, count, image, title, article_category, slug }) => (
               <motion.div
                 key={title}
                 layout
@@ -57,6 +57,7 @@ const Blogs = ({ edit = false, home = false }: BlogsImpl) => {
                 exit={{ opacity: 0 }}
               >
                 <Blog
+                  slug={slug}
                   image={image}
                   title={title}
                   edit={edit}
