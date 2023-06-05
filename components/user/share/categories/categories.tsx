@@ -5,7 +5,7 @@ import "@splidejs/react-splide/css";
 import CategoriesImpl from "./types";
 import useCategories from "./use-categories";
 import cx from "classnames";
-import { Menu } from "iconsax-react";
+import { HambergerMenu } from "iconsax-react";
 
 const Categories = ({}: CategoriesImpl) => {
   const {
@@ -21,9 +21,12 @@ const Categories = ({}: CategoriesImpl) => {
         className="absolute left-0 right-16 top-0
       flex justify-start items-center text-sm h-16 md:right-4"
       >
-        <Menu
+        <HambergerMenu
           onClick={() => setOpenMenu(true)}
-          className="text-slate-800 ml-4 cursor-pointer hover:text-slate-500 hidden md:block"
+          className={cx(
+            `text-slate-800 ml-4 cursor-pointer hover:text-slate-500 hidden md:block`,
+            { "min-w-[23px]": showCategories }
+          )}
         />
         {showCategories && (
           <div className="w-full max-w-3xl pl-4">
