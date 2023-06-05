@@ -17,6 +17,7 @@ const useUserStore = create<UserStore>()((setState) => ({
       setState((state) => ({ ...state, status: "ANONYMOUS" }));
     }
   },
+  manualSetStatus: (status) => setState({ status }),
 }));
 
 export default useUserStore;

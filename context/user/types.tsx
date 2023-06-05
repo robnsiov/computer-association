@@ -5,4 +5,5 @@ export default interface UserStore {
   // UNKNOWW : Requesting to server and token validation
   status?: UserStatus;
   setStatus: () => void;
+  manualSetStatus: (status: UserStatus) => void;
 }
