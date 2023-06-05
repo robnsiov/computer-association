@@ -3,15 +3,19 @@ import BlogCardImpl from "../../share/cards/blog/types";
 import useActiveCategoryStore from "@/context/active-category/active-category-store";
 import { useMutation } from "@tanstack/react-query";
 import request from "@/utils/axios/axios";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import usePageLoadingStore from "@/context/page-loading/page-loading-store";
 import BlogsImpl from "./types";
 import { api } from "@/constants/api";
 
 const useBlogs = ({ edit, home }: BlogsImpl) => {
+  const router = useRouter();
   const [blogs, setBlogs] = useState<Array<BlogCardImpl>>([]);
 
-  const [cat] = useActiveCategoryStore((state) => [state.cat]);
+  const [cat, setCat] = useActiveCategoryStore((state) => [
+    state.cat,
+    state.set,
+  ]);
   const [setPageLoading] = usePageLoadingStore((state) => [state.set]);
   const [initBlogs, setInitBlogs] = useState(true);
 
@@ -23,6 +27,7 @@ const useBlogs = ({ edit, home }: BlogsImpl) => {
     if (cat && cat !== "all") url = api.blogsByCategory(cat);
     if (home) url = api.homeBlogs;
     if (edit) url = api.userBlogs;
+    console.log(url);
 
     return request<Array<BlogCardImpl>>({
       method: "GET",
@@ -40,7 +45,7 @@ const useBlogs = ({ edit, home }: BlogsImpl) => {
       setPageLoading(false);
     },
     onSuccess({ data }) {
-      setBlogs(data);
+      setBlogs(() => data);
     },
 
     onError() {
@@ -48,13 +53,17 @@ const useBlogs = ({ edit, home }: BlogsImpl) => {
     },
   });
 
+  const changeRouteWithCat = (path: string) => {
+    setCat(path);
+    router.push(`/blogs?category=${path}`);
+  };
+
   useEffect(() => {
     if (cat) mutation.mutate(cat);
   }, [cat]);
   useEffect(() => {
     if (!categoryPathname) mutation.mutate(null);
   }, [categoryPathname]);
-
-  return { blogs, initBlogs };
+  return { blogs, initBlogs, changeRouteWithCat };
 };
 export default useBlogs;

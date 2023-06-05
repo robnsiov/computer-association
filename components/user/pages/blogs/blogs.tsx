@@ -8,7 +8,7 @@ import BlogsImpl from "./types";
 import cx from "classnames";
 
 const Blogs = ({ edit = false, home = false }: BlogsImpl) => {
-  const { blogs, initBlogs } = useBlogs({ edit, home });
+  const { blogs, initBlogs, changeRouteWithCat } = useBlogs({ edit, home });
   return (
     <>
       <div
@@ -47,9 +47,9 @@ const Blogs = ({ edit = false, home = false }: BlogsImpl) => {
         )}
         <AnimatePresence>
           {blogs.map(
-            ({ article_user, category, count, image, slug, title }) => (
+            ({ article_user, count, image, title, article_category }) => (
               <motion.div
-                key={slug}
+                key={title}
                 layout
                 className="w-full relative"
                 initial={{ opacity: 0 }}
@@ -58,12 +58,12 @@ const Blogs = ({ edit = false, home = false }: BlogsImpl) => {
               >
                 <Blog
                   image={image}
-                  category={category}
                   title={title}
                   edit={edit}
                   article_user={article_user}
                   count={count}
-                  slug={slug}
+                  article_category={article_category}
+                  changeRouteWithCat={changeRouteWithCat}
                 />
               </motion.div>
             )

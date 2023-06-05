@@ -3,15 +3,20 @@ export interface ExtraBlogCardImpl {
 }
 
 export default interface BlogCardImpl {
-  category: string;
   image: string;
   title: string;
   count: number;
-  slug: string;
+  article_category: {
+    en_name: string;
+    name: string;
+    slug: string;
+  };
   article_user: {
     full_name: string;
     image?: string;
   };
 }
 
-export interface BlogCard extends BlogCardImpl, ExtraBlogCardImpl {}
+export interface BlogCard extends BlogCardImpl, ExtraBlogCardImpl {
+  changeRouteWithCat(path: string): void;
+}

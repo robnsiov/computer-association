@@ -5,12 +5,12 @@ import { BlogCard } from "./types";
 
 const Blog = ({
   article_user: { full_name, image: userImage },
-  category,
   count,
   image,
-  slug,
+  article_category: { slug, name: category },
   title,
   edit,
+  changeRouteWithCat,
 }: BlogCard) => {
   return (
     <>
@@ -22,13 +22,13 @@ const Blog = ({
         <div className="relative w-full bg-white rounded-2xl flex justify-center items-center flex-col p-2">
           <div className="w-full flex justify-between items-center mb-2">
             <div className="w-1/2 flex justify-start items-center">
-              <Link
-                href={`/blogs/${slug}`}
+              <div
+                onClick={() => changeRouteWithCat(slug)}
                 className="text-slate-600 font-black text-sm max-w-[80px] truncate
-                hover:text-slate-400"
+                hover:text-slate-400 cursor-pointer"
               >
                 {category}
-              </Link>
+              </div>
             </div>
             <span className="w-0.5 h-5 border-r-2 border-slate-400"></span>
             <div className="flex justify-end items-center w-1/2 mr-4">
