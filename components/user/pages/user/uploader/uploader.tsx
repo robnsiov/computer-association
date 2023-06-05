@@ -1,20 +1,30 @@
 "use client";
 
-import { CloudPlus, Copy } from "iconsax-react";
+import { CloudPlus, Copy, TickSquare } from "iconsax-react";
 import useUploader from "./use-uploader";
 import { useRef } from "react";
 import Image from "@/components/share/image";
+import Spinner from "@/components/share/spinner/spinner";
 
 const Uploader = () => {
-  const { changeInputFile, uploadCount, copyToClipboard, links } =
-    useUploader();
+  const {
+    changeInputFile,
+    uploadCount,
+    copyToClipboard,
+    links,
+    copiedLink,
+    linksLoading,
+  } = useUploader();
   const inputRef = useRef<HTMLInputElement>(null);
   const inputClick = () => {
     inputRef.current?.click();
   };
   return (
     <>
-      <div className="w-full overflow-auto scrollbar flex justify-start items-end flex-col p-4 bg-white rounded-lg">
+      <div
+        className="w-full h-full overflow-auto scrollbar flex justify-start items-end
+       flex-col p-4 bg-white rounded-lg overflow-y-auto scrollbar"
+      >
         <div className="w-full flex justify-start items-start mb-4">
           <div
             className="group w-9 h-9 bg-transparent transition-all duration-200
@@ -45,31 +55,51 @@ const Uploader = () => {
             </div>
           )}
         </div>
-        {links.map((link) => (
-          <div
-            key={link}
-            className="bg-slate-200 text-slate-100 flex justify-start items-center
-        rounded-md py-2 px-4 border-2 border-slate-400 border-dashed "
-            dir="ltr"
-          >
-            <div>
-              <Copy className="text-slate-600 mr-3 cursor-pointer hover:text-slate-400" />
-            </div>
-            <span className="text-slate-600 font-semibold max-w-[100px] truncate">
-              {link}
-            </span>
-
-            <div className="w-6 h-6 ml-3 rounded-lg overflow-hidden">
-              <Image
-                alt={link}
-                src={link}
-                width={24}
-                height={24}
-                className="w-full h-full object-cover"
-              />
-            </div>
+        {linksLoading && (
+          <div className="flex justify-center items-center w-full">
+            <Spinner color="text-slate-600" />
           </div>
-        ))}
+        )}
+
+        <div
+          className="w-full grid grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 460px:grid-cols-1"
+          dir="ltr"
+        >
+          {links.map((link) => (
+            <div
+              key={link}
+              className="bg-slate-200 text-slate-100 flex justify-between items-center
+        rounded-md py-2 px-4 border-2 border-slate-400 border-dashed mr-2 mb-2"
+              dir="ltr"
+            >
+              <div>
+                {copiedLink === link ? (
+                  <>
+                    <TickSquare className="text-slate-600 mr-3" />
+                  </>
+                ) : (
+                  <Copy
+                    onClick={() => copyToClipboard(link)}
+                    className="text-slate-600 mr-3 cursor-pointer hover:text-slate-400"
+                  />
+                )}
+              </div>
+              <span className="text-slate-600 font-semibold truncate">
+                {link}
+              </span>
+
+              <div className="min-w-[24px] h-6 ml-3 rounded-lg overflow-hidden">
+                <Image
+                  alt={link}
+                  src={link}
+                  width={24}
+                  height={24}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

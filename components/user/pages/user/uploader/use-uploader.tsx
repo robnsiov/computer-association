@@ -1,21 +1,33 @@
 import { api } from "@/constants/api";
-import axios from "axios";
+import request from "@/utils/axios/axios";
 import localforage from "localforage";
 import { ChangeEventHandler, useEffect, useState } from "react";
 
 const useUploader = () => {
   const [links, setLinks] = useState<Array<string>>([]);
+  const [linksLoading, setLinksLoading] = useState(true);
+  const [copiedLink, setCopiedLink] = useState("");
   const [uploadCount, setUploadCount] = useState(-1);
   useEffect(() => {
+    localforage.config({
+      driver: localforage.INDEXEDDB,
+      name: "uploader",
+      storeName: "uploader",
+    });
+
     localforage.getItem("links").then((data) => {
+      setLinksLoading(false);
       if (Array.isArray(data)) {
         setLinks(data);
+      } else {
+        localforage.setItem("links", []);
       }
     });
   }, []);
 
   const copyToClipboard = (link: string) => {
     navigator.clipboard.writeText(link);
+    setCopiedLink(link);
   };
 
   const uploadFile = async (file: File) => {
@@ -23,28 +35,23 @@ const useUploader = () => {
     formData.append("image", file);
     try {
       const {
-        data: {
-          data: { image },
-        },
-      } = await axios<{ data: { image: string } }>({
+        data: { image },
+      } = await request<{ image: string }>({
         url: api.uploader,
         method: "POST",
         data: formData,
         onUploadProgress(progressEvent) {
-          setUploadCount(
-            () =>
-              Math.round(progressEvent.loaded * 100) /
-              (progressEvent.total ?? 0)
-          );
+          const percentage =
+            (progressEvent.loaded * 100) / (progressEvent.total ?? 0);
+          setUploadCount(+percentage.toFixed(2));
         },
       });
-      setUploadCount(0);
-      console.log(image);
+      setUploadCount(-1);
       localforage.getItem("links").then((data) => {
-        const links = Array.isArray(data) ? [...data] : [];
-        links.push(image);
-        localforage.setItem("links", links);
-        setLinks(links);
+        const linksStorage = data as Array<string>;
+        linksStorage.unshift(image);
+        localforage.setItem("links", linksStorage);
+        setLinks(linksStorage);
       });
     } catch (err) {
       console.log(err);
@@ -57,6 +64,13 @@ const useUploader = () => {
     uploadFile(file);
   };
 
-  return { links, copyToClipboard, uploadCount, changeInputFile };
+  return {
+    links,
+    copyToClipboard,
+    uploadCount,
+    changeInputFile,
+    copiedLink,
+    linksLoading,
+  };
 };
 export default useUploader;
