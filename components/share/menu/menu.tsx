@@ -14,6 +14,10 @@ import {
 } from "iconsax-react";
 import MenuImpl from "./types";
 import useMenu from "./use-menu";
+import Link from "../link/link";
+import { AiFillInstagram } from "react-icons/ai";
+import { FaTelegramPlane } from "react-icons/fa";
+import { BsTwitter } from "react-icons/bs";
 
 const routes = [
   {
@@ -63,15 +67,33 @@ const Menu = ({ links, inner = false }: MenuImpl) => {
           `absolute top-0 right-0 bottom-0 flex justify-center items-center
        flex-col w-16 space-y-6`,
           { hidden: !open && windowWidth < 767 && !inner },
-          { "md:w-full md:bg-black/95 z-50": !inner }
+          { "md:w-full md:bg-slate-600/60 z-[999]": !inner }
         )}
       >
         {!inner && (
-          <CloseCircle
-            className="absolute left-4 top-4 cursor-pointer hidden md:block text-slate-200
+          <>
+            <CloseCircle
+              className="absolute left-4 top-4 cursor-pointer hidden md:block text-slate-200
           hover:text-slate-500"
-            onClick={() => setOpen(false)}
-          />
+              onClick={() => setOpen(false)}
+            />
+            <div className="absolute bottom-10">
+              <div className="flex justify-center items-center text-xl text-white">
+                <span className="ml-5 text-sm text-slate-300">
+                  به ما ملحق شوید در
+                </span>
+                <Link href={"/"}>
+                  <FaTelegramPlane />
+                </Link>
+                <Link href={"/"} className="mx-3">
+                  <AiFillInstagram />
+                </Link>
+                <Link href={"/"}>
+                  <BsTwitter />
+                </Link>
+              </div>
+            </div>
+          </>
         )}
         {items.map(({ href, activeIcon, icon }) => (
           <MenuItem
