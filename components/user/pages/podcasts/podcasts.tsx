@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "@/components/share/image";
 import Link from "@/components/share/link/link";
 import { Splide, SplideSlide } from "@splidejs/react-splide";

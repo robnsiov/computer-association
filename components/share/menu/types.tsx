@@ -4,5 +4,6 @@ export default interface MenuImpl {
     href: string;
     icon: React.ReactElement;
     activeIcon: React.ReactElement;
+    label: string;
   }>;
 }

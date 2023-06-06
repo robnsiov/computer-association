@@ -11,6 +11,7 @@ import {
   Sound,
   UserSquare,
   Add,
+  Book,
 } from "iconsax-react";
 import MenuImpl from "./types";
 import useMenu from "./use-menu";
@@ -24,36 +25,49 @@ const routes = [
     href: "/",
     icon: <Home size="24" className="text-gray-300" />,
     activeIcon: <Home size="24" className="text-slate-600" />,
+    label: "خانه",
   },
   {
     href: "/user",
     icon: <UserSquare size="24" className="text-gray-300" />,
     activeIcon: <UserSquare size="24" className="text-slate-600" />,
+    label: "پروفایل",
   },
   {
     href: "/blogs",
     icon: <Grid3 size="24" className="text-gray-300" />,
     activeIcon: <Grid3 size="24" className="text-slate-600" />,
+    label: "مقالات",
   },
   {
     href: "/contact-us",
     icon: <Setting3 size="24" className="text-gray-300" />,
     activeIcon: <Setting3 size="24" className="text-slate-600" />,
+    label: "تماس با ما",
   },
   {
     href: "/events",
     icon: <Calendar2 size="24" className="text-gray-300" />,
     activeIcon: <Calendar2 size="24" className="text-slate-600" />,
+    label: "رویداد ها",
   },
   {
     href: "/podcasts",
     icon: <Sound size="24" className="text-gray-300" />,
     activeIcon: <Sound size="24" className="text-slate-600" />,
+    label: "پادکست ها",
+  },
+  {
+    href: "/journal",
+    icon: <Book size="24" className="text-gray-300" />,
+    activeIcon: <Book size="24" className="text-slate-600" />,
+    label: "نشریه",
   },
   {
     href: "/about-us",
     icon: <Profile2User size="24" className="text-gray-300" />,
     activeIcon: <Profile2User size="24" className="text-slate-600" />,
+    label: "درباره ما",
   },
 ];
 
@@ -96,12 +110,13 @@ const Menu = ({ links, inner = false }: MenuImpl) => {
             </div>
           </>
         )}
-        {items.map(({ href, activeIcon, icon }) => (
+        {items.map(({ href, activeIcon, icon, label }) => (
           <MenuItem
             inner={inner}
             key={href}
             href={href}
             activeIcon={activeIcon}
+            label={label}
           >
             {icon}
           </MenuItem>

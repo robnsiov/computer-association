@@ -2,17 +2,17 @@ import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import request from "@/utils/axios/axios";
 import usePageLoadingStore from "@/context/page-loading/page-loading-store";
-import { EventsImpl } from "./types";
+import EventsImpl, { ApiEventsImpl } from "./types";
 import createToast from "@/utils/toast/toast";
 import ErrorHandler from "@/utils/error-handler/error-handler";
 import { api } from "@/constants/api";
 import useUserStore from "@/context/user/user-store";
 import { useRouter } from "next/navigation";
 
-const useEvents = () => {
+const useEvents = ({ journal }: EventsImpl) => {
   const router = useRouter();
 
-  const [events, setEvents] = useState<EventsImpl>([]);
+  const [events, setEvents] = useState<ApiEventsImpl>([]);
   const [participateLoading, setParticipateLoading] = useState(-1);
 
   const [setPageLoading] = usePageLoadingStore((state) => [state.set]);
@@ -21,9 +21,9 @@ const useEvents = () => {
   const [userStatus] = useUserStore((state) => [state.status]);
 
   const eventsMutationFn = () => {
-    return request<EventsImpl>({
+    return request<ApiEventsImpl>({
       method: "GET",
-      url: api.events,
+      url: journal ? api.journal : api.events,
     });
   };
 

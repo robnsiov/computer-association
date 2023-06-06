@@ -10,10 +10,15 @@
 //   expire: boolean;
 // }
 
-export type EventsImpl = Array<{
+export default interface EventsImpl {
+  journal?: boolean;
+}
+
+export type ApiEventsImpl = Array<{
   image: string;
   is_active: string;
   slug: string;
   title: string;
   id: number;
+  src?: string;
 }>;

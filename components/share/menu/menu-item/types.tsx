@@ -3,4 +3,5 @@ export default interface MenuItemImpl {
   children: React.ReactNode;
   activeIcon: React.ReactNode;
   inner?: boolean;
+  label: string;
 }

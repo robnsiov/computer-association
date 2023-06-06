@@ -6,10 +6,11 @@ import useEvents from "./use-events";
 import Image from "@/components/share/image";
 import Link from "@/components/share/link/link";
 import Spinner from "@/components/share/spinner/spinner";
+import EventsImpl from "./types";
 
-const Events = () => {
+const Events = ({ journal = false }: EventsImpl) => {
   const { events, initEvents, participateOnEvent, participateLoading } =
-    useEvents();
+    useEvents({ journal });
   return (
     <>
       <div
@@ -39,7 +40,7 @@ const Events = () => {
           </>
         )}
         <AnimatePresence>
-          {events.map(({ image, slug, title, is_active, id }) => (
+          {events.map(({ image, slug, title, is_active, id, src }) => (
             <motion.div
               key={slug}
               layout
@@ -55,7 +56,11 @@ const Events = () => {
               >
                 <div className="relative w-full bg-white rounded-2xl flex justify-center items-center flex-col p-2">
                   <div className="w-full h-[150px] rounded-xl overflow-hidden">
-                    <Link href={`/events/${slug}`}>
+                    <Link
+                      href={journal && src ? src : `/events/${slug}`}
+                      download={journal}
+                      target={journal ? "_blank" : "_self"}
+                    >
                       <Image
                         width={300}
                         height={200}
@@ -74,29 +79,44 @@ const Events = () => {
                   className="mt-2 w-full flex justify-between items-center bg-white p-2 rounded-lg
                     rounded-bl-3xl rounded-br-3xl"
                 >
-                  {}
-
-                  {!is_active ? (
-                    <div
-                      className="bg-slate-300 text-white w-full p-3 text-sm rounded-lg 
-            rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-100 transition-all duration-200
-            cursor-not-allowed font-semibold"
-                    >
-                      منقضی شده است
-                    </div>
-                  ) : (
-                    <div
-                      onClick={() => participateOnEvent(id)}
-                      className="bg-slate-800 text-white w-full p-3 text-sm rounded-lg 
+                  {journal && src ? (
+                    <>
+                      <Link
+                        href={src}
+                        download={true}
+                        target="_blank"
+                        className="bg-slate-800 text-white w-full p-3 text-sm rounded-lg 
             rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-400 transition-all duration-200
             cursor-pointer font-semibold flex justify-center items-center h-[44px]"
-                    >
-                      {participateLoading === id ? (
-                        <Spinner />
+                      >
+                        مشاهده
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      {!is_active ? (
+                        <div
+                          className="bg-slate-300 text-white w-full p-3 text-sm rounded-lg 
+            rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-100 transition-all duration-200
+            cursor-not-allowed font-semibold"
+                        >
+                          منقضی شده است
+                        </div>
                       ) : (
-                        "شرکت در رویداد"
+                        <div
+                          onClick={() => participateOnEvent(id)}
+                          className="bg-slate-800 text-white w-full p-3 text-sm rounded-lg 
+            rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-400 transition-all duration-200
+            cursor-pointer font-semibold flex justify-center items-center h-[44px]"
+                        >
+                          {participateLoading === id ? (
+                            <Spinner />
+                          ) : (
+                            "شرکت در رویداد"
+                          )}
+                        </div>
                       )}
-                    </div>
+                    </>
                   )}
                 </div>
               </div>
