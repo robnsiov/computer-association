@@ -13,7 +13,7 @@ const Home = () => {
         lg:overflow-unset lg:h-[unset] lg:mb-[unset] lg:order-1"
         >
           <h1 className="font-black text-4xl mb-4 lg:hidden">برترین مقالات</h1>
-          <div className="w-full h-full p-2">
+          <div className="w-full h-full">
             <Blogs home={true} />
           </div>
         </div>
