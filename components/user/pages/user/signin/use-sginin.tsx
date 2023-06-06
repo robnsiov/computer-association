@@ -12,13 +12,17 @@ import { useRouter } from "next/navigation";
 import useUserStore from "@/context/user/user-store";
 import { useBoolean } from "usehooks-ts";
 import { api } from "@/constants/api";
+import { qu } from "@/components/share/container/query-client/query-client";
 
 const useSignin = () => {
   const searchParams = useSearchParams();
   const returnParam = searchParams.get("return");
   const rounter = useRouter();
 
-  const [userStatus] = useUserStore((state) => [state.status]);
+  const [userStatus, setUserStatus] = useUserStore((state) => [
+    state.status,
+    state.manualSetStatus,
+  ]);
   const { value: loading, setValue: setLoading } = useBoolean(false);
 
   useEffect(() => {
@@ -42,9 +46,12 @@ const useSignin = () => {
       setLoading(false);
     },
     onSuccess({ data }) {
+      setUserStatus("AUTHENTICATED");
       createToast({ title: "ورود موفقیت آمیز بود", icon: "success" });
       localStorage.setItem("token", data.access);
-      rounter.replace(`${returnParam ?? "/user"}`);
+      setTimeout(() => {
+        rounter.replace(`${returnParam ?? "/user"}`);
+      }, 100);
     },
     onError(error) {
       ErrorHandler(error, "/login");
@@ -61,10 +68,27 @@ const useSignin = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<SigninFormValues>({
     values: { email: "", password: "" },
     resolver: zodResolver(validation),
   });
+
+  useEffect(() => {
+    const user = qu.getQueryData(["user-auth"]) as
+      | { email: string; pass: string }
+      | undefined;
+    if (user) {
+      setValue("email", user.email, {
+        shouldDirty: true,
+        shouldValidate: true,
+      });
+      setValue("password", user.pass, {
+        shouldDirty: true,
+        shouldValidate: true,
+      });
+    }
+  }, []);
 
   const onSubmit: SubmitHandler<SigninFormValues> = (data) => {
     mutation.mutate(data);

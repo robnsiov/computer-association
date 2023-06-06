@@ -6,11 +6,6 @@ import useProtected from "./use-protected";
 
 const Protected = ({ children }: ProtectedImpl) => {
   const { userStatus } = useProtected();
-  return (
-    <>
-      {userStatus === "AUTHENTICATED" ? <>{children}</> : <PageWait />}
-      <PageWait />
-    </>
-  );
+  return <>{userStatus === "AUTHENTICATED" ? <>{children}</> : <PageWait />}</>;
 };
 export default Protected;

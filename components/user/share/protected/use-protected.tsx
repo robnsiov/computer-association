@@ -7,7 +7,7 @@ const useProtected = () => {
   const [userStatus] = useUserStore((state) => [state.status]);
 
   useEffect(() => {
-    router.replace("/user/signin");
+    if (userStatus === "ANONYMOUS") router.replace("/user/signin");
   }, [userStatus]);
 
   return { userStatus };

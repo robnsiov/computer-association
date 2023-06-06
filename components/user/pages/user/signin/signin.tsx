@@ -64,6 +64,7 @@ const Signin = () => {
             type="text"
             wrapperClassName="mb-4"
             error={errors.email?.message}
+            async={true}
           />
           <Input<SigninFormValues>
             register={register}
@@ -72,6 +73,7 @@ const Signin = () => {
             type="password"
             wrapperClassName="mb-4"
             error={errors.password?.message}
+            async={true}
           />
 
           <Button loading={loading} title={"ورود"} />

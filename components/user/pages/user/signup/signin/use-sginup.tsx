@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import useUserStore from "@/context/user/user-store";
 import { useBoolean } from "usehooks-ts";
 import { api } from "@/constants/api";
+import { qu } from "@/components/share/container/query-client/query-client";
 
 const useSignup = () => {
   const searchParams = useSearchParams();
@@ -28,31 +29,6 @@ const useSignup = () => {
     }
   }, [userStatus]);
 
-  const mutationFn = (data: Object) => {
-    setLoading(true);
-    return request<{ access: string }>({
-      method: "POST",
-      data,
-      url: api.register,
-    });
-  };
-
-  const mutation = useMutation({
-    mutationFn: (data: Object) => mutationFn(data),
-    onSettled() {
-      setLoading(false);
-    },
-    onSuccess({ data }) {
-      createToast({ title: "ثبت نام موفقیت آمیز بود", icon: "success" });
-      localStorage.setItem("token", data.access);
-      console.log(data);
-      // rounter.replace(`${returnParam ?? "/user"}`);
-    },
-    onError(error) {
-      ErrorHandler(error, "/register");
-    },
-  });
-
   const validation = useMemo(() => {
     return zod.object({
       fullName: zod.string().min(4).max(56),
@@ -63,6 +39,7 @@ const useSignup = () => {
       university: zod.string(),
     });
   }, []);
+
   const {
     register,
     handleSubmit,
@@ -80,6 +57,33 @@ const useSignup = () => {
     },
     resolver: zodResolver(validation),
   });
+  const mutationFn = (data: Object) => {
+    setLoading(true);
+    return request<{ access: string }>({
+      method: "POST",
+      data,
+      url: api.register,
+    });
+  };
+
+  const mutation = useMutation({
+    mutationFn: (data: Object) => mutationFn(data),
+    onSettled() {
+      setLoading(false);
+    },
+    onSuccess() {
+      createToast({ title: "ثبت نام موفقیت آمیز بود", icon: "success" });
+      rounter.replace(`${returnParam ?? "/user/signin"}`);
+      qu.setQueryData(["user-auth"], {
+        email: getValues("email"),
+        pass: getValues("password"),
+      });
+    },
+    onError(error) {
+      ErrorHandler(error, "/register");
+    },
+  });
+
   useEffect(() => {
     const subscription = watch((value) => {
       setShowUniFiled(!value.isQut);
