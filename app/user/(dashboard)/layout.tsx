@@ -35,11 +35,6 @@ const links = [
     activeIcon: <CalendarSearch size="24" className="text-slate-600" />,
   },
   {
-    href: "/user/events",
-    icon: <CalendarSearch size="24" className="text-gray-300" />,
-    activeIcon: <CalendarSearch size="24" className="text-slate-600" />,
-  },
-  {
     href: "/user/logout",
     icon: <Logout size="24" className="text-gray-300" />,
     activeIcon: <Logout size="24" className="text-slate-600" />,
