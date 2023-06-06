@@ -1,4 +1,4 @@
-import "./globals.css";
+import "./globals.scss";
 import localFont from "next/font/local";
 import Container from "@/components/share/container/container";
 

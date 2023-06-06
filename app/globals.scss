@@ -2,7 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 @layer base {
+  ::selection {
+    @apply bg-slate-500 text-white;
+  }
   body {
     height: 100vh;
   }
@@ -77,5 +88,46 @@
   }
   .fade-exit-active {
     @apply opacity-0 transition-all duration-300;
+  }
+}
+
+.swal2-container {
+  z-index: 8000 !important;
+}
+.alert {
+  background-color: #a760ff !important;
+  padding: 8px !important;
+  &--err {
+    background-color: #ff8080 !important;
+  }
+  &__title {
+    color: #f6f6f9 !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+  }
+  &__progress {
+    background-color: #d2c7ff !important;
+  }
+  &__icon {
+    border-color: #ca82ff !important;
+    &--err {
+      border-color: #fea8bf !important;
+      .swal2-x-mark-line-left,
+      .swal2-x-mark-line-right {
+        background-color: #ebebeb !important;
+      }
+    }
+    .swal2-success-line-long,
+    .swal2-success-line-tip {
+      background-color: #ebebeb !important;
+    }
+    .swal2-success-fix,
+    .swal2-success-circular-line-right,
+    .swal2-success-circular-line-left {
+      background-color: unset !important;
+    }
+    span {
+      background-color: #f6f6f9 !important;
+    }
   }
 }

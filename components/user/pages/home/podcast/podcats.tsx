@@ -6,11 +6,14 @@ import Image from "@/components/share/image";
 import Skeleton from "@/components/share/skeleton/skeleton";
 
 const Podcast = () => {
-  const { data, isSuccess } = usePodcast();
+  const { data, isSuccess, add } = usePodcast();
   console.log(data && isSuccess);
   return (
     <>
-      <div className="relative w-[200px] h-[200px] rounded-full flex justify-center items-center overflow-hidden">
+      <div
+        className="relative w-[200px] h-[200px] rounded-full flex justify-center items-center overflow-hidden"
+        onClick={add}
+      >
         <div className="w-[450px] h-[450px] absolute animate-spin-slow">
           <Image
             alt="ring"

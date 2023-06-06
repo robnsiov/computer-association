@@ -1,6 +1,7 @@
 import { api } from "@/constants/api";
 import { Podcast } from "@/context/selected-podcats/types";
 import request from "@/utils/axios/axios";
+import createToast from "@/utils/toast/toast";
 import { useQuery } from "@tanstack/react-query";
 
 const usePodcast = () => {
@@ -16,6 +17,9 @@ const usePodcast = () => {
     queryKey: ["home-podcasts"],
     retry: 3,
   });
-  return { data: data?.data[0], isSuccess };
+  const add = () => {
+    createToast({ title: "عالی بود", icon: "success" });
+  };
+  return { data: data?.data[0], isSuccess, add };
 };
 export default usePodcast;
