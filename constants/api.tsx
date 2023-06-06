@@ -23,4 +23,5 @@ export const api = {
   createBlog: "/post/article/",
   userBlogs: "/account/articles/",
   homeBlogs: "/home/list_article_view/",
+  homePodcast: "/home/list_podcast_view/",
 };
