@@ -27,7 +27,14 @@ const useWriteBlog = (getTextareaContent: Function) => {
       title: zod.string().min(2).max(64),
       image: zod.string().min(1, "انتخاب تصویر الزامی میباشد").max(999999),
       catName: zod.string().min(1, "انتخاب دسته بندی الزامی میباشد").max(80),
-      enTitle: zod.string().min(4).max(40),
+      enTitle: zod
+        .string()
+        .min(4)
+        .max(40)
+        .refine(
+          (value) => /^[A-Za-z][A-Za-z0-9 ]*$/.test(value),
+          "کارکترهای مجاز : انگلیسی"
+        ),
     });
   }, []);
 
