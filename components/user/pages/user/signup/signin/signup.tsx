@@ -83,7 +83,7 @@ const Signup = () => {
             register={register}
             label="شماره دانشجویی"
             name="studentNumber"
-            type="text"
+            type="number"
             wrapperClassName="mb-3"
             error={errors.studentNumber?.message}
           />
