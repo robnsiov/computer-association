@@ -26,9 +26,10 @@ const MenuItem = ({
           className="relative cursor-pointer inline-flex justify-center items-center group peer"
         >
           <span
-            className="absolute top-[calc(100%+3px)] text-[10px] right-0 bg-slate-700 z-50
+            className="absolute top-[calc(100%+3px)] text-[10px] left-1/2 -translate-x-1/2 bg-slate-700 z-50
           rounded px-1 pt-0.5 text-white whitespace-nowrap 
-          opacity-0 invisible transition-all duration-500 group-hover:opacity-100 group-hover:visible"
+          opacity-0 invisible transition-all duration-500 
+          group-hover:opacity-100 group-hover:visible"
           >
             {label}
           </span>
