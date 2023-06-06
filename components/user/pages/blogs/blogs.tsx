@@ -51,7 +51,15 @@ const Blogs = ({
         )}
         <AnimatePresence>
           {blogs.map(
-            ({ article_user, count, image, title, article_category, slug }) => (
+            ({
+              article_user,
+              count,
+              image,
+              title,
+              article_category,
+              slug,
+              status,
+            }) => (
               <motion.div
                 key={title}
                 layout
@@ -70,6 +78,7 @@ const Blogs = ({
                   article_category={article_category}
                   changeRouteWithCat={changeRouteWithCat}
                   editOperation={editOperation}
+                  status={status}
                 />
               </motion.div>
             )

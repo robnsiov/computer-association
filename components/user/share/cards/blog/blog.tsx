@@ -14,6 +14,7 @@ const Blog = (props: BlogCard) => {
     changeRouteWithCat,
     slug,
     editOperation = () => {},
+    status,
   } = props;
   return (
     <>
@@ -103,8 +104,26 @@ const Blog = (props: BlogCard) => {
           )}
 
           <div className="flex justify-start items-center">
-            <span className="ml-2">{count}</span>
-            <Eye size="18" />
+            {edit ? (
+              <>
+                <div className="text-[12px] font-bold">
+                  {status === "p" && (
+                    <span className="text-green-500">تایید شده</span>
+                  )}
+                  {status === "d" && (
+                    <span className="text-slate-300">در انتظار تایید</span>
+                  )}
+                  {status === "t" && (
+                    <span className="text-red-500">رد شده</span>
+                  )}
+                </div>
+              </>
+            ) : (
+              <>
+                <span className="ml-2">{count}</span>
+                <Eye size="18" />
+              </>
+            )}
           </div>
         </div>
       </div>

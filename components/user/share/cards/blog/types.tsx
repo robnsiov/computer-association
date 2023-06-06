@@ -16,6 +16,8 @@ export default interface BlogCardImpl {
     image?: string;
   };
   slug: string;
+  // publish / draft / trash
+  status?: "p" | "d" | "t";
 }
 
 export interface BlogCard extends BlogCardImpl, ExtraBlogCardImpl {
