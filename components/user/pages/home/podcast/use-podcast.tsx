@@ -17,9 +17,7 @@ const usePodcast = () => {
     queryKey: ["home-podcasts"],
     retry: 3,
   });
-  const add = () => {
-    createToast({ title: "عالی بود", icon: "success" });
-  };
-  return { data: data?.data[0], isSuccess, add };
+
+  return { data: data?.data[0], isSuccess };
 };
 export default usePodcast;
