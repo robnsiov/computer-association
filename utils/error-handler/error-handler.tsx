@@ -13,13 +13,13 @@ const ErrorHandler = (error: AxiosError | unknown, path: string) => {
       }
     }
     // change-pass
-    if (path === "/change-pass") {
+    else if (path === "/change-pass") {
       if (err === "code is not correct") {
         createToast({ title: "کد اعتبارسنجی نادرست میباشد", icon: "error" });
       }
     }
     // attend-events
-    if (path === "/attend-events") {
+    else if (path === "/attend-events") {
       if (err === "You have registered for the event") {
         createToast({
           title: "قبلا در این رویداد ثبت نام کرده اید",
@@ -28,7 +28,7 @@ const ErrorHandler = (error: AxiosError | unknown, path: string) => {
       }
     }
     // blog-write
-    if (path === "/blog-write") {
+    else if (path === "/blog-write") {
       if ("en_title" in (err as Object)) {
         createToast({
           title: "عنوان انگلیسی وارد شده قبلا توسط کاربر دیگری استفاده شده است",
@@ -49,10 +49,26 @@ const ErrorHandler = (error: AxiosError | unknown, path: string) => {
           icon: "error",
         });
       }
+    } else {
+      createToast({
+        title: "خطای غیر منتظره ای رخ داده است",
+        icon: "error",
+      });
     }
   }
   // network errors
-  // server errors
-  // custom errors
+  else if (axiosErr.code === "ERR_NETWORK") {
+    createToast({
+      title: "ارتباط با سرور برقرار نشد",
+      icon: "error",
+    });
+  }
+  // bad response
+  else if (axiosErr.code === "ERR_BAD_RESPONSE") {
+    createToast({
+      title: "درخواست موفقیت آمیز نبود",
+      icon: "error",
+    });
+  }
 };
 export default ErrorHandler;
