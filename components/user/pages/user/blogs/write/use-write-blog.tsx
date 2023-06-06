@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ChangeEventHandler, useMemo, useState } from "react";
+import { ChangeEventHandler, useEffect, useMemo, useState } from "react";
 import zod from "@/constants/zod-messages";
 import { BlogFormValues, Category } from "./types";
 import ErrorHandler from "@/utils/error-handler/error-handler";
@@ -8,13 +8,18 @@ import createToast from "@/utils/toast/toast";
 import { useBoolean } from "usehooks-ts";
 import request from "@/utils/axios/axios";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/constants/api";
+import { qu } from "@/components/share/container/query-client/query-client";
+import BlogCardImpl from "@/components/user/share/cards/blog/types";
 
 const useWriteBlog = (getTextareaContent: Function) => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const edit = searchParams.get("edit");
   const [imageFile, setImageFile] = useState<File>();
   const [imageSrc, setImageSrc] = useState("");
+  const { value: editPage, setValue: setEditPage } = useBoolean(false);
   const { value: formLoading, setValue: setFormLoading } = useBoolean(false);
 
   const validation = useMemo(() => {
@@ -37,6 +42,22 @@ const useWriteBlog = (getTextareaContent: Function) => {
     queryFn,
     queryKey: ["categories"],
   });
+
+  const queryUserBlogFn = () => {
+    const blog = qu.getQueryData(["user-blog"]) as BlogCardImpl;
+    return request({
+      method: "GET",
+      url: `${api.singleBlog}${blog.slug}/`,
+    });
+  };
+
+  const { data } = useQuery({
+    queryFn: queryUserBlogFn,
+    queryKey: ["user-blog-edit"],
+    enabled: editPage,
+  });
+
+  console.log(data);
 
   const {
     register,
@@ -98,6 +119,13 @@ const useWriteBlog = (getTextareaContent: Function) => {
       ErrorHandler(error, "/blog-write");
     },
   });
+
+  useEffect(() => {
+    const blog = qu.getQueryData(["user-blog"]) as BlogCardImpl | undefined;
+    if (blog && edit) {
+      setEditPage(true);
+    }
+  }, []);
 
   const onSubmit: SubmitHandler<BlogFormValues> = (data) => {
     const formData = new FormData();

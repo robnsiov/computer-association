@@ -7,7 +7,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import BlogsImpl from "./types";
 import cx from "classnames";
 
-const Blogs = ({ edit = false, home = false }: BlogsImpl) => {
+const Blogs = ({
+  edit = false,
+  home = false,
+  editOperation = () => {},
+}: BlogsImpl) => {
   const { blogs, initBlogs, changeRouteWithCat } = useBlogs({ edit, home });
   return (
     <>
@@ -65,6 +69,7 @@ const Blogs = ({ edit = false, home = false }: BlogsImpl) => {
                   count={count}
                   article_category={article_category}
                   changeRouteWithCat={changeRouteWithCat}
+                  editOperation={editOperation}
                 />
               </motion.div>
             )

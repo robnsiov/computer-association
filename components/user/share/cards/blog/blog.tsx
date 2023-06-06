@@ -3,16 +3,18 @@ import Link from "@/components/share/link/link";
 import { Eye, User } from "iconsax-react";
 import { BlogCard } from "./types";
 
-const Blog = ({
-  article_user: { full_name, image: userImage },
-  count,
-  image,
-  article_category: { slug: userSlug, name: category },
-  title,
-  edit,
-  changeRouteWithCat,
-  slug,
-}: BlogCard) => {
+const Blog = (props: BlogCard) => {
+  const {
+    article_user: { full_name, image: userImage },
+    count,
+    image,
+    article_category: { slug: userSlug, name: category },
+    title,
+    edit,
+    changeRouteWithCat,
+    slug,
+    editOperation = () => {},
+  } = props;
   return (
     <>
       <div
@@ -81,13 +83,25 @@ const Blog = ({
           className="mt-2 w-full flex justify-between items-center bg-white p-2 rounded-lg
         rounded-bl-3xl rounded-br-3xl"
         >
-          <Link
-            className="bg-slate-800 text-white w-[60%] p-3 text-sm rounded-lg 
+          {edit ? (
+            <div
+              onClick={() => editOperation(props)}
+              className="bg-slate-800 text-white w-[60%] p-3 text-sm rounded-lg 
+            rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-400 
+            transition-all duration-200 cursor-pointer"
+            >
+              ویرایش
+            </div>
+          ) : (
+            <Link
+              className="bg-slate-800 text-white w-[60%] p-3 text-sm rounded-lg 
             rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-400 transition-all duration-200"
-            href={edit ? `/user/blogs/${slug}` : `/blogs/${slug}`}
-          >
-            {edit ? "ویرایش" : "مطالعه"}
-          </Link>
+              href={`/blogs/${slug}`}
+            >
+              مطالعه
+            </Link>
+          )}
+
           <div className="flex justify-start items-center">
             <span className="ml-2">{count}</span>
             <Eye size="18" />

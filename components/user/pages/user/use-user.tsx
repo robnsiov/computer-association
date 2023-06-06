@@ -101,11 +101,13 @@ const useUser = () => {
         shouldDirty: true,
         shouldValidate: true,
       });
-      setImageSrc(apiData.image as string);
-      setValue("image", "..." + apiData.image?.slice(0, 20), {
-        shouldDirty: true,
-        shouldValidate: true,
-      });
+      if (apiData.image) {
+        setImageSrc(apiData.image);
+        setValue("image", "..." + apiData.image.slice(0, 20), {
+          shouldDirty: true,
+          shouldValidate: true,
+        });
+      }
       // force update for solve input problems
       toggle();
     }
