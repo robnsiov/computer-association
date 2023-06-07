@@ -86,7 +86,7 @@ const Menu = ({ links, inner = false }: MenuImpl) => {
       <div
         className={cx(
           `absolute top-0 right-0 bottom-0 flex justify-center items-center
-       flex-col w-16 space-y-6`,
+       flex-col w-16 space-y-6  opacity-0 menu-anim`,
           { hidden: !open && windowWidth < 767 && !inner },
           { "md:w-full md:bg-slate-600/60 z-[999]": !inner }
         )}
