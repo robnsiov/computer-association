@@ -7,9 +7,10 @@ import Providers from "./query-client/query-client";
 import Categories from "@/components/user/share/categories/categories";
 import Footer from "./designed-by/footer";
 import useContainer from "./use-container";
+import cx from "classnames";
 
 const Container = ({ children }: ContainerImpl) => {
-  useContainer();
+  const { pageLoading } = useContainer();
   return (
     <>
       <Providers>
@@ -20,7 +21,13 @@ const Container = ({ children }: ContainerImpl) => {
           <Categories />
           <Menu />
           <PageLoader />
-          <div className="w-full h-full bg-[#f6f6f9] rounded-3xl rounded-l-none p-5 relative overflow-hidden">
+          <div
+            className={cx(
+              `w-full h-full bg-[#f6f6f9] rounded-3xl rounded-l-none
+           p-5 relative overflow-hidden transition-all duration-700 opacity-0`,
+              { "opacity-100 transition-all duration-700": !pageLoading }
+            )}
+          >
             {children}
           </div>
           <Footer />
