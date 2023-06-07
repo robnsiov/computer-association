@@ -23,4 +23,6 @@ export default interface BlogCardImpl {
 export interface BlogCard extends BlogCardImpl, ExtraBlogCardImpl {
   changeRouteWithCat(path: string): void;
   editOperation?(blog: BlogCard): void;
+  videos?: boolean;
+  onView?(src: string): void;
 }

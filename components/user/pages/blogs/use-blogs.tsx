@@ -3,28 +3,40 @@ import BlogCardImpl from "../../share/cards/blog/types";
 import useActiveCategoryStore from "@/context/active-category/active-category-store";
 import { useMutation } from "@tanstack/react-query";
 import request from "@/utils/axios/axios";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import usePageLoadingStore from "@/context/page-loading/page-loading-store";
 import BlogsImpl from "./types";
 import { api } from "@/constants/api";
 
-const useBlogs = ({ edit, home }: BlogsImpl) => {
+const useBlogs = ({ edit, home, videos }: BlogsImpl) => {
   const router = useRouter();
+  const pathname = usePathname();
   const [blogs, setBlogs] = useState<Array<BlogCardImpl>>([]);
 
   const [cat, setCat] = useActiveCategoryStore((state) => [
     state.cat,
     state.set,
   ]);
+
   const [setPageLoading] = usePageLoadingStore((state) => [state.set]);
   const [initBlogs, setInitBlogs] = useState(true);
 
   const searchParams = useSearchParams();
   const categoryPathname = searchParams.get("category");
 
+  useEffect(() => {
+    () => {
+      // clear category
+      setCat("");
+    };
+  }, []);
+
   const mutationFn = (cat: string | null) => {
-    let url = api.blogs;
-    if (cat && cat !== "all") url = api.blogsByCategory(cat);
+    let url = videos ? api.vidoes : api.blogs;
+    if (cat && cat !== "all") {
+      if (videos) url = api.videosByCategory(cat);
+      else url = api.blogsByCategory(cat);
+    }
     if (home) url = api.homeBlogs;
     if (edit) url = api.userBlogs;
     console.log(url);
@@ -56,7 +68,7 @@ const useBlogs = ({ edit, home }: BlogsImpl) => {
 
   const changeRouteWithCat = (path: string) => {
     setCat(path);
-    router.push(`/blogs?category=${path}`);
+    router.push(`${pathname}?category=${path}`);
   };
 
   useEffect(() => {

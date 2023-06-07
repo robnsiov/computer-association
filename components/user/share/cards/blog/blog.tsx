@@ -1,6 +1,6 @@
 import Image from "@/components/share/image";
 import Link from "@/components/share/link/link";
-import { Eye, User } from "iconsax-react";
+import { DocumentDownload, Eye, User } from "iconsax-react";
 import { BlogCard } from "./types";
 
 const Blog = (props: BlogCard) => {
@@ -15,6 +15,8 @@ const Blog = (props: BlogCard) => {
     slug,
     editOperation = () => {},
     status,
+    videos,
+    onView = () => {},
   } = props;
   return (
     <>
@@ -65,15 +67,29 @@ const Blog = (props: BlogCard) => {
             </div>
           </div>
           <div className="w-full h-[150px] rounded-xl overflow-hidden">
-            <Link href={`/blogs/${slug}`}>
-              <Image
-                width={300}
-                height={200}
-                className="w-full h-full object-cover object-center"
-                src={image}
-                alt="ok"
-              />
-            </Link>
+            {videos ? (
+              <>
+                <div onClick={() => onView("src")} className="cursor-pointer">
+                  <Image
+                    width={300}
+                    height={200}
+                    className="w-full h-full object-cover object-center"
+                    src={image}
+                    alt={title}
+                  />
+                </div>
+              </>
+            ) : (
+              <Link href={`/blogs/${slug}`}>
+                <Image
+                  width={300}
+                  height={200}
+                  className="w-full h-full object-cover object-center"
+                  src={image}
+                  alt={title}
+                />
+              </Link>
+            )}
           </div>
           <span className="absolute -bottom-2.5 blur-xl left-0 right-0 h-6 bg-slate-200"></span>
         </div>
@@ -94,13 +110,28 @@ const Blog = (props: BlogCard) => {
               ویرایش
             </div>
           ) : (
-            <Link
-              className="bg-slate-800 text-white w-[60%] p-3 text-sm rounded-lg 
+            <>
+              {videos ? (
+                <>
+                  <div
+                    onClick={() => onView("src")}
+                    className="bg-slate-800 text-white w-[60%] p-3 text-sm rounded-lg 
+            rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-400 
+            transition-all duration-200 cursor-pointer"
+                  >
+                    مشاهده
+                  </div>
+                </>
+              ) : (
+                <Link
+                  className="bg-slate-800 text-white w-[60%] p-3 text-sm rounded-lg 
             rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-400 transition-all duration-200"
-              href={`/blogs/${slug}`}
-            >
-              مطالعه
-            </Link>
+                  href={`/blogs/${slug}`}
+                >
+                  مطالعه
+                </Link>
+              )}
+            </>
           )}
 
           <div className="flex justify-start items-center">
@@ -120,8 +151,16 @@ const Blog = (props: BlogCard) => {
               </>
             ) : (
               <>
-                <span className="ml-2">{count}</span>
-                <Eye size="18" />
+                {videos ? (
+                  <Link href={"/"} download={true} target="_blank">
+                    <DocumentDownload className="hover:text-slate-400 transition-all duration-200" />
+                  </Link>
+                ) : (
+                  <>
+                    <span className="ml-2">{count}</span>
+                    <Eye size="18" />
+                  </>
+                )}
               </>
             )}
           </div>

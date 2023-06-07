@@ -12,7 +12,10 @@ const useCategories = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get("category") ?? "all";
-  const availabelPathnames = [{ path: "/blogs", query: api.categories }];
+  const availabelPathnames = [
+    { path: "/blogs", query: api.categories },
+    { path: "/videos", query: api.categories },
+  ];
 
   const [setOpenMenu] = useMenuStatusStore((state) => [state.set]);
   const [setActiveCat] = useActiveCategoryStore((state) => [state.set]);

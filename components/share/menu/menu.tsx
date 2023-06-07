@@ -12,6 +12,7 @@ import {
   UserSquare,
   Add,
   Book,
+  VideoPlay,
 } from "iconsax-react";
 import MenuImpl from "./types";
 import useMenu from "./use-menu";
@@ -62,6 +63,12 @@ const routes = [
     icon: <Book size="24" className="text-gray-300" />,
     activeIcon: <Book size="24" className="text-slate-600" />,
     label: "نشریه",
+  },
+  {
+    href: "/videos",
+    icon: <VideoPlay size="24" className="text-gray-300" />,
+    activeIcon: <VideoPlay size="24" className="text-slate-600" />,
+    label: "ویدیو ها",
   },
   {
     href: "/about-us",

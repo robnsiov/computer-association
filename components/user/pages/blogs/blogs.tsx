@@ -10,9 +10,15 @@ import cx from "classnames";
 const Blogs = ({
   edit = false,
   home = false,
+  videos = false,
   editOperation = () => {},
+  onView = () => {},
 }: BlogsImpl) => {
-  const { blogs, initBlogs, changeRouteWithCat } = useBlogs({ edit, home });
+  const { blogs, initBlogs, changeRouteWithCat } = useBlogs({
+    edit,
+    home,
+    videos,
+  });
   return (
     <>
       <div
@@ -79,6 +85,8 @@ const Blogs = ({
                   changeRouteWithCat={changeRouteWithCat}
                   editOperation={editOperation}
                   status={status}
+                  videos={videos}
+                  onView={onView}
                 />
               </motion.div>
             )
