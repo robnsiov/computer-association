@@ -13,7 +13,6 @@ export const singleBlog = async (slug: string) => {
     const res = await fetch(`${api.baseURL}${api.singleBlog}${slug}/`);
     if (!res.ok) return notFound();
     const result: SingleBlogApi = await res.json();
-    console.log(result);
     return result;
   } catch {
     notFound();
@@ -22,7 +21,6 @@ export const singleBlog = async (slug: string) => {
 
 const SingleBlog = async ({ slug }: SingleBlogImpl) => {
   const blog = await singleBlog(slug);
-  console.log(blog);
   return (
     <>
       <div className="w-full  h-full scrollbar overflow-y-auto pl-4">

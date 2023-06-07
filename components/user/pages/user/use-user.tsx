@@ -112,7 +112,6 @@ const useUser = () => {
       toggle();
     }
   }, [data]);
-  console.log(errors);
   return {
     onSubmit: handleSubmit(onSubmit),
     register,

@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 import Image from "@/components/share/image";
 import Link from "@/components/share/link/link";

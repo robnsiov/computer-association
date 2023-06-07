@@ -13,9 +13,6 @@ const nextConfig = {
       },
     ],
   },
-  image: {
-    domains: ["storage.iran.liara.space"],
-  },
 };
 
 module.exports = nextConfig;

@@ -39,7 +39,6 @@ const useBlogs = ({ edit, home, videos }: BlogsImpl) => {
     }
     if (home) url = api.homeBlogs;
     if (edit) url = api.userBlogs;
-    console.log(url);
 
     return request<Array<BlogCardImpl>>({
       method: "GET",
@@ -57,7 +56,6 @@ const useBlogs = ({ edit, home, videos }: BlogsImpl) => {
       setPageLoading(false);
     },
     onSuccess({ data }) {
-      // console.log(data);
       setBlogs(() => data);
     },
 

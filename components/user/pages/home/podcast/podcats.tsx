@@ -7,7 +7,6 @@ import Skeleton from "@/components/share/skeleton/skeleton";
 
 const Podcast = () => {
   const { data, isSuccess } = usePodcast();
-  console.log(data && isSuccess);
   return (
     <>
       <div className="relative w-[200px] h-[200px] rounded-full flex justify-center items-center overflow-hidden">

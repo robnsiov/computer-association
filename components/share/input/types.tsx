@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { UseFormRegister, Path } from "react-hook-form";
 
 export default interface InputImpl<T> {

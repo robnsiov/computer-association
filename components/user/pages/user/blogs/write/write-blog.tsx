@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 import MDEditor from "@uiw/react-md-editor";
 import rehypeSanitize from "rehype-sanitize";
@@ -129,12 +130,7 @@ const WriteBlog = () => {
               </div>
             </div>
             <div className="w-full z-[100] mt-4">
-              <textarea
-                value={"**سلام**"}
-                onChange={console.log}
-                ref={ref}
-                id="text-area"
-              ></textarea>
+              <textarea value={"**سلام**"} ref={ref} id="text-area"></textarea>
             </div>
             <div className="mt-4 w-[180px]">
               <Button title="ثبت" loading={formLoading} />

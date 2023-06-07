@@ -64,8 +64,6 @@ const useWriteBlog = (getTextareaContent: Function) => {
     enabled: editPage,
   });
 
-  console.log(data);
-
   const {
     register,
     handleSubmit,
@@ -148,7 +146,6 @@ const useWriteBlog = (getTextareaContent: Function) => {
     if (data.title) formData.append("title", data.title);
     if (content) formData.append("content", content);
     formMutation.mutate({ data: formData, edit: false });
-    console.log(data);
   };
   return {
     onSubmit: handleSubmit(onSubmit),

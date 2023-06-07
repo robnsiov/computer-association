@@ -1,4 +1,5 @@
 import useMenuStatusStore from "@/context/menu-status/menu-status-store";
+import usePageAnimStore from "@/context/page-anim/page-anim-store";
 import usePageLoadingStore from "@/context/page-loading/page-loading-store";
 import useUserStore from "@/context/user/user-store";
 import { usePathname } from "next/navigation";
@@ -9,6 +10,11 @@ const useContainer = () => {
   const [set, pageLoading] = usePageLoadingStore((state) => [
     state.set,
     state.loading,
+  ]);
+
+  const [pageAnim, setPageAnim] = usePageAnimStore((state) => [
+    state.loading,
+    state.set,
   ]);
 
   const [setOpenMenu] = useMenuStatusStore((state) => [state.set]);
@@ -23,7 +29,19 @@ const useContainer = () => {
     setOpenMenu(false);
   }, [pathname]);
 
-  return { pageLoading };
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+
+    timer = setTimeout(() => {
+      setPageAnim(false);
+    }, 500);
+
+    () => {
+      clearTimeout(timer);
+    };
+  }, [pathname]);
+
+  return { pageLoading: pageAnim };
 };
 
 export default useContainer;

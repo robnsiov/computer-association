@@ -65,8 +65,6 @@ const useComments = ({ type, slug, onConfirm }: CommentsImpl) => {
     });
   };
 
-  console.log(data);
-
   const mutation = useMutation({
     mutationFn: (data: Object) => mutationFn(data),
     onMutate() {

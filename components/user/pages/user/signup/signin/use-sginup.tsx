@@ -93,7 +93,6 @@ const useSignup = () => {
   const onSubmit: SubmitHandler<SignupFormValues> = (data) => {
     if (!getValues("isQut")) {
       const length = getValues("university").trim().length as number;
-      console.log(getValues("university"));
       if (length === 0) {
         createToast({
           icon: "error",
@@ -111,7 +110,6 @@ const useSignup = () => {
       password: data.password,
       confirm_password: data.password,
     };
-    console.log(formData);
     mutation.mutate(formData);
   };
 

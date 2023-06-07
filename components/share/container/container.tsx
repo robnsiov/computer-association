@@ -8,6 +8,7 @@ import Categories from "@/components/user/share/categories/categories";
 import Footer from "./designed-by/footer";
 import useContainer from "./use-container";
 import cx from "classnames";
+import Children from "./children/children";
 
 const Container = ({ children }: ContainerImpl) => {
   const { pageLoading } = useContainer();
@@ -22,13 +23,22 @@ const Container = ({ children }: ContainerImpl) => {
           <Menu />
           <PageLoader />
           <div
-            className={cx(
-              `w-full h-full bg-[#f6f6f9] rounded-3xl rounded-l-none
-           p-5 relative overflow-hidden transition-all duration-700 opacity-0`,
-              { "opacity-100 transition-all duration-700": !pageLoading }
-            )}
+            className={
+              "w-full h-full bg-[#f6f6f9] rounded-3xl rounded-l-none relative overflow-hidden"
+            }
           >
-            {children}
+            <div
+              className={cx(
+                `w-full h-full overflow-hidden relative p-5 rounded-3xl rounded-l-none`,
+                {
+                  "opacity-100 scale-100 duration-700 transition-all":
+                    !pageLoading,
+                },
+                { "opacity-0 scale-90": pageLoading }
+              )}
+            >
+              <Children>{children}</Children>
+            </div>
           </div>
           <Footer />
         </div>

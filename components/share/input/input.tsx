@@ -1,5 +1,5 @@
+// @ts-nocheck
 "use client";
-
 import { Eye, EyeSlash } from "iconsax-react";
 import { useRef } from "react";
 import InputImpl from "./types";

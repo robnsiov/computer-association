@@ -53,9 +53,7 @@ const useUploader = () => {
         localforage.setItem("links", linksStorage);
         setLinks(linksStorage);
       });
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   const changeInputFile: ChangeEventHandler<HTMLInputElement> = (e) => {

@@ -28,7 +28,6 @@ const useCategories = () => {
   const mutation = useMutation({
     mutationFn: (url: string) => mutationFn(url),
     onSuccess({ data }) {
-      console.log(data);
       setCats(data);
     },
     onError() {
