@@ -34,7 +34,7 @@ const useContainer = () => {
 
     timer = setTimeout(() => {
       setPageAnim(false);
-    }, 500);
+    }, 100);
 
     () => {
       clearTimeout(timer);
