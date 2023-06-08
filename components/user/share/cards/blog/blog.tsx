@@ -66,13 +66,13 @@ const Blog = (props: BlogCard) => {
               </div>
             </div>
           </div>
-          <div className="w-full h-[150px] rounded-xl overflow-hidden">
+          <div className="w-full aspect-square rounded-xl overflow-hidden">
             {videos ? (
               <>
                 <div onClick={() => onView("src")} className="cursor-pointer">
                   <Image
-                    width={300}
-                    height={200}
+                    width={600}
+                    height={600}
                     className="w-full h-full object-cover object-center"
                     src={image}
                     alt={title}

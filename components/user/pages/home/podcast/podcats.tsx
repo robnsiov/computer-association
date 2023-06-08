@@ -41,7 +41,7 @@ const Podcast = () => {
           />
         </div>
       </div>
-      <div className="flex w-full justify-center items-center flex-col text-center mt-4 max-w-[350px]">
+      <div className="flex w-full justify-center items-center flex-col text-center mt-4 max-w-[350px] md:pl-3">
         {data ? (
           <>
             <h1 className="font-extrabold text-3xl mb-5">{data?.title}</h1>
