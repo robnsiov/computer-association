@@ -27,22 +27,22 @@ const Blog = (props: BlogCard) => {
       >
         <div className="relative w-full bg-white rounded-2xl flex justify-center items-center flex-col p-2">
           <div className="w-full flex justify-between items-center mb-2">
-            <div className="w-1/2 flex justify-start items-center">
+            <div className="flex justify-start items-center w-full  max-w-[48%]">
               <div
                 onClick={() => changeRouteWithCat(userSlug)}
-                className="text-slate-600 font-black text-sm max-w-[80px] truncate
+                className="text-slate-600 font-black text-sm  truncate
                 hover:text-slate-400 cursor-pointer"
               >
                 {category}
               </div>
             </div>
-            <span className="w-0.5 h-5 border-r-2 border-slate-400"></span>
-            <div className="flex justify-end items-center w-1/2 mr-4">
+            {/* <span className="w-0.5 h-5 border-r-2 border-slate-400"></span> */}
+            <div className="flex justify-end items-center w-full max-w-[48%] mr-4">
               <div className="flex justify-end items-end flex-col ml-2">
-                <span className="text-slate-400 text-[11px] max-w-[64px] truncate">
+                <span className="text-slate-400 text-[11px]  truncate">
                   پست شده توسط
                 </span>
-                <span className="text-slate-700 font-semibold text-[14px] max-w-[60px] truncate">
+                <span className="text-slate-700 font-semibold  text-[14px]  truncate">
                   {full_name}
                 </span>
               </div>

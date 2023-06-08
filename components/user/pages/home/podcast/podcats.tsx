@@ -9,10 +9,7 @@ const Podcast = () => {
   const { data, isSuccess } = usePodcast();
   return (
     <>
-      <div
-        className="relative w-[200px] h-[200px] rounded-full flex justify-center items-center overflow-hidden 
-      pod-anim"
-      >
+      <div className="relative w-[200px] h-[200px] rounded-full flex justify-center items-center overflow-hidden">
         <div className="w-[450px] h-[450px] absolute animate-spin-slow">
           <Image
             alt="ring"
@@ -24,17 +21,17 @@ const Podcast = () => {
         </div>
         <div
           className="absolute w-[70px] h-[70px] bg-slate-300 rounded-full 
-        animate-ping opacity-0 pod-play-anim"
+        animate-ping"
         ></div>
         <Link
           href={`${data ? `/podcast?id=` + data.id : `/podcast`}`}
           className="absolute w-[90px] h-[90px] bg-slate-500 rounded-full
-           flex justify-center items-center z-10 opacity-0  pod-play-anim-icon"
+           flex justify-center items-center z-10"
         >
           <PlayCircle size="42" className="text-sky-300" />
         </Link>
 
-        <div className="w-[450px] h-[450px] absolute animate-spin-slower">
+        <div className="w-[450px] h-[450px] absolute">
           <Image
             alt="ring"
             width={450}
@@ -44,10 +41,7 @@ const Podcast = () => {
           />
         </div>
       </div>
-      <div
-        className="flex w-full justify-center items-center flex-col text-center mt-4 max-w-[350px] 
-      opacity-0 pod-detail-anim"
-      >
+      <div className="flex w-full justify-center items-center flex-col text-center mt-4 max-w-[350px]">
         {data ? (
           <>
             <h1 className="font-extrabold text-3xl mb-5">{data?.title}</h1>

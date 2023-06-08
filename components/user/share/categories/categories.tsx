@@ -19,7 +19,7 @@ const Categories = ({}: CategoriesImpl) => {
     <>
       <div
         className="absolute left-0 right-16 top-0
-      flex justify-start items-center text-sm h-16 md:right-4 opacity-0 cat-anim"
+      flex justify-start items-center text-sm h-16 md:right-4"
       >
         <HambergerMenu
           onClick={() => setOpenMenu(true)}

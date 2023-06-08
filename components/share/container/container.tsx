@@ -24,7 +24,7 @@ const Container = ({ children }: ContainerImpl) => {
           <PageLoader />
           <div
             className={
-              "w-full h-full bg-[#f6f6f9] rounded-3xl rounded-l-none relative overflow-hidden con-anim"
+              "w-full h-full bg-[#f6f6f9] rounded-3xl rounded-l-none relative overflow-hidden"
             }
           >
             <div
