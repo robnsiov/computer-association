@@ -10,10 +10,16 @@ import useWriteBlog from "./use-write-blog";
 import Image from "@/components/share/image";
 import SelectInput from "@/components/share/select-input/select-input";
 import Button from "@/components/share/button/button";
+import cx from "classnames";
+import Spinner from "@/components/share/spinner/spinner";
+import { Eye } from "iconsax-react";
 
 const WriteBlog = () => {
   const getTextareaContent = () => {
-    return document.getElementById("text-area")?.innerText;
+    return ref.current.value;
+  };
+  const setTextareaContent = (content: string) => {
+    ref.current.value = content;
   };
   const {
     errors,
@@ -25,10 +31,12 @@ const WriteBlog = () => {
     getValues,
     formLoading,
     categories,
-  } = useWriteBlog(getTextareaContent);
-
-  const ref = useRef(null);
+    editorLoading,
+    setEditorLoading,
+  } = useWriteBlog(getTextareaContent, setTextareaContent);
+  const ref = useRef<HTMLInputElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
   useEffect(() => {
     const script = document.createElement("script");
     const link = document.createElement("link");
@@ -47,7 +55,8 @@ const WriteBlog = () => {
       new SimpleMDE({
         element: document.getElementById("text-area"),
       });
-    }, 2000);
+      setEditorLoading(false);
+    }, 500);
   }, []);
 
   const inputClick = () => {
@@ -57,9 +66,16 @@ const WriteBlog = () => {
   return (
     <>
       <div className="h-full w-full flex justify-start items-start flex-col overflow-auto scrollbar">
-        <div className="w-full">
+        <div className="w-full flex justify-start items-start flex-col p-6 bg-white rounded-xl">
+          <div
+            className="bg-slate-300 text-slate-600 p-1 rounded-md text-sm mb-4 
+          flex justify-start items-center"
+          >
+            برای مشاهده متن نهایی بر روی آیکون{" "}
+            <Eye className="mx-1" size="16" /> کلیک کنید
+          </div>
           <form
-            className="w-full p-6 bg-white rounded-xl flex justify-start items-start flex-col"
+            className="w-full flex justify-start items-start flex-col"
             onSubmit={onSubmit}
           >
             <div className="w-full grid grid-cols-3 gap-4 md:grid-cols-2 sm:grid-cols-1">
@@ -69,22 +85,25 @@ const WriteBlog = () => {
                   name={"title"}
                   label="عنوان"
                   error={errors.title?.message}
+                  async={true}
                 />
               </div>
               <div
                 onClick={inputClick}
                 className="flex justify-center items-center"
               >
-                <Input
-                  register={register}
-                  name={"image"}
-                  label="تصویر"
-                  error={errors.image?.message}
-                  wrapperClassName="cursor-pointer"
-                  className="cursor-pointer"
-                  read={true}
-                  async={true}
-                />
+                <div className="w-full" dir="ltr">
+                  <Input
+                    register={register}
+                    name={"image"}
+                    label="تصویر"
+                    error={errors.image?.message}
+                    wrapperClassName="cursor-pointer"
+                    className="cursor-pointer"
+                    read={true}
+                    async={true}
+                  />
+                </div>
                 {imageSrc && (
                   <div className="min-w-[45px] max-w-[45px] h-[45px] bg-red-400 rounded-md mr-2 overflow-hidden">
                     <Image
@@ -126,11 +145,26 @@ const WriteBlog = () => {
                   name={"enTitle"}
                   label="عنوان انگلیسی "
                   error={errors.enTitle?.message}
+                  async={true}
                 />
               </div>
             </div>
-            <div className="w-full z-[100] mt-4">
-              <textarea value={"**سلام**"} ref={ref} id="text-area"></textarea>
+            {editorLoading && (
+              <div className="w-full bg-slate-100 h-12 rounded-md flex justify-center items-center mt-4">
+                <Spinner color="text-slate-600" />
+              </div>
+            )}
+
+            <div
+              className={cx("w-full relative z-[100] mt-4", {
+                "opacity-0": editorLoading,
+              })}
+            >
+              <textarea
+                value={"**این یک متن تست است**"}
+                ref={ref}
+                id="text-area"
+              ></textarea>
             </div>
             <div className="mt-4 w-[180px]">
               <Button title="ثبت" loading={formLoading} />

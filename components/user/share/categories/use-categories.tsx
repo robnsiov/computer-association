@@ -13,8 +13,8 @@ const useCategories = () => {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get("category") ?? "all";
   const availabelPathnames = [
-    { path: "/blogs", query: api.categories },
-    { path: "/videos", query: api.categories },
+    { path: "/blogs", query: api.blogCategories },
+    { path: "/videos", query: api.videosCategories },
   ];
 
   const [setOpenMenu] = useMenuStatusStore((state) => [state.set]);

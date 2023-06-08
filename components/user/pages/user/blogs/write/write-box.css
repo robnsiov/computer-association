@@ -5,3 +5,14 @@
 .editor-statusbar {
   display: none;
 }
+
+@media only screen and (max-width: 700px) {
+  .editor-toolbar a.no-mobile {
+    display: block !important;
+  }
+}
+.editor-toolbar a[title="Toggle Side by Side (F9)"],
+.editor-toolbar a[title="Markdown Guide"],
+.editor-toolbar a[title="Toggle Fullscreen (F11)"] {
+  display: none !important;
+}

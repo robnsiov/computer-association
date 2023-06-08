@@ -1,4 +1,5 @@
 import Image from "@/components/share/image";
+import statics from "@/constants/app";
 
 const AboutUs = () => {
   return (
@@ -14,15 +15,10 @@ const AboutUs = () => {
        text-white text-center p-4 md:text-slate-600"
       >
         <h1 className="max-w-xl mb-5 text-4xl font-extrabold">
-          انجمن علمی دانشگاه صنعتی قم
+          {statics.aboutTitle}
         </h1>
         <div className="max-w-xl w-full text-lg mb-10 md:text-base">
-          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-          از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
-          سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-          متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه
-          درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با
-          نرم افزارها شناخت بیشتری
+          {statics.aboutDesc}
         </div>
       </div>
       <div className="absolute inset-0 flex justify-center items-start">
