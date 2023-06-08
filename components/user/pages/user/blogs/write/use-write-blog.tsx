@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ChangeEventHandler, useEffect, useMemo, useState } from "react";
 import zod from "@/constants/zod-messages";
-import { BlogFormValues, Category } from "./types";
+import { BlogFormValues, Category, UserSingleBlog } from "./types";
 import ErrorHandler from "@/utils/error-handler/error-handler";
 import createToast from "@/utils/toast/toast";
 import { useBoolean } from "usehooks-ts";
@@ -13,12 +13,16 @@ import { api } from "@/constants/api";
 import { qu } from "@/components/share/container/query-client/query-client";
 import BlogCardImpl from "@/components/user/share/cards/blog/types";
 
-const useWriteBlog = (getTextareaContent: Function) => {
+const useWriteBlog = (
+  getTextareaContent: Function,
+  setTextareaContent: (content: string) => {}
+) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const edit = searchParams.get("edit");
   const [imageFile, setImageFile] = useState<File>();
   const [imageSrc, setImageSrc] = useState("");
+  const { value: editorLoading, setValue: setEditorLoading } = useBoolean(true);
   const { value: editPage, setValue: setEditPage } = useBoolean(false);
   const { value: formLoading, setValue: setFormLoading } = useBoolean(false);
 
@@ -49,16 +53,18 @@ const useWriteBlog = (getTextareaContent: Function) => {
     queryFn,
     queryKey: ["categories"],
   });
-
-  const queryUserBlogFn = () => {
+  const getArticleSlug = () => {
     const blog = qu.getQueryData(["user-blog"]) as BlogCardImpl;
-    return request({
+    return blog.slug;
+  };
+  const queryUserBlogFn = () => {
+    return request<UserSingleBlog>({
       method: "GET",
-      url: `${api.singleBlog}${blog.slug}/`,
+      url: api.userSingleBlog(getArticleSlug()),
     });
   };
 
-  const { data } = useQuery({
+  const { data: userSingleBlog } = useQuery({
     queryFn: queryUserBlogFn,
     queryKey: ["user-blog-edit"],
     enabled: editPage,
@@ -80,6 +86,37 @@ const useWriteBlog = (getTextareaContent: Function) => {
     },
     resolver: zodResolver(validation),
   });
+
+  useEffect(() => {
+    const data = userSingleBlog?.data;
+    if (data) {
+      setValue("title", data.title, {
+        shouldDirty: true,
+        shouldValidate: true,
+      });
+      setValue("enTitle", data.en_title, {
+        shouldDirty: true,
+        shouldValidate: true,
+      });
+      const imageSrc = data.image;
+      setImageSrc(imageSrc);
+      setValue("image", imageSrc, {
+        shouldDirty: true,
+        shouldValidate: true,
+      });
+      setValue("category", data.category, {
+        shouldDirty: true,
+        shouldValidate: true,
+      });
+      setValue("catName", data.category_name ?? "شبکه", {
+        shouldDirty: true,
+        shouldValidate: true,
+      });
+      setTextareaContent(data.content);
+      console.log(data.content);
+    }
+  }, [userSingleBlog]);
+
   const changeInputFile: ChangeEventHandler<HTMLInputElement> = (e) => {
     const target = e.target as HTMLInputElement;
     const file = target.files?.item(0) as File;
@@ -96,10 +133,10 @@ const useWriteBlog = (getTextareaContent: Function) => {
 
   const formMutationFn = (data: Object, edit: boolean) => {
     return request({
-      method: "POST",
+      method: edit ? "PATCH" : "POST",
       data,
 
-      url: edit ? "" : api.createBlog,
+      url: edit ? `${api.updateBlog}${getArticleSlug()}/` : api.createBlog,
     });
   };
 
@@ -145,7 +182,8 @@ const useWriteBlog = (getTextareaContent: Function) => {
 
     if (data.title) formData.append("title", data.title);
     if (content) formData.append("content", content);
-    formMutation.mutate({ data: formData, edit: false });
+    console.log(content);
+    formMutation.mutate({ data: formData, edit: editPage });
   };
   return {
     onSubmit: handleSubmit(onSubmit),
@@ -157,6 +195,8 @@ const useWriteBlog = (getTextareaContent: Function) => {
     getValues,
     formLoading,
     categories,
+    editorLoading,
+    setEditorLoading,
   };
 };
 export default useWriteBlog;

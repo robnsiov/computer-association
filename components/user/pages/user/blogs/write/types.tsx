@@ -6,6 +6,15 @@ export interface BlogFormValues {
   enTitle?: string;
 }
 
+export interface UserSingleBlog {
+  category: number;
+  category_name: string;
+  content: string;
+  image: string;
+  title: string;
+  en_title: string;
+}
+
 export interface Category {
   id: number;
   name: string;
