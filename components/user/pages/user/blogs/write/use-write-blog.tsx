@@ -45,7 +45,7 @@ const useWriteBlog = (
   const queryFn = () => {
     return request<Array<Category>>({
       method: "GET",
-      url: api.categories,
+      url: api.blogCategories,
     });
   };
 
@@ -98,9 +98,9 @@ const useWriteBlog = (
         shouldDirty: true,
         shouldValidate: true,
       });
-      const imageSrc = data.image;
-      setImageSrc(imageSrc);
-      setValue("image", imageSrc, {
+      const img = data.image;
+      setImageSrc(img);
+      setValue("image", img, {
         shouldDirty: true,
         shouldValidate: true,
       });
