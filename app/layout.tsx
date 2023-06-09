@@ -1,6 +1,14 @@
 import "./globals.scss";
 import localFont from "next/font/local";
 import Container from "@/components/share/container/container";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+  weight: "500",
+});
 
 const yekanBakh = localFont({
   src: [
@@ -59,7 +67,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body dir="rtl" className={yekanBakh.className}>
+      <body dir="rtl" className={`${inter.variable} ${yekanBakh.className}`}>
         <Container>{children}</Container>
       </body>
     </html>

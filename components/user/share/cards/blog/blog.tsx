@@ -37,7 +37,7 @@ const Blog = (props: BlogCard) => {
               </div>
             </div>
             {/* <span className="w-0.5 h-5 border-r-2 border-slate-400"></span> */}
-            <div className="flex justify-end items-center w-full max-w-[48%] mr-4">
+            <div className="flex justify-end items-center w-full max-w-[48%]">
               <div className="flex justify-end items-end flex-col ml-2">
                 <span className="text-slate-400 text-[11px]  truncate">
                   پست شده توسط
@@ -66,7 +66,7 @@ const Blog = (props: BlogCard) => {
               </div>
             </div>
           </div>
-          <div className="w-full aspect-square rounded-xl overflow-hidden">
+          <div className="w-full aspect-video rounded-xl overflow-hidden">
             {videos ? (
               <>
                 <div onClick={() => onView("src")} className="cursor-pointer">

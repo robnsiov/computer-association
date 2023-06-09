@@ -44,11 +44,8 @@ const Footer = () => {
           <span className="text-slate-300 text-sm ml-5 relative top-[3px]">
             طراحی و توسعه توسط
           </span>
-          <div style={{ fontFamily: "cursive" }}>
-            <Link
-              className={"font-bold hover:text-slate-600"}
-              href={statics.sahDev}
-            >
+          <div>
+            <Link className="hover:text-slate-600 en" href={statics.sahDev}>
               Sah
             </Link>
           </div>
@@ -56,11 +53,8 @@ const Footer = () => {
             {" "}
             - و -{" "}
           </span>
-          <div style={{ fontFamily: "cursive" }}>
-            <Link
-              className={"font-bold hover:text-slate-600"}
-              href={statics.zolfuDev}
-            >
+          <div>
+            <Link className={"hover:text-slate-600 en"} href={statics.zolfuDev}>
               Zolfu
             </Link>
           </div>
