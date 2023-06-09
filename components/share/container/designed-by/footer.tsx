@@ -49,10 +49,7 @@ const Footer = () => {
               Sah
             </Link>
           </div>
-          <span className="mx-2 text-slate-200 text-sm relative top-[3px]">
-            {" "}
-            - و -{" "}
-          </span>
+          <span className="mx-2 text-slate-200 text-sm"> - و - </span>
           <div>
             <Link className={"hover:text-slate-600 en"} href={statics.zolfuDev}>
               Zolfu
