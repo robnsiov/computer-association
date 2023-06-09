@@ -30,7 +30,7 @@ const Categories = ({}: CategoriesImpl) => {
           )}
         />
         {pathname === "/" && (
-          <h1 className="w-full text-center font-semibold tracking-widest flex justify-center items-center">
+          <h1 className="md:hidden w-full text-center font-semibold tracking-widest flex justify-center items-center">
             <span className="bg-slate-500 text-white">
               انجمن علمی کامپیوتر دانشگاه صنعتی قم
             </span>{" "}
