@@ -1,5 +1,17 @@
-import SingleBlog from "@/components/user/pages/blogs/singel-blog/single-blog";
+import SingleBlog, {
+  singleBlog,
+} from "@/components/user/pages/blogs/singel-blog/single-blog";
 import PageImpl from "./types";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params: { slug },
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const { title } = await singleBlog(slug);
+  return { title };
+}
 
 const Page = ({ params: { slug } }: PageImpl) => {
   return (
