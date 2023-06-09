@@ -5,7 +5,7 @@ import "@splidejs/react-splide/css";
 import CategoriesImpl from "./types";
 import useCategories from "./use-categories";
 import cx from "classnames";
-import { HambergerMenu } from "iconsax-react";
+import { Book, HambergerMenu } from "iconsax-react";
 
 const Categories = ({}: CategoriesImpl) => {
   const {
@@ -14,6 +14,7 @@ const Categories = ({}: CategoriesImpl) => {
     cats,
     setOpenMenu,
     showCategories,
+    pathname,
   } = useCategories();
   return (
     <>
@@ -28,6 +29,15 @@ const Categories = ({}: CategoriesImpl) => {
             { "min-w-[23px]": showCategories }
           )}
         />
+        {pathname === "/" && (
+          <h1 className="w-full text-center font-semibold tracking-widest flex justify-center items-center">
+            <span className="bg-slate-500 text-white">
+              انجمن علمی کامپیوتر دانشگاه صنعتی قم
+            </span>{" "}
+            <Book className="text-slate-600 mr-2" />
+          </h1>
+        )}
+
         {showCategories && (
           <div className="w-full max-w-3xl pl-4">
             <Splide

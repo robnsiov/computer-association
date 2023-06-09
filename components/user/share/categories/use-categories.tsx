@@ -58,6 +58,7 @@ const useCategories = () => {
     onClick,
     cats,
     setOpenMenu,
+    pathname,
     showCategories: availabelPathnames.find(({ path }) => path === pathname),
   };
 };

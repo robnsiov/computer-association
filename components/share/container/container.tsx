@@ -17,14 +17,14 @@ const Container = ({ children }: ContainerImpl) => {
       <Providers>
         <div
           className="w-full flex justify-start items-start flex-col h-screen
-      p-16 pl-0 relative overflow-hidden text-slate-700 md:pr-0"
+      p-16 pl-0 relative overflow-hidden text-slate-700 md:pr-0 bg-slate-50"
         >
           <Categories />
           <Menu />
           <PageLoader />
           <div
             className={
-              "w-full h-full bg-[#f6f6f9] rounded-3xl rounded-l-none relative overflow-hidden"
+              "w-full h-full bg-slate-100 rounded-3xl rounded-l-none relative overflow-hidden"
             }
           >
             <div

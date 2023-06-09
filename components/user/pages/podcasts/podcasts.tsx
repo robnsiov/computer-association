@@ -90,17 +90,19 @@ const Podcasts = () => {
         className="w-full h-full"
       >
         <div className="absolute top-0 left-0 right-0 h-[70%]">
+          <div className="absolute inset-0 backdrop-blur-sm z-10"></div>
+
           <Image
             src={podcast.image}
             width={1000}
             height={600}
             alt="podcast"
-            className="w-full h-full object-cover 
+            className=" w-full h-full object-cover 
         object-top"
           />
 
           <span
-            className="absolute inset-0"
+            className="absolute inset-0 z-10"
             style={{
               background: "linear-gradient(180deg, #0b122020 0%, #0B1220 100%)",
             }}
