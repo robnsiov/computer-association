@@ -24,56 +24,78 @@ import { BsTwitter } from "react-icons/bs";
 const routes = [
   {
     href: "/",
-    icon: <Home size="24" className="text-gray-300" />,
-    activeIcon: <Home size="24" className="text-slate-600" />,
+    icon: <Home size="24" className="text-gray-300 dark:text-slate-400" />,
+    activeIcon: (
+      <Home size="24" className="text-slate-600 dark:text-slate-900" />
+    ),
     label: "خانه",
   },
   {
     href: "/user",
-    icon: <UserSquare size="24" className="text-gray-300" />,
-    activeIcon: <UserSquare size="24" className="text-slate-600" />,
+    icon: (
+      <UserSquare size="24" className="text-gray-300 dark:text-slate-400 " />
+    ),
+    activeIcon: (
+      <UserSquare size="24" className="text-slate-600 dark:text-slate-900" />
+    ),
     label: "پروفایل",
   },
   {
     href: "/videos",
-    icon: <VideoPlay size="24" className="text-gray-300" />,
-    activeIcon: <VideoPlay size="24" className="text-slate-600" />,
+    icon: <VideoPlay size="24" className="text-gray-300 dark:text-slate-400" />,
+    activeIcon: (
+      <VideoPlay size="24" className="text-slate-600 dark:text-slate-900" />
+    ),
     label: "ویدیو ها",
   },
   {
     href: "/events",
-    icon: <Calendar2 size="24" className="text-gray-300" />,
-    activeIcon: <Calendar2 size="24" className="text-slate-600" />,
+    icon: <Calendar2 size="24" className="text-gray-300 dark:text-slate-400" />,
+    activeIcon: (
+      <Calendar2 size="24" className="text-slate-600 dark:text-slate-900" />
+    ),
     label: "رویداد ها",
   },
   {
     href: "/podcasts",
-    icon: <Sound size="24" className="text-gray-300" />,
-    activeIcon: <Sound size="24" className="text-slate-600" />,
+    icon: <Sound size="24" className="text-gray-300 dark:text-slate-400" />,
+    activeIcon: (
+      <Sound size="24" className="text-slate-600 dark:text-slate-900" />
+    ),
     label: "پادکست ها",
   },
   {
     href: "/journal",
-    icon: <Book size="24" className="text-gray-300" />,
-    activeIcon: <Book size="24" className="text-slate-600" />,
+    icon: <Book size="24" className="text-gray-300 dark:text-slate-400" />,
+    activeIcon: (
+      <Book size="24" className="text-slate-600 dark:text-slate-900" />
+    ),
     label: "نشریه",
   },
   {
     href: "/blogs",
-    icon: <Grid3 size="24" className="text-gray-300" />,
-    activeIcon: <Grid3 size="24" className="text-slate-600" />,
+    icon: <Grid3 size="24" className="text-gray-300 dark:text-slate-400" />,
+    activeIcon: (
+      <Grid3 size="24" className="text-slate-600 dark:text-slate-900" />
+    ),
     label: "مقالات",
   },
   {
     href: "/about-us",
-    icon: <Profile2User size="24" className="text-gray-300" />,
-    activeIcon: <Profile2User size="24" className="text-slate-600" />,
+    icon: (
+      <Profile2User size="24" className="text-gray-300 dark:text-slate-400" />
+    ),
+    activeIcon: (
+      <Profile2User size="24" className="text-slate-600 dark:text-slate-900" />
+    ),
     label: "درباره ما",
   },
   {
     href: "/contact-us",
-    icon: <Setting3 size="24" className="text-gray-300" />,
-    activeIcon: <Setting3 size="24" className="text-slate-600" />,
+    icon: <Setting3 size="24" className="text-gray-300 dark:text-slate-400" />,
+    activeIcon: (
+      <Setting3 size="24" className="text-slate-600 dark:text-slate-900" />
+    ),
     label: "تماس با ما",
   },
 ];

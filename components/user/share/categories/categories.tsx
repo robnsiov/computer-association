@@ -31,10 +31,10 @@ const Categories = ({}: CategoriesImpl) => {
         />
         {pathname === "/" && (
           <h1 className="md:hidden w-full text-center font-semibold tracking-widest flex justify-center items-center">
-            <span className="bg-slate-500 text-white">
+            <span className="bg-slate-500 dark:text-slate-700 text-white">
               انجمن علمی کامپیوتر دانشگاه صنعتی قم
             </span>{" "}
-            <Book className="text-slate-600 mr-2" />
+            <Book className="text-slate-600 dark:text-slate-700 mr-2" />
           </h1>
         )}
 

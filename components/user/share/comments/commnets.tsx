@@ -32,7 +32,10 @@ const Comments = ({ type, slug, title, onConfirm }: CommentsImpl) => {
           {showCommentForm ? "بستن فرم ایجاد نظر" : "برای ثبت نظر کلیک کنید"}
         </span>
         <FadeAnimation inProp={showCommentForm} className="w-full">
-          <form onSubmit={onSubmit} className="bg-white rounded-xl w-full mb-5">
+          <form
+            onSubmit={onSubmit}
+            className="bg-white dark:bg-slate-900 rounded-xl w-full mb-5"
+          >
             <div className="max-w-xs mb-4">
               <Input
                 label="نام و نام خانوادگی"
@@ -73,7 +76,7 @@ const Comments = ({ type, slug, title, onConfirm }: CommentsImpl) => {
             >
               <div className="w-full flex justify-center items-start">
                 <div
-                  className="bg-slate-300 min-w-[40px] h-[40px] flex justify-center items-center rounded-full
+                  className="bg-slate-300  min-w-[40px] h-[40px] flex justify-center items-center rounded-full
             ml-3 md:hidden"
                 >
                   <User className="text-slate-100" />

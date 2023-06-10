@@ -18,7 +18,7 @@ const Modal = ({ inProp, children, setProp }: ModalImpl) => {
       >
         <div
           ref={ref}
-          className="bg-white rounded-2xl max-w-2xl md:max-w-md w-full min-h-[400px] md:min-h-[100px] 
+          className="bg-white dark:bg-slate-900 rounded-2xl max-w-2xl md:max-w-md w-full min-h-[400px] md:min-h-[100px] 
           p-5 duration-200 transition-all"
         >
           {children}

@@ -118,17 +118,17 @@ const Podcasts = () => {
             >
               <h1
                 className="font-extrabold text-4xl leading-[1.3] text-slate-50 w-full truncate 
-            md:text-3xl max-w-[530px]"
+            md:text-3xl max-w-[530px] dark:text-slate-400"
               >
                 {podcast.title}
               </h1>
-              <span className="text-slate-200 mt-4 three-line-truncate  max-w-[530px]">
+              <span className="text-slate-200 dark:text-slate-400 mt-4 three-line-truncate  max-w-[530px]">
                 {podcast.description}
               </span>
               <Link
                 href={statics.telegramSocial}
                 className="whitespace-nowrap py-1 px-9 rounded-xl border-2 tru
-               border-slate-300 text-slate-200 mt-5"
+               border-slate-300 text-slate-200 dark:text-slate-400 dark:border-slate-400 mt-5"
               >
                 دنبال کردن ما
               </Link>
@@ -143,7 +143,9 @@ const Podcasts = () => {
                 <Tooltip label="گوینده" color="#414856" position="top">
                   <Microphone2 className="text-slate-300 ml-2" />
                 </Tooltip>
-                <span className="text-slate-200">{podcast.speaker}</span>
+                <span className="text-slate-200 dark:text-slate-500">
+                  {podcast.speaker}
+                </span>
               </div>
               <div className="flex justify-center items-center">
                 <Tooltip
@@ -153,19 +155,23 @@ const Podcasts = () => {
                 >
                   <FolderOpen className="text-slate-300 ml-2" />
                 </Tooltip>
-                <span className="text-slate-200">{podcast.data_collector}</span>
+                <span className="text-slate-200 dark:text-slate-500">
+                  {podcast.data_collector}
+                </span>
               </div>
               <div className="flex justify-center items-center">
                 <Tooltip label="ویرایش متن" color="#414856" position="top">
-                  <Edit className="text-slate-300 ml-2" />
+                  <Edit className="text-slate-300  ml-2" />
                 </Tooltip>
-                <span className="text-slate-200">{podcast.text_editor}</span>
+                <span className="text-slate-200 dark:text-slate-500">
+                  {podcast.text_editor}
+                </span>
               </div>
               <div className="flex justify-center items-center">
                 <Tooltip label="طراح پوستر" color="#414856" position="top">
                   <Gallery className="text-slate-300 ml-2" />
                 </Tooltip>
-                <span className="text-slate-200">
+                <span className="text-slate-200 dark:text-slate-500">
                   {podcast.graphic_designer}
                 </span>
               </div>
@@ -230,10 +236,10 @@ const Podcasts = () => {
                             </div>
                           </div>
                         </FadeAnimation>
-                        <h2 className="w-full truncate text-slate-100 mt-3 font-extrabold">
+                        <h2 className="w-full truncate text-slate-100 dark:text-slate-600 mt-3 font-extrabold">
                           {title}
                         </h2>
-                        <span className="w-full truncate  text-slate-400 mt-1 text-[13px] font-extralight lg:hidden">
+                        <span className="w-full truncate  text-slate-400 dark:text-slate-600 mt-1 text-[13px] font-extralight lg:hidden">
                           {speaker}
                         </span>
                       </div>

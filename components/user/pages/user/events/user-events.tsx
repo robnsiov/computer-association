@@ -9,7 +9,7 @@ const UserEvents = () => {
   return (
     <>
       <div className="w-full h-full overflow-auto scrollbar flex justify-center items-start">
-        <div className="border-2 border-slate-200 rounded-xl overflow-hidden max-w-xl w-full">
+        <div className="border-2 border-slate-200 dark:border-slate-400 rounded-xl overflow-hidden max-w-xl w-full">
           {isFetching && (
             <>
               <div className="w-full h-[49px] border-b-[1px] border-white">
@@ -33,7 +33,7 @@ const UserEvents = () => {
                     </span>
                     <Link
                       className="mt-2 font-extrabold transition-all duration-200
-                       hover:text-slate-500"
+                       hover:text-slate-500 dark:text-slate-800"
                       href={"/events"}
                     >
                       مشاهده رویداد ها

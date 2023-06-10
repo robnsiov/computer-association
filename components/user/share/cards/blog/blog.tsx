@@ -21,17 +21,17 @@ const Blog = (props: BlogCard) => {
   return (
     <>
       <div
-        className=" bg-slate-100 rounded-3xl flex justify-center items-center
-      ring-4 ring-white p-2 flex-col transition-all duration-200 hover:bg-white
+        className="bg-slate-100 dark:bg-slate-600  rounded-3xl flex justify-center items-center
+      ring-4 ring-white dark:ring-slate-400 dark:hover:ring-slate-500 p-2 flex-col transition-all duration-200 hover:bg-white dark:hover:bg-slate-700
       hover:ring-slate-100"
       >
-        <div className="relative w-full bg-white rounded-2xl flex justify-center items-center flex-col p-2">
+        <div className="relative w-full bg-white dark:bg-slate-700  rounded-2xl flex justify-center items-center flex-col p-2">
           <div className="w-full flex justify-between items-center mb-2">
             <div className="flex justify-start items-center w-full  max-w-[48%]">
               <div
                 onClick={() => changeRouteWithCat(userSlug)}
                 className="text-slate-600 font-black text-sm  truncate
-                hover:text-slate-400 cursor-pointer"
+                hover:text-slate-400 dark:text-slate-500 dark:hover:text-slate-800 cursor-pointer"
               >
                 {category}
               </div>
@@ -42,7 +42,7 @@ const Blog = (props: BlogCard) => {
                 <span className="text-slate-400 text-[11px]  truncate">
                   پست شده توسط
                 </span>
-                <span className="text-slate-700 font-semibold  text-[14px]  truncate">
+                <span className="text-slate-700 dark:text-slate-500 font-semibold  text-[14px]  truncate">
                   {full_name}
                 </span>
               </div>
@@ -93,18 +93,18 @@ const Blog = (props: BlogCard) => {
           </div>
           <span className="absolute -bottom-2.5 blur-xl left-0 right-0 h-6 bg-slate-200"></span>
         </div>
-        <div className="mt-2 px-2 w-full text-right text-slate-500 max-w-full truncate">
+        <div className="mt-2 px-2 w-full text-right text-slate-500 dark:text-slate-900 max-w-full truncate">
           {title}
         </div>
         <div
-          className="mt-2 w-full flex justify-between items-center bg-white p-2 rounded-lg
-        rounded-bl-3xl rounded-br-3xl"
+          className="mt-2 w-full flex justify-between items-center bg-white dark:bg-slate-500 p-2 rounded-lg
+        rounded-bl-3xl rounded-br-3xl rounded-bl-3xl"
         >
           {edit ? (
             <div
               onClick={() => editOperation(props)}
               className="bg-slate-800 text-white w-[60%] p-3 text-sm rounded-lg 
-            rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-400 
+            rounded-br-3xl rounded-bl-3xl text-center hover:ring-[3px] hover:ring-slate-400 
             transition-all duration-200 cursor-pointer"
             >
               ویرایش
@@ -116,7 +116,7 @@ const Blog = (props: BlogCard) => {
                   <div
                     onClick={() => onView("src")}
                     className="bg-slate-800 text-white w-[60%] p-3 text-sm rounded-lg 
-            rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-400 
+            rounded-br-3xl rounded-bl-3xl text-center hover:ring-[3px] hover:ring-slate-400 
             transition-all duration-200 cursor-pointer"
                   >
                     مشاهده
@@ -124,8 +124,8 @@ const Blog = (props: BlogCard) => {
                 </>
               ) : (
                 <Link
-                  className="bg-slate-800 text-white w-[60%] p-3 text-sm rounded-lg 
-            rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-400 transition-all duration-200"
+                  className="bg-slate-800  text-white w-[60%] p-3 text-sm rounded-lg 
+            rounded-br-3xl rounded-bl-3xl text-center hover:ring-[3px] hover:ring-slate-400 transition-all duration-200"
                   href={`/blogs/${slug}`}
                 >
                   مطالعه

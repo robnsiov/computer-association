@@ -12,7 +12,7 @@ const Home = () => {
           className="w-[60%] lg:w-full h-full flex justify-start items-start flex-col overflow-hidden -mb-10
         lg:overflow-unset lg:h-[unset] lg:mb-[unset] lg:order-1"
         >
-          <h1 className="font-black bg-slate-700 text-white text-4xl mb-4 lg:hidden">
+          <h1 className="font-black bg-slate-700 text-white text-4xl mb-4 lg:hidden dark:text-slate-500">
             برترین مقالات
           </h1>
           <div className="w-full h-full">

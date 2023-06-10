@@ -23,7 +23,7 @@ const Uploader = () => {
     <>
       <div
         className="w-full h-full overflow-auto scrollbar flex justify-start items-end
-       flex-col p-4 bg-white rounded-lg overflow-y-auto scrollbar"
+       flex-col p-5 bg-white dark:bg-slate-600 rounded-lg overflow-y-auto scrollbar"
       >
         <div className="w-full flex justify-start items-start mb-4">
           <div
@@ -33,7 +33,7 @@ const Uploader = () => {
           >
             <CloudPlus
               onClick={inputClick}
-              className="text-slate-600 cursor-pointer group-hover:text-white"
+              className="text-slate-600 dark:text-slate-400 cursor-pointer group-hover:text-white"
             />
             <input
               onChange={changeInputFile}
@@ -68,7 +68,7 @@ const Uploader = () => {
           {links.map((link) => (
             <div
               key={link}
-              className="bg-slate-200 text-slate-100 flex justify-between items-center
+              className="bg-slate-200 dark:bg-slate-500 text-slate-100 flex justify-between items-center
         rounded-md py-2 px-4 border-2 border-slate-400 border-dashed mr-2 mb-2"
               dir="ltr"
             >

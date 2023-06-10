@@ -13,15 +13,15 @@ const Footer = () => {
         className="absolute z-50 bottom-0 right-0 left-0 h-[64px] pl-9 pr-16
       flex justify-between items-center md:flex-col md:justify-center md:px-4"
       >
-        <div className="flex justify-center items-center text-xl text-slate-400 md:hidden">
-          <span className="ml-5 text-sm text-slate-300">
+        <div className="flex justify-center items-center text-xl text-slate-400 dark:text-slate-700 md:hidden">
+          <span className="ml-5 text-sm text-slate-300 dark:text-slate-400">
             به ما ملحق شوید در
           </span>
           <Link href={statics.linkedinSocial}>
-            <FaLinkedin className="ml-3 hover:text-slate-600" />
+            <FaLinkedin className="ml-3 hover:text-slate-600 dark:hover:text-slate-800" />
           </Link>
           <Link href={statics.telegramSocial}>
-            <FaTelegramPlane className="hover:text-slate-600" />
+            <FaTelegramPlane className="hover:text-slate-600 dark:hover:text-slate-800" />
           </Link>
           {/* <Link href={"/"} className="mx-3">
             <AiFillInstagram className="hover:text-slate-600" />
@@ -31,27 +31,38 @@ const Footer = () => {
           </Link> */}
         </div>
         <div className="text-slate-400 flex justify-center items-center md:mt-1">
-          <span className="text-slate-300 text-sm ml-2">میزبانی شده توسط</span>
+          <span className="text-slate-300 text-sm dark:text-slate-400 ml-2">
+            میزبانی شده توسط
+          </span>
 
           <Link
-            className="flex font-bold justify-center items-center hover:text-slate-600"
+            className="flex font-bold justify-center items-center dark:text-slate-700 dark:hover:text-slate-800 hover:text-slate-600"
             href={statics.sponserLink}
           >
             {statics.sponserName} <Box1 size="16" className="mr-2" />
           </Link>
         </div>
-        <div className="text-slate-400 flex justify-center items-center md:text-[14px]">
-          <span className="text-slate-300 text-sm ml-5 relative top-[3px]">
+        <div className="text-slate-400 dark:text-slate-700  flex justify-center items-center md:text-[14px]">
+          <span className="text-slate-300 text-sm ml-5 dark:text-slate-400 relative top-[3px]">
             طراحی و توسعه توسط
           </span>
           <div>
-            <Link className="hover:text-slate-600 en" href={statics.sahDev}>
+            <Link
+              className="hover:text-slate-600 en dark:hover:text-slate-800"
+              href={statics.sahDev}
+            >
               Sah
             </Link>
           </div>
-          <span className="mx-2 text-slate-200 text-sm"> - و - </span>
+          <span className="mx-2 text-slate-200 dark:text-slate-400 text-sm">
+            {" "}
+            - و -{" "}
+          </span>
           <div>
-            <Link className={"hover:text-slate-600 en"} href={statics.zolfuDev}>
+            <Link
+              className={"hover:text-slate-600 en dark:hover:text-slate-800"}
+              href={statics.zolfuDev}
+            >
               Zolfu
             </Link>
           </div>

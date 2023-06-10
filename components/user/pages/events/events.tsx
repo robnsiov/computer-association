@@ -50,11 +50,11 @@ const Events = ({ journal = false }: EventsImpl) => {
               exit={{ opacity: 0 }}
             >
               <div
-                className=" bg-slate-100 rounded-3xl flex justify-center items-center
-                    ring-4 ring-white p-2 flex-col transition-all duration-200 hover:bg-white
-                    hover:ring-slate-100"
+                className="bg-slate-100 dark:bg-slate-600  rounded-3xl flex justify-center items-center
+      ring-4 ring-white dark:ring-slate-400 dark:hover:ring-slate-500 p-2 flex-col transition-all duration-200 hover:bg-white dark:hover:bg-slate-700
+      hover:ring-slate-100"
               >
-                <div className="relative w-full bg-white rounded-2xl flex justify-center items-center flex-col p-2">
+                <div className="relative dark:bg-slate-700 w-full bg-white rounded-2xl flex justify-center items-center flex-col p-2">
                   <div className="w-full h-[150px] rounded-xl overflow-hidden">
                     <Link
                       href={journal && src ? src : `/events/${slug}`}
@@ -72,11 +72,11 @@ const Events = ({ journal = false }: EventsImpl) => {
                   </div>
                   <span className="absolute -bottom-2.5 blur-xl left-0 right-0 h-6 bg-slate-200"></span>
                 </div>
-                <div className="mt-2 px-2 w-full text-right text-slate-500 max-w-full truncate">
+                <div className="mt-2 px-2 w-full text-right dark:text-slate-900 text-slate-500 max-w-full truncate">
                   {title}
                 </div>
                 <div
-                  className="mt-2 w-full flex justify-between items-center bg-white p-2 rounded-lg
+                  className="mt-2 w-full flex justify-between items-center bg-white dark:bg-slate-500 p-2 rounded-lg
                     rounded-bl-3xl rounded-br-3xl"
                 >
                   {journal && src ? (
@@ -86,7 +86,7 @@ const Events = ({ journal = false }: EventsImpl) => {
                         download={true}
                         target="_blank"
                         className="bg-slate-800 text-white w-full p-3 text-sm rounded-lg 
-            rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-400 transition-all duration-200
+            rounded-br-3xl rounded-bl-3xl text-center hover:ring-[3px] hover:ring-slate-400 transition-all duration-200
             cursor-pointer font-semibold flex justify-center items-center h-[44px]"
                       >
                         مشاهده
@@ -96,8 +96,8 @@ const Events = ({ journal = false }: EventsImpl) => {
                     <>
                       {!is_active ? (
                         <div
-                          className="bg-slate-300 text-white w-full p-3 text-sm rounded-lg 
-            rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-100 transition-all duration-200
+                          className="bg-slate-300 dark:opacity-25 text-white w-full p-3 text-sm rounded-lg 
+            rounded-br-3xl rounded-bl-3xl text-center hover:ring-[3px] hover:ring-slate-100 transition-all duration-200
             cursor-not-allowed font-semibold"
                         >
                           منقضی شده است
@@ -106,7 +106,7 @@ const Events = ({ journal = false }: EventsImpl) => {
                         <div
                           onClick={() => participateOnEvent(id)}
                           className="bg-slate-800 text-white w-full p-3 text-sm rounded-lg 
-            rounded-br-3xl text-center hover:ring-[3px] hover:ring-slate-400 transition-all duration-200
+            rounded-br-3xl rounded-bl-3xl text-center hover:ring-[3px] hover:ring-slate-400 transition-all duration-200
             cursor-pointer font-semibold flex justify-center items-center h-[44px]"
                         >
                           {participateLoading === id ? (

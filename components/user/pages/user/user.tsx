@@ -28,7 +28,7 @@ const User = () => {
         <form
           onSubmit={onSubmit}
           className="w-full flex justify-start items-start bg-white 
-          p-4 flex-col relative overflow-hidden rounded-lg"
+          p-5 flex-col relative overflow-hidden rounded-lg dark:bg-slate-600"
         >
           <FadeAnimation inProp={userDataLoading}>
             <div className="absolute inset-0 bg-white/90 z-10 flex justify-center items-center">

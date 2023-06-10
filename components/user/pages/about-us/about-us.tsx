@@ -12,7 +12,7 @@ const AboutUs = () => {
       ></div>
       <div
         className="absolute inset-0 z-10 flex justify-end items-center flex-col
-       text-white text-center p-4 md:text-slate-600"
+       text-white text-center p-4 dark:text-slate-500 md:dark:text-slate-800 md:text-slate-600"
       >
         <h1 className="max-w-xl mb-5 text-4xl font-extrabold">
           {statics.aboutTitle}
