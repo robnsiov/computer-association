@@ -26,6 +26,7 @@ import { Podcast } from "@/context/selected-podcats/types";
 import Spinner from "@/components/share/spinner/spinner";
 import Modal from "@/components/share/modal/modal";
 import Comments from "../../share/comments/commnets";
+import statics from "@/constants/app";
 
 const Podcasts = () => {
   const ref = useRef({ go(dir: string) {} });
@@ -89,7 +90,7 @@ const Podcasts = () => {
         inProp={isSuccess && data?.data.length !== 0}
         className="w-full h-full"
       >
-        <div className="absolute top-0 left-0 right-0 h-[70%]">
+        <div className="absolute inset-0">
           <div className="absolute inset-0 backdrop-blur-sm z-10"></div>
 
           <Image
@@ -108,9 +109,9 @@ const Podcasts = () => {
             }}
           ></span>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-[30%] bg-[#0B1220]"></div>
-        <div className="absolute inset-0 z-10 flex justify-end items-end flex-col">
-          <div className="flex w-full h-full justify-center  lg:flex-col p-9 pb-0">
+        {/* <div className="absolute bottom-0 left-0 right-0 h-[30%] bg-[#0B1220]"></div> */}
+        <div className="absolute inset-0 z-10 flex justify-start items-end flex-col">
+          <div className="flex w-full justify-center  lg:flex-col p-9 pb-0">
             <div
               className="w-1/2 flex justify-center items-start flex-col
           lg:w-full lg:justify-center lg:text-center lg:items-center lg:max-w-2xl lg:mx-auto lg:mb-4"
@@ -121,11 +122,11 @@ const Podcasts = () => {
               >
                 {podcast.title}
               </h1>
-              <span className="text-slate-200 mt-4 three-line-truncate max-w-[530px]">
+              <span className="text-slate-200 mt-4 three-line-truncate  max-w-[530px]">
                 {podcast.description}
               </span>
               <Link
-                href="/"
+                href={statics.telegramSocial}
                 className="whitespace-nowrap py-1 px-9 rounded-xl border-2 tru
                border-slate-300 text-slate-200 mt-5"
               >
@@ -133,10 +134,10 @@ const Podcasts = () => {
               </Link>
             </div>
             <div
-              className="w-1/2 min-h-full 
+              className="w-1/2 md:hidden
           flex justify-center items-start flex-col pr-24 space-y-3
           lg:flex-row lg:flex-wrap 
-          lg:space-y-0 lg:min-h-[unset] lg:gap-5 lg:w-full lg:mb-6 lg:items-center lg:pr-0"
+          lg:space-y-0  lg:gap-3 lg:w-full lg:mb-3 lg:items-center lg:pr-0"
             >
               <div className="flex justify-center items-center">
                 <Tooltip label="گوینده" color="#414856" position="top">
@@ -170,7 +171,7 @@ const Podcasts = () => {
               </div>
             </div>
           </div>
-          <div className="w-full h-[55%] lg:h-[45%] flex justify-center items-center flex-col">
+          <div className="w-full mt-4 md:mt-2 flex justify-center items-center flex-col">
             <div className="flex w-full justify-start items-center mb-1  cursor-pointer pr-9">
               <ArrowRight3
                 onClick={goPrev}
@@ -252,7 +253,7 @@ const Podcasts = () => {
                 مشاهده کامنت ها
               </span>
             </div>
-            <div className="w-full mt-4 lg:mt-2  flex justify-center items-center">
+            <div className="w-full absolute left-0 right-0 bottom-0 mt-4 lg:mt-2  flex justify-center items-center">
               <Player
                 played={played}
                 setPlayed={setPlayed}

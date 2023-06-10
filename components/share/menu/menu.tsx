@@ -35,16 +35,10 @@ const routes = [
     label: "پروفایل",
   },
   {
-    href: "/blogs",
-    icon: <Grid3 size="24" className="text-gray-300" />,
-    activeIcon: <Grid3 size="24" className="text-slate-600" />,
-    label: "مقالات",
-  },
-  {
-    href: "/contact-us",
-    icon: <Setting3 size="24" className="text-gray-300" />,
-    activeIcon: <Setting3 size="24" className="text-slate-600" />,
-    label: "تماس با ما",
+    href: "/videos",
+    icon: <VideoPlay size="24" className="text-gray-300" />,
+    activeIcon: <VideoPlay size="24" className="text-slate-600" />,
+    label: "ویدیو ها",
   },
   {
     href: "/events",
@@ -65,16 +59,22 @@ const routes = [
     label: "نشریه",
   },
   {
-    href: "/videos",
-    icon: <VideoPlay size="24" className="text-gray-300" />,
-    activeIcon: <VideoPlay size="24" className="text-slate-600" />,
-    label: "ویدیو ها",
+    href: "/blogs",
+    icon: <Grid3 size="24" className="text-gray-300" />,
+    activeIcon: <Grid3 size="24" className="text-slate-600" />,
+    label: "مقالات",
   },
   {
     href: "/about-us",
     icon: <Profile2User size="24" className="text-gray-300" />,
     activeIcon: <Profile2User size="24" className="text-slate-600" />,
     label: "درباره ما",
+  },
+  {
+    href: "/contact-us",
+    icon: <Setting3 size="24" className="text-gray-300" />,
+    activeIcon: <Setting3 size="24" className="text-slate-600" />,
+    label: "تماس با ما",
   },
 ];
 

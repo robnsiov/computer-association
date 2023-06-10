@@ -45,6 +45,9 @@ const Signin = () => {
           <div className="w-[147px] h-[26px] mt-1 rounded overflow-hidden">
             <Skeleton />
           </div>
+          <div className="w-[200px] h-[26px] mt-1 rounded overflow-hidden">
+            <Skeleton />
+          </div>
         </div>
         <form
           onSubmit={onSubmit}
@@ -81,6 +84,9 @@ const Signin = () => {
 
         <UnderlineTag className="mt-1">
           <Link href="/user/signup">هنوز ثبت نام نکرده اید؟</Link>
+        </UnderlineTag>
+        <UnderlineTag className="mt-1">
+          <Link href="/user/forgot-pass">رمز عبور خود را فراموش کرده اید؟</Link>
         </UnderlineTag>
       </div>
     </>

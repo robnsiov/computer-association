@@ -1,10 +1,8 @@
 // @ts-nocheck
 "use client";
-import MDEditor from "@uiw/react-md-editor";
-import rehypeSanitize from "rehype-sanitize";
+import "./write-blog.scss";
 import "./write-box.css";
-import { useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
+import { useEffect, useRef } from "react";
 import Input from "@/components/share/input/input";
 import useWriteBlog from "./use-write-blog";
 import Image from "@/components/share/image";
@@ -13,6 +11,7 @@ import Button from "@/components/share/button/button";
 import cx from "classnames";
 import Spinner from "@/components/share/spinner/spinner";
 import { Eye } from "iconsax-react";
+import SimpleMDE from "easymde-rtl";
 
 const WriteBlog = () => {
   const getTextareaContent = () => {
@@ -38,25 +37,10 @@ const WriteBlog = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const script = document.createElement("script");
-    const link = document.createElement("link");
-    link.setAttribute("rel", "stylesheet");
-    link.setAttribute(
-      "href",
-      "https://cdn.jsdelivr.net/npm/simplemde-rtl@latest/dist/simplemde-rtl.min.css"
-    );
-    script.setAttribute(
-      "src",
-      "https://cdn.jsdelivr.net/npm/simplemde-rtl@latest/dist/simplemde-rtl.min.js"
-    );
-    document.head.appendChild(script);
-    document.head.appendChild(link);
-    setTimeout(() => {
-      new SimpleMDE({
-        element: document.getElementById("text-area"),
-      });
-      setEditorLoading(false);
-    }, 500);
+    new SimpleMDE({
+      element: document.getElementById("text-area"),
+    });
+    setEditorLoading(false);
   }, []);
 
   const inputClick = () => {
@@ -67,12 +51,10 @@ const WriteBlog = () => {
     <>
       <div className="h-full w-full flex justify-start items-start flex-col overflow-auto scrollbar">
         <div className="w-full flex justify-start items-start flex-col p-6 bg-white rounded-xl">
-          <div
-            className="bg-slate-300 text-slate-600 p-1 rounded-md text-sm mb-4 
-          flex justify-start items-center"
-          >
-            برای مشاهده متن نهایی بر روی آیکون{" "}
-            <Eye className="mx-1" size="16" /> کلیک کنید
+          <div className="bg-slate-300 text-slate-600 p-1 rounded-md text-sm mb-4">
+            <span className="">برای مشاهده متن نهایی بر روی آیکون</span>{" "}
+            <Eye className="mx-1 inline-block" size="16" />{" "}
+            <span>کلیک کنید</span>
           </div>
           <form
             className="w-full flex justify-start items-start flex-col"
@@ -156,7 +138,7 @@ const WriteBlog = () => {
             )}
 
             <div
-              className={cx("w-full relative z-[100] mt-4", {
+              className={cx("w-full relative z-[100] mt-4 write-blog", {
                 "opacity-0": editorLoading,
               })}
             >
