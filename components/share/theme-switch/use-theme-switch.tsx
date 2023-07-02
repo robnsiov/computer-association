@@ -4,9 +4,15 @@ const useThemeSwitch = () => {
   const [isDarkMode, setDarkMode] = useState(true);
 
   useLayoutEffect(() => {
-    const theme = localStorage.theme;
-    console.log(theme);
-    if (theme) setDarkMode(theme === "dark" ? true : false);
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      setDarkMode(true);
+    } else {
+      setDarkMode(false);
+    }
   }, []);
 
   const toggleDarkMode = (checked: boolean) => {

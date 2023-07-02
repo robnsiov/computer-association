@@ -20,7 +20,7 @@ const useContainer = () => {
   const [setOpenMenu] = useMenuStatusStore((state) => [state.set]);
   const [setUserStatus] = useUserStore((state) => [state.setStatus]);
 
-  const getTheme = () => {
+  const setTheme = () => {
     if (
       localStorage.theme === "dark" ||
       (!("theme" in localStorage) &&
@@ -35,7 +35,7 @@ const useContainer = () => {
   };
 
   useLayoutEffect(() => {
-    getTheme();
+    setTheme();
   }, []);
 
   useEffect(() => {
