@@ -49,7 +49,7 @@ const WriteBlog = () => {
 
   return (
     <>
-      <div className="h-full w-full flex justify-start items-start flex-col overflow-auto scrollbar">
+      <div className="h-full w-full flex justify-start items-start flex-col overflow-auto scrollbar dark:dark-scrollbar">
         <div className="w-full flex justify-start items-start flex-col p-5 bg-white dark:bg-slate-600 rounded-xl">
           <div className="bg-slate-300 text-slate-600 p-1 rounded-md text-sm mb-4">
             <span className="">برای مشاهده متن نهایی بر روی آیکون</span>{" "}

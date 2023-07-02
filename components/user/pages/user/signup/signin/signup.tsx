@@ -63,13 +63,16 @@ const Signup = () => {
         <form
           onSubmit={onSubmit}
           className="w-full flex justify-center items-center flex-col mb-4  p-6 md:p-3
-        shadow bg-white rounded"
+        shadow bg-white dark:bg-slate-600 rounded"
         >
           <div
             className="w-16 h-16 rounded-full border-[1px] border-slate-200 
           flex justify-center items-center mb-6"
           >
-            <Profile2User size="34" className="text-slate-500" />
+            <Profile2User
+              size="34"
+              className="text-slate-500 dark:text-slate-400"
+            />
           </div>
           <Input<SignupFormValues>
             register={register}

@@ -23,12 +23,12 @@ const Uploader = () => {
     <>
       <div
         className="w-full h-full overflow-auto scrollbar flex justify-start items-end
-       flex-col p-5 bg-white dark:bg-slate-600 rounded-lg overflow-y-auto scrollbar"
+       flex-col p-5 bg-white dark:bg-slate-600 rounded-lg overflow-y-auto dark:dark-scrollbar"
       >
         <div className="w-full flex justify-start items-start mb-4">
           <div
             className="group w-9 h-9 bg-transparent transition-all duration-200
-          hover:bg-slate-300 rounded-md hover:ring-2 border-[1px] border-slate-400 border-dashed
+          hover:bg-slate-300 dark:hover:bg-slate-500 rounded-md hover:ring-2 border-[1px] border-slate-400 border-dashed
            hover:border-0 hover:ring-slate-200 flex justify-center items-center"
           >
             <CloudPlus
@@ -94,7 +94,7 @@ const Uploader = () => {
                   src={link}
                   width={24}
                   height={24}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
             </div>

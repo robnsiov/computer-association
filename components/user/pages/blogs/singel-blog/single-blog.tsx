@@ -23,7 +23,7 @@ const SingleBlog = async ({ slug }: SingleBlogImpl) => {
   const blog = await singleBlog(slug);
   return (
     <>
-      <div className="w-full  h-full scrollbar overflow-y-auto pl-4">
+      <div className="w-full  h-full scrollbar dark:dark-scrollbar overflow-y-auto pl-4">
         <Suspense fallback={<PageWait />}>
           <div className="w-full max-w-xl mx-auto flex justify-start items-center flex-col mt-3">
             <h1 className="font-black text-5xl md:text-4xl text-center md:leading-[1.3] leading-[1.2] ">
@@ -44,7 +44,7 @@ const SingleBlog = async ({ slug }: SingleBlogImpl) => {
               />
             </div>
             <div className="w-full mt-8">
-              <div className="w-full markdown-body">
+              <div className="w-full markdown-body dark:text-slate-400">
                 <Markdown markdown={blog.content} />
               </div>
             </div>

@@ -20,6 +20,7 @@ import Link from "../link/link";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaTelegramPlane } from "react-icons/fa";
 import { BsTwitter } from "react-icons/bs";
+import ThemeSwitch from "../theme-switch/theme-switch";
 
 const routes = [
   {
@@ -127,13 +128,13 @@ const Menu = ({ links, inner = false }: MenuImpl) => {
                   به ما ملحق شوید در
                 </span>
                 <Link href={"/"}>
-                  <FaTelegramPlane className="hover:text-slate-600" />
+                  <FaTelegramPlane className="hover:text-slate-600 dark:hover:text-slate-700" />
                 </Link>
                 <Link href={"/"} className="mx-3">
-                  <AiFillInstagram className="hover:text-slate-600" />
+                  <AiFillInstagram className="hover:text-slate-600 dark:hover:text-slate-700" />
                 </Link>
                 <Link href={"/"}>
-                  <BsTwitter className="hover:text-slate-600" />
+                  <BsTwitter className="hover:text-slate-600 dark:hover:text-slate-700" />
                 </Link>
               </div>
             </div>
@@ -150,6 +151,7 @@ const Menu = ({ links, inner = false }: MenuImpl) => {
             {icon}
           </MenuItem>
         ))}
+        {!inner && <ThemeSwitch />}
       </div>
     </>
   );

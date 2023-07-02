@@ -7,8 +7,8 @@ const Button = ({ loading = false, title, className = "" }: ButtonImpl) => {
       <button
         type={loading ? "button" : "submit"}
         className={cx(
-          `group relative w-full rounded border-none outline-none text-white bg-slate-500
-             hover:bg-slate-100 hover:text-slate-500 h-[44px] text-lg
+          `group relative w-full rounded border-none outline-none text-white dark:text-slate-400 dark:bg-slate-700 bg-slate-500
+             hover:bg-slate-100 dark:hover:bg-slate-800/75 hover:text-slate-500 h-[44px] text-lg
             transition-all duration-200 flex justify-center items-center`,
           { [className]: className }
         )}

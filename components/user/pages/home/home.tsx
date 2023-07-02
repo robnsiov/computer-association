@@ -6,7 +6,7 @@ const Home = () => {
     <>
       <div
         className="w-full h-full flex justify-between items-center px-5 pb-0 
-      lg:flex-col lg:justify-start lg:items-start lg:overflow-auto lg:scrollbar md:p-1"
+      lg:flex-col lg:justify-start lg:items-start lg:overflow-auto lg:scrollbar dark:lg:dark-scrollbar md:p-1"
       >
         <div
           className="w-[60%] lg:w-full h-full flex justify-start items-start flex-col overflow-hidden -mb-10

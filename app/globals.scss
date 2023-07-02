@@ -31,23 +31,40 @@ a {
   .break-word {
     word-break: break-word;
   }
-  .scrollbar::-webkit-scrollbar {
-    width: 9px;
-    height: 3px;
-  }
+  .scrollbar {
+    &::-webkit-scrollbar {
+      width: 9px;
+      height: 3px;
+    }
 
-  .scrollbar::-webkit-scrollbar-track {
-    border-radius: 100vh;
-    background: #fff;
-  }
+    &::-webkit-scrollbar-track {
+      border-radius: 100vh;
+      background: #fff;
+    }
 
-  .scrollbar::-webkit-scrollbar-thumb {
-    background: #e2e8f0;
-    border-radius: 100vh;
-  }
+    &::-webkit-scrollbar-thumb {
+      background: #e2e8f0;
+      border-radius: 100vh;
+    }
 
-  .scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #cbd5e1;
+    &::-webkit-scrollbar-thumb:hover {
+      background: #cbd5e1;
+    }
+  }
+  .dark-scrollbar {
+    &::-webkit-scrollbar-track {
+      border-radius: 100vh;
+      background: #475569;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 100vh;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #64748b;
+    }
   }
   .overflow-unset {
     overflow: unset !important;
@@ -60,14 +77,23 @@ a {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 0.2s;
   }
+  .ring-dark-error {
+    border-color: #a760ff !important;
+  }
   .box-error-shadow {
     box-shadow: 0 0 0 2px #ef4444 !important;
+  }
+  .box-error-shadow-dark {
+    box-shadow: 0 0 0 2px #283446 !important;
   }
   .top-3-5-important {
     top: -14px !important;
   }
   .red-500-important {
     color: #ef4444 !important;
+  }
+  .slate-dark-important {
+    color: #283446 !important;
   }
   .three-line-truncate {
     width: 100%;

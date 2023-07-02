@@ -18,6 +18,7 @@ import {
   Play,
   Sound,
 } from "iconsax-react";
+import cx from "classnames";
 import { useRef } from "react";
 import Player from "./player/player";
 import usePodcasts from "./use-podcasts";
@@ -207,7 +208,7 @@ const Podcasts = () => {
                   >
                     <Link
                       href={{ pathname: "/podcasts", query: { id } }}
-                      className="w-full flex justify-center items-center text-center"
+                      className="w-full flex justify-center items-center text-center group"
                     >
                       <div className="w-full aspect-square relative">
                         <div className="rounded-full overflow-hidden w-full h-full">
@@ -236,10 +237,28 @@ const Podcasts = () => {
                             </div>
                           </div>
                         </FadeAnimation>
-                        <h2 className="w-full truncate text-slate-100 dark:text-slate-600 mt-3 font-extrabold">
+                        <h2
+                          className={cx(
+                            `w-full truncate text-slate-100 dark:text-slate-600 mt-3 font-extrabold
+                        group-hover:text-slate-400`,
+                            {
+                              "group-hover:text-slate-400":
+                                id === podcast.id && played,
+                            }
+                          )}
+                        >
                           {title}
                         </h2>
-                        <span className="w-full truncate  text-slate-400 dark:text-slate-600 mt-1 text-[13px] font-extralight lg:hidden">
+                        <span
+                          className={cx(
+                            `w-full truncate  text-slate-400 dark:text-slate-600 mt-1 text-[13px] font-extralight lg:hidden
+                        `,
+                            {
+                              "group-hover:text-slate-400":
+                                id === podcast.id && played,
+                            }
+                          )}
+                        >
                           {speaker}
                         </span>
                       </div>

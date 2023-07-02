@@ -23,7 +23,7 @@ const SingleEvent = async ({ slug }: SingleEventImpl) => {
   const event = await singleEvent(slug);
   return (
     <>
-      <div className="w-full  h-full scrollbar overflow-y-auto pl-3">
+      <div className="w-full  h-full scrollbar dark:dark-scrollbar overflow-y-auto pl-3">
         <Suspense fallback={<PageWait />}>
           <article className="w-full max-w-xl mx-auto flex justify-start items-center flex-col mt-3">
             <h1 className="font-black text-5xl md:text-4xl text-center md:leading-[1.3] leading-[1.2] mb-6">
@@ -54,7 +54,7 @@ const SingleEvent = async ({ slug }: SingleEventImpl) => {
               </div>
             </div>
             <div className="w-full mt-8">
-              <div className="w-full markdown-body">
+              <div className="w-full markdown-body dark:text-slate-400">
                 <Markdown markdown={event.content} />
               </div>
             </div>

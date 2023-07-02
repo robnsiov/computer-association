@@ -8,7 +8,7 @@ const UserEvents = () => {
   const { rows, isFetching, isSuccess } = useUserEvents();
   return (
     <>
-      <div className="w-full h-full overflow-auto scrollbar flex justify-center items-start">
+      <div className="w-full h-full overflow-auto scrollbar dark:dark-scrollbar flex justify-center items-start">
         <div className="border-2 border-slate-200 dark:border-slate-400 rounded-xl overflow-hidden max-w-xl w-full">
           {isFetching && (
             <>

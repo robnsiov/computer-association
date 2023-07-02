@@ -25,7 +25,7 @@ const Blogs = ({
         className={cx(
           `pl-4 pr-2 py-2 h-full grid gap-5 auto-rows-min`,
           {
-            "grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 580px:grid-cols-1 overflow-y-auto scrollbar":
+            "grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 580px:grid-cols-1 overflow-y-auto scrollbar dark:dark-scrollbar":
               !home,
           },
           {
@@ -39,7 +39,7 @@ const Blogs = ({
               <div key={i} className="relative h-[327px]">
                 <div
                   className="absolute inset-0 z-10 rounded-3xl overflow-hidden
-                   bg-white p-2 flex justify-between items-center flex-col"
+                   bg-white dark:bg-slate-500 p-2 flex justify-between items-center flex-col"
                 >
                   <div className="w-full h-[202px] rounded-2xl overflow-hidden">
                     <Skeleton />

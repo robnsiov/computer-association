@@ -3,7 +3,7 @@ import usePageAnimStore from "@/context/page-anim/page-anim-store";
 import usePageLoadingStore from "@/context/page-loading/page-loading-store";
 import useUserStore from "@/context/user/user-store";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 const useContainer = () => {
   const pathname = usePathname();
@@ -19,6 +19,24 @@ const useContainer = () => {
 
   const [setOpenMenu] = useMenuStatusStore((state) => [state.set]);
   const [setUserStatus] = useUserStore((state) => [state.setStatus]);
+
+  const getTheme = () => {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+      localStorage.theme = "dark";
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.theme = "light";
+    }
+  };
+
+  useLayoutEffect(() => {
+    getTheme();
+  }, []);
 
   useEffect(() => {
     setUserStatus();

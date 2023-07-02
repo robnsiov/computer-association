@@ -24,7 +24,7 @@ const Podcast = () => {
         animate-ping"
         ></div>
         <Link
-          href={`${data ? `/podcast?id=` + data.id : `/podcast`}`}
+          href={`${data ? `/podcasts?id=` + data.id : `/podcast`}`}
           className="absolute w-[90px] h-[90px] bg-slate-500 rounded-full
            flex justify-center items-center z-10"
         >

@@ -63,9 +63,11 @@ function Input<T>({
             spellCheck={false}
             className={cx(
               `caret-slate-500 text-slate-700 w-full rounded p-2 py-2.5 pl-9 border-[1px] border-slate-200 bg-transparent
-                transition-all duration-200 peer outline-none  focus:ring-2 focus:ring-slate-500`,
+                transition-all duration-200 peer outline-none  focus:ring-2 focus:ring-slate-500 
+                dark:text-slate-400 dark:border-slate-400`,
               {
-                "ring-2 ring-red-500 box-error-shadow": error,
+                "ring-2 dark:box-error-shadow-dark ring-red-500 box-error-shadow":
+                  error,
                 [className]: className,
               }
             )}
@@ -87,9 +89,11 @@ function Input<T>({
             spellCheck={false}
             className={cx(
               `caret-slate-500 text-slate-700 w-full rounded p-2 py-2.5 pl-9 border-[1px] border-slate-200 bg-transparent
-                transition-all duration-200 peer outline-none  focus:ring-2 focus:ring-slate-500`,
+                transition-all duration-200 peer outline-none  focus:ring-2 focus:ring-slate-500
+                dark:text-slate-400 dark:border-slate-400`,
               {
-                "ring-2 ring-red-500 box-error-shadow": error,
+                "ring-2 dark:box-error-shadow-dark ring-red-500 box-error-shadow":
+                  error,
                 [className]: className,
               }
             )}
@@ -102,11 +106,11 @@ function Input<T>({
             `text-lg 
               peer-focus:-top-3.5 peer-focus:px-2 peer-focus:text-slate-500
             absolute top-2 right-3
-            bg-white duration-200 transition-all`,
+            bg-white dark:bg-slate-600 dark:text-slate-400 duration-200 transition-all`,
             {
               "top-3-5-important px-2 text-slate-500": activeLabel,
             },
-            { "red-500-important": error }
+            { "dark:slate-dark-important red-500-important": error }
           )}
         >
           {label}
@@ -115,7 +119,7 @@ function Input<T>({
           <span
             className="absolute left-1/2 -translate-x-1/2 -bottom-2 border-2 
         border-red-500 rounded-md text-xs font-semibold px-2 bg-white text-red-400 
-        whitespace-nowrap text-center z-40"
+        whitespace-nowrap text-center z-40 dark:bg-slate-700 dark:text-slate-300 dark:border-slate-600"
           >
             {error}
           </span>
@@ -127,13 +131,13 @@ function Input<T>({
               <Eye
                 onClick={toText}
                 size="20"
-                className="absolute top-1/2 left-2.5 -translate-y-1/2 cursor-pointer"
+                className="absolute top-1/2 left-2.5 -translate-y-1/2 cursor-pointer dark:text-slate-400"
               />
             ) : (
               <EyeSlash
                 onClick={toPassword}
                 size="20"
-                className="absolute top-1/2 left-2.5 -translate-y-1/2 cursor-pointer"
+                className="absolute top-1/2 left-2.5 -translate-y-1/2 cursor-pointer dark:text-slate-400"
               />
             )}
           </>

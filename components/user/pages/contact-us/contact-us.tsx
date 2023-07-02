@@ -14,13 +14,16 @@ const ContactUs = () => {
         <form
           onSubmit={onSubmit}
           className="w-full max-w-sm flex justify-center items-center flex-col  p-6 md:p-3
-        shadow bg-white rounded"
+        shadow bg-white dark:bg-slate-600 rounded"
         >
           <div
             className="w-16 h-16 rounded-full border-[1px] border-slate-200 
           flex justify-center items-center mb-6"
           >
-            <CpuSetting size="34" className="text-slate-500" />
+            <CpuSetting
+              size="34"
+              className="text-slate-500 dark:text-slate-400"
+            />
           </div>
           <Input<ContactUsFormValues>
             register={register}

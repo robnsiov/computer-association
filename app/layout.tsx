@@ -66,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html className="dark">
       <body dir="rtl" className={`${inter.variable} ${yekanBakh.className}`}>
         <Container>{children}</Container>
       </body>

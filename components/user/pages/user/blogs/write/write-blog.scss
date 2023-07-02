@@ -715,3 +715,8 @@
     background: rgba(255, 0, 0, 0.15);
   }
 }
+html.dark {
+  .CodeMirror {
+    background-color: #475569 !important;
+  }
+}
