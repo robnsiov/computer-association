@@ -31,7 +31,14 @@ const useSignup = () => {
 
   const validation = useMemo(() => {
     return zod.object({
-      fullName: zod.string().min(4).max(56),
+      fullName: zod
+        .string()
+        .min(4)
+        .max(56)
+        .refine(
+          (value) => /^[\u0600-\u06FF\s ]+$/.test(value),
+          "کارکترهای مجاز : فارسی"
+        ),
       studentNumber: zod.string().min(2).max(12),
       email: zod.string().email(),
       isQut: zod.optional(zod.boolean()),

@@ -1,7 +1,7 @@
 "use client";
 
 import { Profile2User } from "iconsax-react";
-import useSignin from "./use-sginup";
+import useSignin from "./use-signup";
 import { SignupFormValues } from "./types";
 import Input from "@/components/share/input/input";
 import Button from "@/components/share/button/button";
