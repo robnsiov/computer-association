@@ -33,8 +33,13 @@ a {
   }
   .scrollbar {
     &::-webkit-scrollbar {
-      width: 9px;
+      width: 6px;
       height: 3px;
+      @media (max-width: 767px) {
+        & {
+          width: 2px;
+        }
+      }
     }
 
     &::-webkit-scrollbar-track {

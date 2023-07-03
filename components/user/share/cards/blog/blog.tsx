@@ -2,6 +2,7 @@ import Image from "@/components/share/image";
 import Link from "@/components/share/link/link";
 import { DocumentDownload, Eye, User } from "iconsax-react";
 import { BlogCard } from "./types";
+import { Tooltip } from "@mantine/core";
 
 const Blog = (props: BlogCard) => {
   const {
@@ -26,27 +27,19 @@ const Blog = (props: BlogCard) => {
       hover:ring-slate-100"
       >
         <div className="relative w-full bg-white dark:bg-slate-700  rounded-2xl flex justify-center items-center flex-col p-2">
-          <div className="w-full flex justify-between items-center mb-2">
-            <div className="flex justify-start items-center w-full  max-w-[48%]">
+          <div className="w-full flex justify-between flex-row-reverse items-center mb-2">
+            <div className="flex justify-end items-center  w-[75%]  max-w-[75%]">
               <div
                 onClick={() => changeRouteWithCat(userSlug)}
-                className="text-slate-600 font-black text-sm  truncate
+                className="text-slate-600 font-black   truncate
                 hover:text-slate-400 dark:text-slate-500 dark:hover:text-slate-800 cursor-pointer"
               >
                 {category}
               </div>
             </div>
-            {/* <span className="w-0.5 h-5 border-r-2 border-slate-400"></span> */}
-            <div className="flex justify-end items-center w-full max-w-[48%]">
-              <div className="flex justify-end items-end flex-col ml-2">
-                <span className="text-slate-400 text-[11px]  truncate">
-                  پست شده توسط
-                </span>
-                <span className="text-slate-700 dark:text-slate-500 font-semibold  text-[14px]  truncate">
-                  {full_name}
-                </span>
-              </div>
-              <div className="min-w-[28px] max-w-[28px] aspect-square rounded-full overflow-hidden">
+            <div className="flex flex-row-reverse justify-end items-center  max-w-[20%]">
+              <div className="flex justify-start items-start flex-col "></div>
+              <div className="min-w-[28px] max-w-[28px] aspect-square rounded-full overflow-hidden border-2 border-slate-500">
                 {userImage ? (
                   <Image
                     width={80}

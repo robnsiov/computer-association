@@ -43,7 +43,7 @@ const Footer = () => {
           </Link>
         </div>
         <div className="text-slate-400 dark:text-slate-700  flex justify-center items-center md:text-[14px]">
-          <span className="text-slate-300 text-sm ml-5 dark:text-slate-400 relative top-[3px]">
+          <span className="text-slate-300 text-sm ml-5 dark:text-slate-400">
             طراحی و توسعه توسط
           </span>
           <div>
@@ -54,7 +54,7 @@ const Footer = () => {
               Sah
             </Link>
           </div>
-          <span className="mx-2 text-slate-200 dark:text-slate-400 text-sm">
+          <span className="mx-2 text-slate-200 dark:text-slate-400  text-sm">
             {" "}
             - و -{" "}
           </span>

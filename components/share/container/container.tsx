@@ -29,7 +29,7 @@ const Container = ({ children }: ContainerImpl) => {
           >
             <div
               className={cx(
-                `w-full h-full overflow-hidden relative p-5 rounded-3xl rounded-l-none`,
+                `w-full h-full overflow-hidden relative p-5 md:pl-0 md:pr-3 rounded-3xl rounded-l-none`,
                 {
                   "opacity-100 scale-100 duration-700 transition-all":
                     !pageLoading,

@@ -26,7 +26,7 @@ const SingleEvent = async ({ slug }: SingleEventImpl) => {
       <div className="w-full  h-full scrollbar dark:dark-scrollbar overflow-y-auto pl-3">
         <Suspense fallback={<PageWait />}>
           <article className="w-full max-w-xl mx-auto flex justify-start items-center flex-col mt-3">
-            <h1 className="font-black text-5xl md:text-4xl text-center md:leading-[1.3] leading-[1.2] mb-6">
+            <h1 className="font-black text-5xl md:text-4xl text-center md:leading-[1.3] leading-[1.2] mb-6 dark:text-slate-400">
               {event.title}
             </h1>
             <div className="w-full min-h-[300px] sm:min-h-[150px] rounded-2xl h-auto relative overflow-hidden">
