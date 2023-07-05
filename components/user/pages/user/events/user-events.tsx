@@ -44,7 +44,12 @@ const UserEvents = () => {
                 <Table verticalSpacing="sm" striped highlightOnHover>
                   <thead>
                     <tr>
-                      <th style={{ textAlign: "right" }}>نام رویداد</th>
+                      <th
+                        className="dark:text-slate-400"
+                        style={{ textAlign: "right" }}
+                      >
+                        نام رویداد
+                      </th>
                       <th style={{ textAlign: "right" }}></th>
                     </tr>
                   </thead>

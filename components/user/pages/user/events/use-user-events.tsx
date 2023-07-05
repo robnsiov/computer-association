@@ -55,8 +55,8 @@ const useUserEvents = () => {
 
   const rows = elements.map((element) => (
     <tr key={element.id}>
-      <td>{element.title}</td>
-      <td className="text-red-400 flex justify-start items-center">
+      <td className="dark:bg-slate-800 dark:text-slate-400">{element.title}</td>
+      <td className="dark:bg-slate-800 text-red-400 flex justify-start items-center">
         {element.is_active ? (
           <>
             {lodingEventId === element.id ? (
