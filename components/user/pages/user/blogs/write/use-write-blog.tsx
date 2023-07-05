@@ -170,20 +170,22 @@ const useWriteBlog = (
   }, []);
 
   const onSubmit: SubmitHandler<BlogFormValues> = (data) => {
-    const formData = new FormData();
-    const catSlug = categories?.data.filter(
-      ({ name }) => name === data.catName
-    );
-    const content = getTextareaContent();
-    if (imageFile) formData.append("image", imageFile);
-    if (data.enTitle) formData.append("en_title", data.enTitle);
-    if (data.catName && catSlug && catSlug[0])
-      formData.append("category", `${catSlug[0].id}`);
+    createToast({ title: "این بخش فعلا غیرفعال میباشد", icon: "error" });
+    // return;
+    // const formData = new FormData();
+    // const catSlug = categories?.data.filter(
+    //   ({ name }) => name === data.catName
+    // );
+    // const content = getTextareaContent();
+    // if (imageFile) formData.append("image", imageFile);
+    // if (data.enTitle) formData.append("en_title", data.enTitle);
+    // if (data.catName && catSlug && catSlug[0])
+    //   formData.append("category", `${catSlug[0].id}`);
 
-    if (data.title) formData.append("title", data.title);
-    if (content) formData.append("content", content);
-    console.log(content);
-    formMutation.mutate({ data: formData, edit: editPage });
+    // if (data.title) formData.append("title", data.title);
+    // if (content) formData.append("content", content);
+    // console.log(content);
+    // formMutation.mutate({ data: formData, edit: editPage });
   };
   return {
     onSubmit: handleSubmit(onSubmit),

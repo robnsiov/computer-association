@@ -1,8 +1,6 @@
 // @ts-nocheck
 "use client";
-import "./write-blog.scss";
-import "./write-box.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Input from "@/components/share/input/input";
 import useWriteBlog from "./use-write-blog";
 import Image from "@/components/share/image";
@@ -11,7 +9,7 @@ import Button from "@/components/share/button/button";
 import cx from "classnames";
 import Spinner from "@/components/share/spinner/spinner";
 import { Eye } from "iconsax-react";
-import SimpleMDE from "easymde-rtl";
+import "./write-blog.scss";
 
 const WriteBlog = () => {
   const getTextareaContent = () => {
@@ -36,17 +34,10 @@ const WriteBlog = () => {
   const ref = useRef<HTMLInputElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    new SimpleMDE({
-      element: document.getElementById("text-area"),
-    });
-    setEditorLoading(false);
-  }, []);
-
   const inputClick = () => {
     inputRef.current?.click();
   };
-
+  const [data, setData] = useState("");
   return (
     <>
       <div className="h-full w-full flex justify-start items-start flex-col overflow-auto scrollbar dark:dark-scrollbar">
@@ -131,23 +122,12 @@ const WriteBlog = () => {
                 />
               </div>
             </div>
-            {editorLoading && (
+            {/* {editorLoading && (
               <div className="w-full bg-slate-100 h-12 rounded-md flex justify-center items-center mt-4">
                 <Spinner color="text-slate-600" />
               </div>
-            )}
-
-            <div
-              className={cx("w-full relative z-[100] mt-4 write-blog", {
-                "opacity-0": editorLoading,
-              })}
-            >
-              <textarea
-                value={"**این یک متن تست است**"}
-                ref={ref}
-                id="text-area"
-              ></textarea>
-            </div>
+            )} */}
+            <div className="w-full rounded-lg mt-4 overflow-hidden"></div>
             <div className="mt-4 w-[180px]">
               <Button title="ثبت" loading={formLoading} />
             </div>

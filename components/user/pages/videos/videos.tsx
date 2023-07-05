@@ -9,8 +9,8 @@ const Videos = () => {
   return (
     <>
       <Modal setProp={toggleModal} inProp={modal}>
-        <div className="overflow-hidden rounded-lg aspect-video">
-          <video controls={true} src={video} />
+        <div className="overflow-hidden flex justify-center items-center rounded-lg aspect-video">
+          <video className="w-full aspect-video" controls={true} src={video} />
         </div>
       </Modal>
       <Blogs videos={true} onView={onView} />

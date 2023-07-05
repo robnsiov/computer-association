@@ -6,6 +6,7 @@ export default interface LinkImpl {
   className?: string;
   target?: string;
   download?: boolean;
+  noLoading?: boolean;
 }
 
 export interface UseLinkImpl {

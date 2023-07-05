@@ -75,7 +75,7 @@ const useChangePass = () => {
         title: "رمز عبور شما با موفقیت تغییر کرد",
         icon: "success",
       });
-      // rounter.replace("/user/signin");
+      rounter.replace("/user/signin");
     },
     onError(error) {
       ErrorHandler(error, "/change-pass");

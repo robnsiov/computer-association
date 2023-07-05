@@ -127,6 +127,8 @@ const Podcasts = () => {
                 {podcast.description}
               </span>
               <Link
+                noLoading={true}
+                target="_blank"
                 href={statics.telegramSocial}
                 className="whitespace-nowrap py-1 px-9 rounded-xl border-2 tru
                border-slate-300 text-slate-200 dark:text-slate-400 dark:border-slate-400 mt-5"
@@ -207,6 +209,7 @@ const Podcasts = () => {
                     onClick={() => setPlayed(true)}
                   >
                     <Link
+                      noLoading={true}
                       href={{ pathname: "/podcasts", query: { id } }}
                       className="w-full flex justify-center items-center text-center group"
                     >
@@ -220,7 +223,9 @@ const Podcasts = () => {
                             alt={title}
                           />
                         </div>
-                        <FadeAnimation inProp={id === podcast.id && played}>
+                        <FadeAnimation
+                          inProp={id === podcast.id && played === true}
+                        >
                           <div
                             className="absolute top-0 left-0 w-full aspect-square
                    bg-slate-900/60 rounded-full ring-2 ring-slate-600 
@@ -242,8 +247,8 @@ const Podcasts = () => {
                             `w-full truncate text-slate-100 dark:text-slate-600 mt-3 font-extrabold
                         group-hover:text-slate-400`,
                             {
-                              "group-hover:text-slate-400":
-                                id === podcast.id && played,
+                              "text-slate-400":
+                                id === podcast.id && played === true,
                             }
                           )}
                         >

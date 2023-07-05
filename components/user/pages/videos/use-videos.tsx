@@ -8,7 +8,7 @@ const useVideos = () => {
   const onView = (src: string) => {
     // setVideo(src);
     toggleModal();
-    setVideo("https://media.w3.org/2010/05/sintel/trailer_hd.mp4");
+    setVideo(src);
   };
   return { modal, toggleModal, onView, video };
 };

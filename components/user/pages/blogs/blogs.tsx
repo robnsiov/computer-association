@@ -21,6 +21,11 @@ const Blogs = ({
   });
   return (
     <>
+      {blogs.length === 0 && !initBlogs && (
+        <div className="w-full h-full text-slate-500 flex justify-center items-center">
+          <p className="text-lg">آیتمی برای نمایش وجود ندارد</p>
+        </div>
+      )}
       <div
         className={cx(
           `pl-4 pr-2 py-2 h-full grid gap-5 auto-rows-min`,
@@ -55,6 +60,7 @@ const Blogs = ({
             ))}
           </>
         )}
+
         <AnimatePresence>
           {blogs.map(
             ({
@@ -65,6 +71,8 @@ const Blogs = ({
               article_category,
               slug,
               status,
+              video_file,
+              name,
             }) => (
               <motion.div
                 key={title}
@@ -75,6 +83,7 @@ const Blogs = ({
                 exit={{ opacity: 0 }}
               >
                 <Blog
+                  video_file={video_file}
                   slug={slug}
                   image={image}
                   title={title}
@@ -85,6 +94,7 @@ const Blogs = ({
                   changeRouteWithCat={changeRouteWithCat}
                   editOperation={editOperation}
                   status={status}
+                  name={name}
                   videos={videos}
                   onView={onView}
                 />

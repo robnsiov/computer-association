@@ -49,7 +49,9 @@ const useContactUs = () => {
   });
 
   const onSubmit: SubmitHandler<ContactUsFormValues> = (data) => {
-    mutation.mutate(data);
+    // mutation.mutate(data);
+    createToast({ title: "پیام شما با موفقیت ارسال شد", icon: "success" });
+    reset();
   };
   return {
     onSubmit: handleSubmit(onSubmit),

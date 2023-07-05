@@ -50,8 +50,7 @@ const usePodcasts = () => {
     } else if (firstPod) {
       setPodcast(firstPod);
     }
-  }, [data]);
-
+  }, [data, idParam]);
   return {
     data,
     isSuccess,

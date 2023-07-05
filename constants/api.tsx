@@ -18,7 +18,7 @@ export const api = {
   singleBlog: "/post/article/",
   userSingleBlog: (slug: string) => `/post/article/${slug}/edit/`,
   blogs: "/post/article/",
-  vidoes: "/post/article/",
+  vidoes: "/course/v2/all_course_video/",
   blogCategories: "/post/categories/",
   videosCategories: "/course/v2/courses_category/",
   blogsByCategory: (slug: string) => `/post/${slug}/articles/`,

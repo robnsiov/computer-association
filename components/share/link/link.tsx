@@ -10,13 +10,16 @@ const Link = ({
   className = "",
   target = "",
   download = false,
+  noLoading = false,
 }: LinkImpl) => {
   const { onClick } = useLink({ href });
 
   return (
     <>
       <NextLink
-        onClick={onClick}
+        onClick={() => {
+          if (!noLoading) onClick();
+        }}
         href={href}
         className={className}
         target={target}

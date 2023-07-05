@@ -13,6 +13,11 @@ const Events = ({ journal = false }: EventsImpl) => {
     useEvents({ journal });
   return (
     <>
+      {events.length === 0 && !initEvents && (
+        <div className="w-full h-full text-slate-500 flex justify-center items-center">
+          <p className="text-lg">آیتمی برای نمایش وجود ندارد</p>
+        </div>
+      )}
       <div
         className="pl-4 pr-2 py-2 overflow-y-scroll scrollbar dark:dark-scrollbar h-full grid grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 
       md:grid-cols-2 580px:grid-cols-1  gap-5 auto-rows-min	"
@@ -39,6 +44,7 @@ const Events = ({ journal = false }: EventsImpl) => {
             ))}
           </>
         )}
+
         <AnimatePresence>
           {events.map(({ image, slug, title, is_active, id, src }) => (
             <motion.div
@@ -84,6 +90,7 @@ const Events = ({ journal = false }: EventsImpl) => {
                       <Link
                         href={src}
                         download={true}
+                        noLoading={true}
                         target="_blank"
                         className="bg-slate-800 text-white w-full p-3 text-sm rounded-lg 
             rounded-br-3xl rounded-bl-3xl text-center hover:ring-[3px] hover:ring-slate-400 transition-all duration-200
