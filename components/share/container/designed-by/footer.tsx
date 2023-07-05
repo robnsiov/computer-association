@@ -17,10 +17,10 @@ const Footer = () => {
           <span className="ml-5 text-sm text-slate-300 dark:text-slate-400">
             به ما ملحق شوید در
           </span>
-          <Link href={statics.linkedinSocial}>
+          <Link target="_blank" noLoading={true} href={statics.linkedinSocial}>
             <FaLinkedin className="ml-3 hover:text-slate-600 dark:hover:text-slate-800" />
           </Link>
-          <Link href={statics.telegramSocial}>
+          <Link target="_blank" noLoading={true} href={statics.telegramSocial}>
             <FaTelegramPlane className="hover:text-slate-600 dark:hover:text-slate-800" />
           </Link>
           {/* <Link href={"/"} className="mx-3">
@@ -36,6 +36,8 @@ const Footer = () => {
           </span>
 
           <Link
+            target="_blank"
+            noLoading={true}
             className="flex font-bold justify-center items-center dark:text-slate-700 dark:hover:text-slate-800 hover:text-slate-600"
             href={statics.sponserLink}
           >
@@ -48,6 +50,8 @@ const Footer = () => {
           </span>
           <div>
             <Link
+              target="_blank"
+              noLoading={true}
               className="hover:text-slate-600 en dark:hover:text-slate-800"
               href={statics.sahDev}
             >
@@ -60,6 +64,8 @@ const Footer = () => {
           </span>
           <div>
             <Link
+              target="_blank"
+              noLoading={true}
               className={"hover:text-slate-600 en dark:hover:text-slate-800"}
               href={statics.zolfuDev}
             >

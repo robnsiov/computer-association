@@ -11,8 +11,14 @@ const AboutUs = () => {
         className="absolute inset-0 z-10 flex md:hidden"
       ></div>
       <div
+        style={{
+          background: "linear-gradient(180deg, #0a101c97 0%, #0b1220 100%)",
+        }}
+        className="absolute hidden md:block inset-4 rounded-2xl z-10"
+      ></div>
+      <div
         className="absolute inset-0 z-10 flex justify-end items-center flex-col
-       text-white text-center p-4 dark:text-slate-500 md:dark:text-slate-800 md:text-slate-600"
+       text-white text-center p-8 dark:text-slate-500"
       >
         <h1 className="max-w-xl mb-5 text-4xl font-extrabold">
           {statics.aboutTitle}
@@ -22,12 +28,12 @@ const AboutUs = () => {
         </div>
       </div>
       <div className="absolute inset-0 flex justify-center items-start">
-        <div className="md:overflow-hidden md:max-w-md w-full md:p-4">
+        <div className="w-full h-full md:p-4">
           <Image
-            src="/images/G-gp-931.jpg"
+            src="/images/uni.jpg"
             width={2000}
             height={900}
-            className="object-cover object-top w-full h-full md:rounded-2xl"
+            className="object-cover object-[10%_38%] w-full h-full md:rounded-2xl"
             alt="about-us"
           />
         </div>

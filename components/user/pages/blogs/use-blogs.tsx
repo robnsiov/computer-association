@@ -10,7 +10,7 @@ import { api } from "@/constants/api";
 
 const useBlogs = ({ edit, home, videos }: BlogsImpl) => {
   const router = useRouter();
-  const pathname = usePathname();
+  let pathname = usePathname();
   const [blogs, setBlogs] = useState<Array<BlogCardImpl>>([]);
 
   const [cat, setCat] = useActiveCategoryStore((state) => [
@@ -66,6 +66,7 @@ const useBlogs = ({ edit, home, videos }: BlogsImpl) => {
 
   const changeRouteWithCat = (path: string) => {
     setCat(path);
+    if (pathname === "/") pathname = "/blogs";
     router.push(`${pathname}?category=${path}`);
   };
 
