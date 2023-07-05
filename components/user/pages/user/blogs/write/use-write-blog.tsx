@@ -13,10 +13,7 @@ import { api } from "@/constants/api";
 import { qu } from "@/components/share/container/query-client/query-client";
 import BlogCardImpl from "@/components/user/share/cards/blog/types";
 
-const useWriteBlog = (
-  getTextareaContent: Function,
-  setTextareaContent: (content: string) => {}
-) => {
+const useWriteBlog = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const edit = searchParams.get("edit");
@@ -29,6 +26,7 @@ const useWriteBlog = (
   const validation = useMemo(() => {
     return zod.object({
       title: zod.string().min(2).max(64),
+      content: zod.string().min(50).max(99999999999999),
       image: zod.string().min(1, "انتخاب تصویر الزامی میباشد").max(999999),
       catName: zod.string().min(1, "انتخاب دسته بندی الزامی میباشد").max(80),
       enTitle: zod
@@ -83,6 +81,7 @@ const useWriteBlog = (
       catName: "",
       category: -1,
       enTitle: "",
+      content: "",
     },
     resolver: zodResolver(validation),
   });
@@ -112,7 +111,11 @@ const useWriteBlog = (
         shouldDirty: true,
         shouldValidate: true,
       });
-      setTextareaContent(data.content);
+      setValue("content", data.content, {
+        shouldDirty: true,
+        shouldValidate: true,
+      });
+
       console.log(data.content);
     }
   }, [userSingleBlog]);
@@ -170,22 +173,18 @@ const useWriteBlog = (
   }, []);
 
   const onSubmit: SubmitHandler<BlogFormValues> = (data) => {
-    createToast({ title: "این بخش فعلا غیرفعال میباشد", icon: "error" });
-    // return;
-    // const formData = new FormData();
-    // const catSlug = categories?.data.filter(
-    //   ({ name }) => name === data.catName
-    // );
-    // const content = getTextareaContent();
-    // if (imageFile) formData.append("image", imageFile);
-    // if (data.enTitle) formData.append("en_title", data.enTitle);
-    // if (data.catName && catSlug && catSlug[0])
-    //   formData.append("category", `${catSlug[0].id}`);
+    const formData = new FormData();
+    const catSlug = categories?.data.filter(
+      ({ name }) => name === data.catName
+    );
+    if (imageFile) formData.append("image", imageFile);
+    if (data.enTitle) formData.append("en_title", data.enTitle);
+    if (data.catName && catSlug && catSlug[0])
+      formData.append("article_category", `${catSlug[0].id}`);
 
-    // if (data.title) formData.append("title", data.title);
-    // if (content) formData.append("content", content);
-    // console.log(content);
-    // formMutation.mutate({ data: formData, edit: editPage });
+    if (data.title) formData.append("title", data.title);
+    if (data.content) formData.append("content", data.content);
+    formMutation.mutate({ data: formData, edit: editPage });
   };
   return {
     onSubmit: handleSubmit(onSubmit),

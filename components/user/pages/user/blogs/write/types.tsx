@@ -4,6 +4,7 @@ export interface BlogFormValues {
   category?: number;
   catName?: string;
   enTitle?: string;
+  content: string;
 }
 
 export interface UserSingleBlog {

@@ -22,15 +22,18 @@ function SelectInput<T>(props: SelectInputImpl<T>) {
         <div
           ref={ref}
           className="w-full absolute top-[54px] right-0 left-0 
-      flex justify-start items-start flex-col bg-white 
-      border-[1px] border-slate-200 rounded-md z-[200]"
+      flex justify-start items-start flex-col bg-white dark:bg-slate-500
+      border-[1px] border-slate-200 rounded-md z-[200] overflow-hidden"
         >
           {props.categories.map(({ id, name }) => (
             <span
               key={id}
-              className={cx(`p-2 hover:bg-slate-200 w-full cursor-pointer`, {
-                "bg-slate-200": id === props.activeCat,
-              })}
+              className={cx(
+                `p-2 hover:bg-slate-200 dark:hover:bg-slate-400 w-full cursor-pointer`,
+                {
+                  "bg-slate-200 dark:bg-slate-400": id === props.activeCat,
+                }
+              )}
               onClick={() => {
                 setOpenSelect(false);
                 props.setFormCategory(name, id);

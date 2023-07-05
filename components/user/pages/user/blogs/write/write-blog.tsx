@@ -12,12 +12,6 @@ import { Eye } from "iconsax-react";
 import "./write-blog.scss";
 
 const WriteBlog = () => {
-  const getTextareaContent = () => {
-    return ref.current.value;
-  };
-  const setTextareaContent = (content: string) => {
-    ref.current.value = content;
-  };
   const {
     errors,
     onSubmit,
@@ -28,9 +22,7 @@ const WriteBlog = () => {
     getValues,
     formLoading,
     categories,
-    editorLoading,
-    setEditorLoading,
-  } = useWriteBlog(getTextareaContent, setTextareaContent);
+  } = useWriteBlog();
   const ref = useRef<HTMLInputElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -42,11 +34,11 @@ const WriteBlog = () => {
     <>
       <div className="h-full w-full flex justify-start items-start flex-col overflow-auto scrollbar dark:dark-scrollbar">
         <div className="w-full flex justify-start items-start flex-col p-5 bg-white dark:bg-slate-600 rounded-xl">
-          <div className="bg-slate-300 text-slate-600 p-1 rounded-md text-sm mb-4">
-            <span className="">برای مشاهده متن نهایی بر روی آیکون</span>{" "}
+          {/* <div className="dark:bg-slate-400 bg-slate-300 text-slate-600 p-1 rounded-md text-sm mb-4">
+            <span>برای مشاهده متن نهایی بر روی آیکون</span>{" "}
             <Eye className="mx-1 inline-block" size="16" />{" "}
             <span>کلیک کنید</span>
-          </div>
+          </div> */}
           <form
             className="w-full flex justify-start items-start flex-col"
             onSubmit={onSubmit}
@@ -122,12 +114,17 @@ const WriteBlog = () => {
                 />
               </div>
             </div>
-            {/* {editorLoading && (
-              <div className="w-full bg-slate-100 h-12 rounded-md flex justify-center items-center mt-4">
-                <Spinner color="text-slate-600" />
-              </div>
-            )} */}
-            <div className="w-full rounded-lg mt-4 overflow-hidden"></div>
+            <div className="mt-4 w-full">
+              <Input
+                register={register}
+                name={"content"}
+                label="متن مقاله"
+                error={errors.content?.message}
+                className="scrollbar min-h-[250px]"
+                async={true}
+                textarea={true}
+              />
+            </div>
             <div className="mt-4 w-[180px]">
               <Button title="ثبت" loading={formLoading} />
             </div>
