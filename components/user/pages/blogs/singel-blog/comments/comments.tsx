@@ -14,7 +14,7 @@ const Comments = ({ slug }: CommentsImpl) => {
       </Modal>
       <span
         onClick={toggleShowModal}
-        className=" hover:text-slate-400 cursor-pointer"
+        className="dark:text-slate-400 hover:text-slate-400 cursor-pointer"
       >
         مشاهده کامنت ها
       </span>

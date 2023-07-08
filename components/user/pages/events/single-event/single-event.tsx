@@ -39,7 +39,7 @@ const SingleEvent = async ({ slug }: SingleEventImpl) => {
               />
               <AttendOnEvent id={event.id} />
             </div>
-            <div className="w-full max-w-[350px] text-center mt-4 flex justify-start items-center flex-col space-y-2 p-4 ">
+            <div className="dark:text-slate-400 w-full max-w-[350px] text-center mt-4 flex justify-start items-center flex-col space-y-2 p-4 ">
               <div>
                 <span className="font-bold">مهلت ثبت نام : </span>
                 <span className="mr-2">{toJalali(new Date(event.date))}</span>

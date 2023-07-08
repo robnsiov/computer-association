@@ -14,6 +14,7 @@ const useEvents = ({ journal }: EventsImpl) => {
 
   const [events, setEvents] = useState<ApiEventsImpl>([]);
   const [participateLoading, setParticipateLoading] = useState(-1);
+  const [dataLoading, setDataLoading] = useState(false);
 
   const [setPageLoading] = usePageLoadingStore((state) => [state.set]);
   const [initEvents, setInitEvents] = useState(true);
@@ -35,6 +36,7 @@ const useEvents = ({ journal }: EventsImpl) => {
     },
     onSettled() {
       setPageLoading(false);
+      setDataLoading(true);
     },
     onSuccess({ data }) {
       setEvents(data);
@@ -84,6 +86,12 @@ const useEvents = ({ journal }: EventsImpl) => {
   useEffect(() => {
     eventsMutation.mutate();
   }, []);
-  return { events, initEvents, participateOnEvent, participateLoading };
+  return {
+    events,
+    initEvents,
+    participateOnEvent,
+    participateLoading,
+    dataLoading,
+  };
 };
 export default useEvents;

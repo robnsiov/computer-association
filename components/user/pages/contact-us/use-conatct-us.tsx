@@ -8,13 +8,14 @@ import { useMutation } from "@tanstack/react-query";
 import createToast from "@/utils/toast/toast";
 import ErrorHandler from "@/utils/error-handler/error-handler";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { api } from "@/constants/api";
 
 const useContactUs = () => {
   const { value: loading, setValue: setLoading } = useBoolean(false);
 
   const mutationFn = (data: Object) => {
     setLoading(true);
-    return request({ method: "POST", data, url: "/contact-us" });
+    return request({ method: "POST", data, url: api.contactUs });
   };
 
   const mutation = useMutation({
@@ -48,10 +49,12 @@ const useContactUs = () => {
     resolver: zodResolver(validation),
   });
 
-  const onSubmit: SubmitHandler<ContactUsFormValues> = (data) => {
-    // mutation.mutate(data);
-    createToast({ title: "پیام شما با موفقیت ارسال شد", icon: "success" });
-    reset();
+  const onSubmit: SubmitHandler<ContactUsFormValues> = ({
+    email,
+    message,
+    title,
+  }) => {
+    mutation.mutate({ subject: title, email, context: message });
   };
   return {
     onSubmit: handleSubmit(onSubmit),

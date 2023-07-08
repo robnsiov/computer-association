@@ -9,11 +9,16 @@ import Spinner from "@/components/share/spinner/spinner";
 import EventsImpl from "./types";
 
 const Events = ({ journal = false }: EventsImpl) => {
-  const { events, initEvents, participateOnEvent, participateLoading } =
-    useEvents({ journal });
+  const {
+    events,
+    initEvents,
+    participateOnEvent,
+    participateLoading,
+    dataLoading,
+  } = useEvents({ journal });
   return (
     <>
-      {events.length === 0 && !initEvents && (
+      {events.length === 0 && !initEvents && dataLoading && (
         <div className="w-full h-full text-slate-500 flex justify-center items-center">
           <p className="text-lg">آیتمی برای نمایش وجود ندارد</p>
         </div>

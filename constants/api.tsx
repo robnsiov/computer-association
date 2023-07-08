@@ -30,4 +30,5 @@ export const api = {
   homeBlogs: "/home/list_article_view/",
   homePodcast: "/home/list_podcast_view/",
   journal: "/post/journal/archive/",
+  contactUs: "/home/contact_us_view/",
 };

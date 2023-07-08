@@ -115,8 +115,6 @@ const useWriteBlog = () => {
         shouldDirty: true,
         shouldValidate: true,
       });
-
-      console.log(data.content);
     }
   }, [userSingleBlog]);
 
@@ -180,7 +178,7 @@ const useWriteBlog = () => {
     if (imageFile) formData.append("image", imageFile);
     if (data.enTitle) formData.append("en_title", data.enTitle);
     if (data.catName && catSlug && catSlug[0])
-      formData.append("article_category", `${catSlug[0].id}`);
+      formData.append("category", `${catSlug[0].id}`);
 
     if (data.title) formData.append("title", data.title);
     if (data.content) formData.append("content", data.content);

@@ -27,6 +27,13 @@ const ErrorHandler = (error: AxiosError | unknown, path: string) => {
         });
       }
     }
+    // contact-us
+    else if (path === "/contact-us") {
+      createToast({
+        title: "پیام ارسال نشد",
+        icon: "error",
+      });
+    }
     // blog-write
     else if (path === "/blog-write") {
       if ("en_title" in (err as Object)) {

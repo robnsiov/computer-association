@@ -34,7 +34,7 @@ const Comments = ({ type, slug, title, onConfirm }: CommentsImpl) => {
         <FadeAnimation inProp={showCommentForm} className="w-full">
           <form
             onSubmit={onSubmit}
-            className="bg-white dark:bg-slate-900 rounded-xl w-full mb-5"
+            className="bg-white dark:bg-slate-600 p-4 rounded-xl w-full mb-5"
           >
             <div className="max-w-xs mb-4">
               <Input

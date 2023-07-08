@@ -14,14 +14,14 @@ const Blogs = ({
   editOperation = () => {},
   onView = () => {},
 }: BlogsImpl) => {
-  const { blogs, initBlogs, changeRouteWithCat } = useBlogs({
+  const { blogs, initBlogs, changeRouteWithCat, dataLoading } = useBlogs({
     edit,
     home,
     videos,
   });
   return (
     <>
-      {blogs.length === 0 && !initBlogs && (
+      {blogs.length === 0 && !initBlogs && dataLoading && (
         <div className="w-full h-full text-slate-500 flex justify-center items-center">
           <p className="text-lg">آیتمی برای نمایش وجود ندارد</p>
         </div>

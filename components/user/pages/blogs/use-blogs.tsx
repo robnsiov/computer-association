@@ -12,7 +12,7 @@ const useBlogs = ({ edit, home, videos }: BlogsImpl) => {
   const router = useRouter();
   let pathname = usePathname();
   const [blogs, setBlogs] = useState<Array<BlogCardImpl>>([]);
-
+  const [dataLoading, setDataLoading] = useState(false);
   const [cat, setCat] = useActiveCategoryStore((state) => [
     state.cat,
     state.set,
@@ -53,6 +53,7 @@ const useBlogs = ({ edit, home, videos }: BlogsImpl) => {
       setPageLoading(true);
     },
     onSettled() {
+      setDataLoading(true);
       setPageLoading(false);
     },
     onSuccess({ data }) {
@@ -76,6 +77,6 @@ const useBlogs = ({ edit, home, videos }: BlogsImpl) => {
   useEffect(() => {
     if (!categoryPathname) mutation.mutate(null);
   }, [categoryPathname]);
-  return { blogs, initBlogs, changeRouteWithCat };
+  return { blogs, initBlogs, changeRouteWithCat, dataLoading };
 };
 export default useBlogs;
