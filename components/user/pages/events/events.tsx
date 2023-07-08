@@ -70,6 +70,7 @@ const Events = ({ journal = false }: EventsImpl) => {
                     <Link
                       href={journal && src ? src : `/events/${slug}`}
                       download={journal}
+                      noLoading={journal}
                       target={journal ? "_blank" : "_self"}
                     >
                       <Image

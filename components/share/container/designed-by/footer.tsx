@@ -55,7 +55,7 @@ const Footer = () => {
               className="hover:text-slate-600 en dark:hover:text-slate-800"
               href={statics.sahDev}
             >
-              Sah
+              SAH
             </Link>
           </div>
           <span className="mx-2 text-slate-200 dark:text-slate-400  text-sm">
@@ -69,7 +69,7 @@ const Footer = () => {
               className={"hover:text-slate-600 en dark:hover:text-slate-800"}
               href={statics.zolfuDev}
             >
-              Zolfu
+              Robnsiov
             </Link>
           </div>
         </div>

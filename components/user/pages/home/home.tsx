@@ -1,4 +1,5 @@
 import Blogs from "../blogs/blogs";
+import LatestEvent from "./latest-event/latest-event";
 import Podcast from "./podcast/podcats";
 
 const Home = () => {
@@ -6,8 +7,10 @@ const Home = () => {
     <>
       <div
         className="w-full h-full flex justify-between items-center px-5 pb-0 
-      lg:flex-col lg:justify-start lg:items-start lg:overflow-auto lg:scrollbar dark:lg:dark-scrollbar md:p-1"
+      lg:flex-col lg:justify-start lg:items-start lg:overflow-auto lg:scrollbar dark:lg:dark-scrollbar md:p-1 relative"
       >
+        <LatestEvent />
+
         <div
           className="w-[60%] lg:w-full h-full flex justify-start items-start flex-col overflow-hidden -mb-10
         lg:overflow-unset lg:h-[unset] lg:mb-[unset] lg:order-1"

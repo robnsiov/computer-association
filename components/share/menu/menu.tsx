@@ -17,10 +17,11 @@ import {
 import MenuImpl from "./types";
 import useMenu from "./use-menu";
 import Link from "../link/link";
-import { AiFillInstagram } from "react-icons/ai";
-import { FaTelegramPlane } from "react-icons/fa";
-import { BsTwitter } from "react-icons/bs";
+// import { AiFillInstagram } from "react-icons/ai";
+import { FaLinkedin, FaTelegramPlane } from "react-icons/fa";
+// import { BsTwitter } from "react-icons/bs";
 import ThemeSwitch from "../theme-switch/theme-switch";
+import statics from "@/constants/app";
 
 const routes = [
   {
@@ -127,14 +128,20 @@ const Menu = ({ links, inner = false }: MenuImpl) => {
                 <span className="ml-5 text-sm text-slate-300">
                   به ما ملحق شوید در
                 </span>
-                <Link href={"/"}>
-                  <FaTelegramPlane className="hover:text-slate-600 dark:hover:text-slate-700" />
+                <Link
+                  href={statics.telegramSocial}
+                  noLoading={true}
+                  target="_blank"
+                >
+                  <FaTelegramPlane className="hover:text-slate-600 dark:hover:text-slate-700 ml-2" />
                 </Link>
-                <Link href={"/"} className="mx-3">
-                  <AiFillInstagram className="hover:text-slate-600 dark:hover:text-slate-700" />
-                </Link>
-                <Link href={"/"}>
-                  <BsTwitter className="hover:text-slate-600 dark:hover:text-slate-700" />
+
+                <Link
+                  href={statics.linkedinSocial}
+                  noLoading={true}
+                  target="_blank"
+                >
+                  <FaLinkedin className="hover:text-slate-600 dark:hover:text-slate-700" />
                 </Link>
               </div>
             </div>

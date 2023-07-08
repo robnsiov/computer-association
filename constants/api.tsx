@@ -31,4 +31,5 @@ export const api = {
   homePodcast: "/home/list_podcast_view/",
   journal: "/post/journal/archive/",
   contactUs: "/home/contact_us_view/",
+  latestEvent: "/post/event/first/",
 };
