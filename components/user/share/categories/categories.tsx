@@ -20,12 +20,12 @@ const Categories = ({}: CategoriesImpl) => {
     <>
       <div
         className="absolute left-0 right-16 top-0
-      flex justify-start items-center text-sm h-16 md:right-4"
+      flex justify-start items-center text-sm h-16 md:right-4 "
       >
         <HambergerMenu
           onClick={() => setOpenMenu(true)}
           className={cx(
-            `text-slate-800 ml-4 cursor-pointer hover:text-slate-500 hidden md:block`,
+            `text-slate-800 dark:text-slate-400 ml-4 cursor-pointer hover:text-slate-500 hidden md:block`,
             { "min-w-[23px]": showCategories }
           )}
         />
@@ -39,7 +39,7 @@ const Categories = ({}: CategoriesImpl) => {
         )}
 
         {showCategories && (
-          <div className="w-full max-w-3xl pl-4">
+          <div className="w-full max-w-6xl pl-4">
             <Splide
               options={{
                 direction: "rtl",
