@@ -18,13 +18,16 @@ const AboutUs = () => {
       ></div>
       <div
         className="absolute inset-0 z-10 flex justify-end items-center flex-col
-       text-white text-center p-8 dark:text-slate-500"
+       text-white text-center p-8 dark:text-slate-400"
       >
-        <h1 className="max-w-xl mb-5 text-4xl font-extrabold">
+        <h1 className="max-w-lg mb-6 md:text-4xl text-6xl font-extrabold leading-[1.3] md:leading-[1.35]">
           {statics.aboutTitle}
         </h1>
-        <div className="max-w-xl w-full text-lg mb-10 md:text-base">
+        <div className="max-w-2xl w-full text-lg md:text-base">
           {statics.aboutDesc}
+        </div>
+        <div className="mb-10 mt-2 md:mb-1 md:hidden">
+          {statics.aboutDescFooter}
         </div>
       </div>
       <div className="absolute inset-0 flex justify-center items-start">
