@@ -48,7 +48,20 @@ const Blog = (props: BlogCard) => {
               )}
             </div>
             {!videos && (
-              <div className="flex flex-row-reverse justify-end items-center  max-w-[20%]">
+              <div className="flex flex-row-reverse justify-end items-center  max-w-[20%] group">
+                {article_user && article_user.full_name && (
+                  <div
+                    className="bg-slate-100 text-slate-500 font-semibold shadow-md z-30 absolute 
+                  top-[36px] text-[12px] rounded dark:bg-slate-600
+                 right-[21px] dark:text-slate-400 flex justify-center items-center 
+                 px-2 invisible opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:visible"
+                  >
+                    <span className="relative top-[1px]">
+                      {article_user.full_name}
+                    </span>
+                  </div>
+                )}
+
                 <div className="min-w-[28px] max-w-[28px] aspect-square rounded-full overflow-hidden border-2 border-slate-500">
                   {article_user && (
                     <>
