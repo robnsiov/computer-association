@@ -26,9 +26,7 @@ const AboutUs = () => {
         <div className="max-w-2xl w-full text-lg md:text-base">
           {statics.aboutDesc}
         </div>
-        <div className="mb-10 mt-2 md:mb-1 md:hidden">
-          {statics.aboutDescFooter}
-        </div>
+        <div className="mb-10 mt-2 md:mb-1">{statics.aboutDescFooter}</div>
       </div>
       <div className="absolute inset-0 flex justify-center items-start">
         <div className="w-full h-full md:p-4">
