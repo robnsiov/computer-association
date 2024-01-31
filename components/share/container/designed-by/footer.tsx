@@ -30,22 +30,24 @@ const Footer = () => {
             <BsTwitter className="hover:text-slate-600" />
           </Link> */}
         </div>
-        <div className="text-slate-400 flex justify-center items-center md:mt-1">
-          <span className="text-slate-300 text-sm dark:text-slate-400 ml-2">
+        <div className="text-slate-400 flex justify-center items-center md:mt-1 text-center">
+          <div>پروژه دانشجویی اقایان ذوالفقاری و حسینی</div>
+          {/* <span className="text-slate-300 text-sm dark:text-slate-400 ml-2">
             میزبانی شده توسط
-          </span>
+          </span> */}
 
-          <Link
+          {/* <Link
             target="_blank"
             noLoading={true}
             className="flex font-bold justify-center items-center dark:text-slate-700 dark:hover:text-slate-800 hover:text-slate-600"
             href={statics.sponserLink}
           >
             {statics.sponserName} <Box1 size="16" className="mr-2" />
-          </Link>
+          </Link> */}
         </div>
-        <div className="text-slate-400 dark:text-slate-700  flex justify-center items-center md:text-[14px]">
-          <span className="text-slate-300 text-sm ml-5 dark:text-slate-400">
+        <div className="text-slate-400 dark:text-slate-700  flex justify-center items-center md:text-[14px] text-center">
+          <p>تمام حقوق برای دانشگاه صنعتی قم میباشد</p>
+          {/* <span className="text-slate-300 text-sm ml-5 dark:text-slate-400">
             طراحی و توسعه توسط
           </span>
           <div>
@@ -71,7 +73,7 @@ const Footer = () => {
             >
               Robnsiov
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

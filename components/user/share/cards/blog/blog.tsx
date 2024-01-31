@@ -31,22 +31,10 @@ const Blog = (props: BlogCard) => {
       >
         <div className="relative w-full bg-white dark:bg-slate-700  rounded-2xl flex justify-center items-center flex-col p-2">
           <div
-            className={cx(
-              `w-full flex justify-between flex-row-reverse items-center`,
-              { "mb-2": !videos }
-            )}
+            className={cx(`w-full flex justify-between  items-center`, {
+              "mb-2": !videos,
+            })}
           >
-            <div className="flex justify-end items-center  w-[75%]  max-w-[75%]">
-              {article_category && (
-                <div
-                  onClick={() => changeRouteWithCat(article_category.slug)}
-                  className="text-slate-600 font-black   truncate
-                hover:text-slate-400 dark:text-slate-500 dark:hover:text-slate-800 cursor-pointer"
-                >
-                  {article_category.name}
-                </div>
-              )}
-            </div>
             {!videos && (
               <div className="flex flex-row-reverse justify-end items-center  max-w-[20%] group">
                 {article_user && article_user.full_name && (
@@ -86,6 +74,7 @@ const Blog = (props: BlogCard) => {
                 </div>
               </div>
             )}
+            <span className="">{name ?? title}</span>
           </div>
           <div className="w-full aspect-video rounded-xl overflow-hidden">
             {videos && video_file ? (
@@ -117,7 +106,17 @@ const Blog = (props: BlogCard) => {
           <span className="absolute -bottom-2.5 blur-xl left-0 right-0 h-6 bg-slate-200"></span>
         </div>
         <div className="mt-2 px-2 w-full text-right text-slate-500 dark:text-slate-900 max-w-full truncate">
-          {name ?? title}
+          <div className="flex justify-start items-center">
+            {article_category && (
+              <div
+                onClick={() => changeRouteWithCat(article_category.slug)}
+                className="text-slate-600 font-black   truncate
+                hover:text-slate-400 dark:text-slate-500 dark:hover:text-slate-800 cursor-pointer"
+              >
+                {article_category.name}
+              </div>
+            )}
+          </div>
         </div>
         <div
           className="mt-2 w-full flex justify-between items-center bg-white dark:bg-slate-500 p-2 rounded-lg
@@ -147,7 +146,7 @@ const Blog = (props: BlogCard) => {
                 </>
               ) : (
                 <Link
-                  className="bg-slate-800  text-white w-[60%] p-3 text-sm rounded-lg 
+                  className="bg-slate-800  text-white w-full p-3 text-sm rounded-lg 
             rounded-br-3xl rounded-bl-3xl text-center hover:ring-[3px] hover:ring-slate-400 transition-all duration-200"
                   href={`/blogs/${slug}`}
                 >
@@ -185,8 +184,8 @@ const Blog = (props: BlogCard) => {
                   </Link>
                 ) : (
                   <>
-                    <span className="ml-2">{count}</span>
-                    <Eye size="18" />
+                    {/* <span className="ml-2">{count}</span>
+                    <Eye size="18" /> */}
                   </>
                 )}
               </>
